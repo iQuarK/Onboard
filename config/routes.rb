@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
+  # Devise stuff
   devise_for :users
+  devise_scope :user do
+    get 'register', to: "devise/registrations#new"
+    get 'login', to: "devise/sessions#new"
+  end
+
+  # Root definition
+  root to: 'static_pages#home'
+
+  # --------------------------------------------------------------------------------
+  # Static Pages
+  # --------------------------------------------------------------------------------
+  get 'home' => 'static_pages#home', as: :home 
+  get 'about' => 'static_pages#about', as: :about 
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* --------------------------------------------------
+  Imports
+-------------------------------------------------- */
+@import 'variables.scss';
+
+
+/* --------------------------------------------------
+  General Styling
+-------------------------------------------------- */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Proxima Nova;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+body {
+	background-color: $lightBlue;
+}
+
+#container {
+	width: 1120px;
+	margin: 0 auto;
+	background: white;
+	padding: 50px;
+	border-bottom: 5px solid $lightGrey;
+	box-shadow: 0 2px 5px 2px #ccc;
+}
+
+.green_accent {
+	color: $green;
+}
+
+.blue_accent {
+	color: $blue;
+}
+
+/* --------------------------------------------------
+  Header Styles
+-------------------------------------------------- */
+#topbar {
+	background: #fff;
+	height: 85px;
+	box-shadow: 0 0 5px 0 #ccc;
+	margin-bottom: 50px;
+	padding: 25px 35px;
+
+	#logo {
+		float: left;
+		h1 {
+			line-height: 40px;
+			font-weight: 600;
+			font-size: 2em;
+			color: $orange;
+		}
+	}
+}
+
+nav#main {
+	float: right;
+
+	ul {
+		list-style: none;
+	}
+
+	li {
+		display: inline;
+		margin-left: 30px;
+		font-size: 1.1em;
+		line-height: 40px;
+	}
+
+}
