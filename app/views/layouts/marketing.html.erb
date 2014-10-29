@@ -9,7 +9,7 @@
 <body>
 
 	<header id="topbar">
-		<div id="logo"><h1>onboard - app</h1></div>
+		<div id="logo"><h1>onboard - marketing</h1></div>
 		<nav id="main">
 			<ul>
 				<li><%= link_to "Home", home_path %></li>
@@ -17,23 +17,19 @@
 				<% if user_signed_in? %>
 					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 				<% else %>
-					<li><%= link_to "Sign Up", register_path, :class => "green_accent" %></li>
 					<li><%= link_to "Login", login_path, :class => "blue_accent" %></li>
+					<li><%= link_to "Sign Up", register_path, :class => "button success" %></li>
 				<% end %>
 			</ul>
 		</nav>
 	</header>
 
-	<div id="app-menu">
-		Test
-	</div>
+	<div id="marketing-container">
 
-	<div id="app-container">
 		<%= yield %>
+
 	</div>
 
-	<div id="app-info">
-	</div>
 
 </body>
 </html>

@@ -31,17 +31,8 @@
 	text-decoration: none;
 }
 
-body {
-	background-color: $lightBlue;
-}
-
-#container {
-	width: 1120px;
-	margin: 0 auto;
-	background: white;
-	padding: 50px;
-	border-bottom: 5px solid $lightGrey;
-	box-shadow: 0 2px 5px 2px #ccc;
+html, body {
+	height: 100%;
 }
 
 .green_accent {
@@ -58,6 +49,37 @@ body {
 	border-radius: 50%;
 }
 
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.button {
+	display: inline-block;
+	padding: .8em 1.2em;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.4;
+	text-align: center;
+	text-transform: uppercase;
+	vertical-align: middle;
+	cursor: pointer;
+	border-radius: 2px;
+	white-space: nowrap;
+	transition: all .2s ease;
+
+	&.success {
+		color: #fff;
+		background-color: $green;
+	}
+
+	&.info {
+		color: #fff;
+		background-color: $blue;
+	}
+}
+
 /* --------------------------------------------------
   Header Styles
 -------------------------------------------------- */
@@ -65,7 +87,6 @@ body {
 	background: #fff;
 	height: 85px;
 	box-shadow: 0 0 5px 0 #ccc;
-	margin-bottom: 50px;
 	padding: 25px 35px;
 
 	#logo {
@@ -94,3 +115,65 @@ nav#main {
 	}
 
 }
+
+/* --------------------------------------------------
+  Application Layout Template
+-------------------------------------------------- */
+#app-menu {
+	width: 250px;
+	height: 100%;
+	float: left;
+	background-color: $darkBlue;
+	padding: 40px;
+}
+
+#app-container {
+	float: left;
+	padding: 50px;
+}
+
+#app-info {
+	width: 250px;
+	height: 100%;
+	float: right;
+	background-color: $midBlue;
+	padding: 40px;
+}
+
+
+
+
+/* --------------------------------------------------
+  Marketing Layout Template
+-------------------------------------------------- */
+#marketing-container {
+
+	#hero-unit {
+		background-color: $darkBlue;
+		color: #fff;
+		text-align: center;
+		padding: 80px;
+	}
+
+	#elevator-pitch {
+		background-color: $midBlue;
+		padding: 50px;
+		text-align: center;
+	}
+
+	#content {
+		width: 1020px;
+		margin: 0 auto;
+		padding: 50px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
