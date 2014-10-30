@@ -18,7 +18,7 @@
         <td><%= company.description %></td>
         <td><%= company.industry %></td>
         <td><%= company.location %></td>
-        <td><%= link_to 'Show', company %></td>
+        <td><%= link_to 'Show', root_url(:host => with_subdomain(company.subdomain)) %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

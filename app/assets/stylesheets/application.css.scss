@@ -124,7 +124,24 @@ nav#main {
 	height: 100%;
 	float: left;
 	background-color: $darkBlue;
-	padding: 40px;
+
+	nav {
+		ul {
+			list-style-type: none;
+		}
+		li {
+			color: #E8E3E9;
+			padding: 40px;
+			text-transform: uppercase;
+			font-weight: 300;
+			border-top: 2px solid #2F405C;
+
+			span {
+				float: right;
+				color: $green;
+			}
+		}
+	}
 }
 
 #app-container {

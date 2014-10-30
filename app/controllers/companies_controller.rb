@@ -1,7 +1,9 @@
 class CompaniesController < ApplicationController
+
   # Devise authentication filter
   before_filter :authenticate_user!, except: [ :index, :show ]
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_company, only: [:edit, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
@@ -17,6 +19,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @company = Company.find_by_subdomain!(request.subdomain)  
   end
 
   # GET /companies/new
@@ -40,7 +43,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.html { redirect_to root_url(:host => with_subdomain(@company.subdomain)), notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -74,6 +77,18 @@ class CompaniesController < ApplicationController
   end
 
   private
+
+    # Workout which company we're after based on the subdomain
+    def get_company
+      companies = Company.where(subdomain: request.subdomain)
+
+      if companies.count > 0
+        @company = companies.first
+      elsif request.subdomain != 'www'
+        redirect_to root_url(subdomain: 'www')
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(params[:id])
@@ -81,6 +96,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :description, :industry, :location)
+      params.require(:company).permit(:name, :description, :industry, :location, :subdomain)
     end
 end

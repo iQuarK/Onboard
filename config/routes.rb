@@ -8,6 +8,13 @@ Rails.application.routes.draw do
     get 'login', to: "devise/sessions#new"
   end
 
+
+  # Attempts at subdomain routing, first lets match www. to the home page to avoid mishaps
+  match '/', to: 'static_pages#home', constraints: { subdomain: 'www' }, via: [:get, :post, :put, :patch, :delete]
+  # now lets use a regex to point any subdomains to their relevant companies
+  match '/', to: 'companies#show', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
+
+
   # Root definition
   root to: 'static_pages#home'
 
