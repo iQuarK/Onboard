@@ -11,12 +11,13 @@
 <body>
 
 	<header id="topbar">
-		<div id="logo"><h1>onboard - app</h1></div>
+		<div id="logo"><h1>onboard</h1></div>
 		<nav id="main">
 			<ul>
-				<li><%= link_to "Home", home_path %></li>
-				<li><%= link_to "About", about_path %></li>
+					<li><%= link_to "My Company", companies_path %></li>
+					<li><%= link_to "Open Jobs", jobs_path %></li>
 				<% if user_signed_in? %>
+					<li><%= gravatar_for(current_user) %></li>
 					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 				<% else %>
 					<li><%= link_to "Sign Up", register_path, :class => "green_accent" %></li>
@@ -38,9 +39,6 @@
 
 	<div id="app-container">
 		<%= yield %>
-	</div>
-
-	<div id="app-info">
 	</div>
 
 </body>

@@ -11,27 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="field group">
+    <%= f.label :name %>
+    <div class="input-right">
+      <%= f.text_field :name %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :subdomain %><br>
-    <%= f.text_field :subdomain %>
+    <%= f.label :subdomain %>
+    <div class="input-right">
+      <%= f.text_field :subdomain %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :description %>
+    <div class="input-right">
+      <%= f.text_area :description, :rows => "12" %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :industry %><br>
-    <%= f.text_field :industry %>
+    <%= f.label :industry %>
+    <div class="input-right">
+      <%= f.text_field :industry %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.label :location %>
+    <div class="input-right">
+      <%= f.text_field :location %>
+    </div>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Company', :class => "button" %>
   </div>
 <% end %>

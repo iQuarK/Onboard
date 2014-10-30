@@ -12,30 +12,42 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.label :title %>
+    <div class="input-right">
+      <%= f.text_field :title %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :description %>
+    <div class="input-right">
+      <%= f.text_area :description, :rows => "12" %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.label :location %>
+    <div class="input-right">
+      <%= f.text_field :location %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :remote %><br>
-    <%= f.check_box :remote %>
+    <%= f.label :remote %>
+    <div class="input-right">
+      <%= f.check_box :remote %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :industry %><br>
-    <%= f.text_field :industry %>
+    <%= f.label :industry %>
+    <div class="input-right">
+      <%= f.text_field :industry %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :job_type %><br>
-    <%= f.text_field :job_type %>
+    <%= f.label :job_type %>
+    <div class="input-right">
+      <%= f.text_field :job_type %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Job', :class => "button" %>
   </div>
 <% end %>
