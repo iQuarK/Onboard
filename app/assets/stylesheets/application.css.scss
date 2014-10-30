@@ -26,7 +26,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: Proxima Nova;
+	font-family: 'ProximaNova-Light';
 	box-sizing: border-box;
 	text-decoration: none;
 }
@@ -36,11 +36,11 @@ html, body {
 }
 
 .green_accent {
-	color: $green;
+	color: $green !important;
 }
 
 .blue_accent {
-	color: $blue;
+	color: $blue !important;
 }
 
 .gravatar {
@@ -56,28 +56,65 @@ html, body {
 }
 
 .button {
-	display: inline-block;
-	padding: .8em 1.2em;
-	font-size: 14px;
-	font-weight: 300;
-	line-height: 1.4;
-	text-align: center;
+	font-family: 'ProximaNova-Semibold';
+	background: none;
+	background-color: transparent;
+	border-radius: 0px;
 	text-transform: uppercase;
-	vertical-align: middle;
-	cursor: pointer;
-	border-radius: 2px;
-	white-space: nowrap;
-	transition: all .2s ease;
+	font-weight: bold;
+	transition: all 0.2s linear;
+	text-decoration: none;
+	letter-spacing: 1px;
+	border: 2px solid;
+	font-size: 11px;
+	padding: 10px 20px 10px;
 
 	&.success {
-		color: #fff;
-		background-color: $green;
+		color: $green;
+		background-color: inherit;
+		&:hover {
+			color: #fff;
+			background-color: $green;
+			border: 2px solid $green;
+		}
 	}
 
 	&.info {
-		color: #fff;
-		background-color: $blue;
+		color: $blue;
+		background-color: inherit;
+		&:hover {
+			color: #fff;
+			background-color: $blue;
+			border: 2px solid $blue;
+		}
 	}
+
+	&.primary {
+		color: $orange;
+		background-color: inherit;
+		&:hover {
+			color: #fff;
+			background-color: $orange;
+			border: 2px solid $orange;
+		}
+
+	}
+
+	&.large {
+		padding: 19px 51px 17px;
+		font-size: 12px;
+		line-height: 16px;
+		border: 2px solid;
+	}
+}
+
+a:visited {
+	color: inherit;
+}
+
+.container {
+	width: 950px;
+	margin: 0 auto;
 }
 
 /* --------------------------------------------------
@@ -94,14 +131,17 @@ html, body {
 		h1 {
 			line-height: 40px;
 			font-weight: 600;
+			letter-spacing: -1.5px;
 			font-size: 2em;
 			color: $orange;
+			font-family: 'ProximaNova-Semibold'
 		}
 	}
 }
 
 nav#main {
 	float: right;
+	color: $darkGrey;
 
 	ul {
 		list-style: none;
@@ -110,8 +150,14 @@ nav#main {
 	li {
 		display: inline;
 		margin-left: 30px;
-		font-size: 1.1em;
+	}
+
+	a {
+		text-transform: uppercase;
+		font-size: 14px;
 		line-height: 40px;
+		letter-spacing: 1.5px;
+		font-family: 'ProximaNova-Semibold'
 	}
 
 }
@@ -123,7 +169,7 @@ nav#main {
 	width: 250px;
 	height: 100%;
 	float: left;
-	background-color: $darkBlue;
+	background-color: $darkGrey;
 
 	nav {
 		ul {
@@ -153,7 +199,7 @@ nav#main {
 	width: 250px;
 	height: 100%;
 	float: right;
-	background-color: $midBlue;
+	background-color: $darkGrey;
 	padding: 40px;
 }
 
@@ -163,25 +209,44 @@ nav#main {
 /* --------------------------------------------------
   Marketing Layout Template
 -------------------------------------------------- */
-#marketing-container {
+#marketing-header {
+	background-color: $darkGrey;
+	/*background: url(http://subtlepatterns.com/patterns/footer_lodyas.png);*/
+	background: url(http://subtlepatterns.com/patterns/cartographer.png);
 
 	#hero-unit {
-		background-color: $darkBlue;
-		color: #fff;
 		text-align: center;
-		padding: 80px;
+		padding: 100px 120px;
+
+		a {
+			display: inline-block;
+			margin-top: 40px;
+		}
+
+		h1 {
+			color: #fff;
+			font-family: 'AktivGrotesk-Medium';
+			font-weight: normal;
+			-webkit-font-smoothing: antialiased;
+			letter-spacing: -2px;
+			font-size: 40px;
+			line-height: 46px;
+		}
 	}
+}
+
+#marketing-content {
 
 	#elevator-pitch {
-		background-color: $midBlue;
-		padding: 50px;
 		text-align: center;
-	}
-
-	#content {
-		width: 1020px;
-		margin: 0 auto;
-		padding: 50px;
+		padding: 80px 160px;
+		h2 {
+			font-family: 'AktivGrotesk-Light';
+			font-size: 34px;
+			line-height: 43px;
+			font-weight: 200;
+			-webkit-font-smooth: antialiased;
+		}
 	}
 }
 

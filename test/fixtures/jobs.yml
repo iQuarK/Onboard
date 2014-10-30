@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  location: MyString
+  remote: false
+  industry: MyString
+  type: 
+
+two:
+  title: MyString
+  description: MyText
+  location: MyString
+  remote: false
+  industry: MyString
+  type: 
