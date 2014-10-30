@@ -19,6 +19,7 @@
 -------------------------------------------------- */
 @import 'variables.scss';
 @import 'forms.scss';
+@import 'tables.scss';
 
 
 /* --------------------------------------------------
@@ -162,6 +163,31 @@ nav#main {
 		font-family: 'ProximaNova-Semibold'
 	}
 
+}
+
+/* --------------------------------------------------
+  Authentication Layout Template
+-------------------------------------------------- */
+.body-authentication {
+	background: url(http://subtlepatterns.com/patterns/cartographer.png);
+}
+
+#authentication {
+	background: #fff;
+	width: 550px;
+	height: 450px;
+	margin: 200px auto;
+	padding: 50px;
+
+	h1 {
+			line-height: 40px;
+			font-weight: 600;
+			letter-spacing: -1.5px;
+			font-size: 2.5em;
+			color: $orange;
+			font-family: 'ProximaNova-Semibold';
+			text-align: center;
+		}
 }
 
 /* --------------------------------------------------

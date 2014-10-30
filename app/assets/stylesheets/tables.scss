@@ -1,0 +1,28 @@
+@import 'variables.scss';
+
+table {
+	width: 100%;
+
+	th {
+		font-family: 'ProximaNova-Semibold';
+		text-transform: uppercase;
+		color: $darkGrey;
+		text-decoration: none;
+		text-align: left;
+		font-size: 12px;
+	}
+
+	tbody {
+		font-size: 14px;
+		line-height: 1;
+	}
+
+	td {
+		padding: 16px 0;
+		border-bottom: 1px solid #f0f0f0;
+	}
+
+	a {
+		color: $orange;
+	}
+}

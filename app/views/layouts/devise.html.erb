@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Onboard</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script src="//use.typekit.net/ten1fot.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
+</head>
+<body class="body-authentication">
+
+	<div id="authentication">
+		<h1>Onboard</h1>
+		<%= yield %>
+	</div>
+
+</body>
+</html>
