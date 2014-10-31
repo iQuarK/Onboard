@@ -20,6 +20,7 @@
 @import 'variables.scss';
 @import 'forms.scss';
 @import 'tables.scss';
+@import 'typography/ui-font-solid.css';
 
 
 /* --------------------------------------------------
@@ -215,6 +216,12 @@ nav#main {
 			font-weight: 300;
 			border-top: 2px solid #2F405C;
 
+			i {
+				font-size: 24px;
+				line-height: 30px;
+				margin: 10px 15px 0px 0px;
+			}
+
 			span {
 				float: right;
 				color: $green;
@@ -226,8 +233,8 @@ nav#main {
 #app-container {
 	padding: 50px;
 	position: absolute;
-	margin-left: 250px;
-	min-width: 750px;
+	padding-left: 300px;
+	width: 100%;
 }
 
 

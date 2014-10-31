@@ -30,7 +30,8 @@
 	<div id="app-menu">
 		<nav>
 			<ul>
-				<li><%= link_to "Open Jobs", jobs_path %></li>
+				<li><i class="icon-briefcase"></i><%= link_to "My Company", company_path(:id => current_user.company.id) %></li>
+				<li><i class="icon-group"></i><%= link_to "Open Jobs", jobs_path %></li>
 			</ul>
 		</nav>
 	</div>
