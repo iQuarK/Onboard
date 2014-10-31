@@ -13,7 +13,7 @@
   <tbody>
     <% @companies.each do |company| %>
       <tr>
-        <td><%= link_to company.name, root_url(:host => with_subdomain(company.subdomain)) %></td>
+        <td><%= link_to company.name, company %></td>
         <td><%= company.description %></td>
         <td><%= company.industry %></td>
         <td><%= company.location %></td>

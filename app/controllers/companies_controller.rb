@@ -3,23 +3,17 @@ class CompaniesController < ApplicationController
   # Devise authentication filter
   before_filter :authenticate_user!, except: [ :index, :show ]
 
-  before_action :set_company, only: [:edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
   def index
-
-    if user_signed_in?
-      @companies = current_user.companies
-    else
-      @companies = Company.all
-    end
+    @companies = Company.all
   end
 
   # GET /companies/1
   # GET /companies/1.json
-  def show
-    @company = Company.find_by_subdomain!(request.subdomain)  
+  def show 
   end
 
   # GET /companies/new
@@ -43,7 +37,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to root_url(:host => with_subdomain(@company.subdomain)), notice: 'Company was successfully created.' }
+        format.html { redirect_to @company, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }

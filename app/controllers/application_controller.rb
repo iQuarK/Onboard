@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   # Devise redirect to companies index view after logging in
   def after_sign_in_path_for(resource)
-  	companies_path
+  	company_path(:id => current_user.company.id)
 	end
 	
 end

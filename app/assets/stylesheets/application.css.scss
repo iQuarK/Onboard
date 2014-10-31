@@ -120,6 +120,12 @@ a:visited {
 	margin: 0 auto;
 }
 
+#notice {
+	background-color: $blue;
+	padding: 15px;
+	color: white;
+	margin-bottom: 30px;
+}
 /* --------------------------------------------------
   Header Styles
 -------------------------------------------------- */
@@ -166,7 +172,7 @@ nav#main {
 }
 
 /* --------------------------------------------------
-  Authentication Layout Template
+  Devise Layout Template
 -------------------------------------------------- */
 .body-authentication {
 	background: url(http://subtlepatterns.com/patterns/cartographer.png);
@@ -175,7 +181,6 @@ nav#main {
 #authentication {
 	background: #fff;
 	width: 550px;
-	height: 450px;
 	margin: 200px auto;
 	padding: 50px;
 
@@ -247,12 +252,13 @@ nav#main {
 
 		h1 {
 			color: #fff;
-			font-family: 'AktivGrotesk-Medium';
+			font-family: aktiv-grotesk-std;
 			font-weight: normal;
 			-webkit-font-smoothing: antialiased;
 			letter-spacing: -2px;
 			font-size: 40px;
 			line-height: 46px;
+			font-weight: 400;
 		}
 	}
 }
@@ -263,7 +269,7 @@ nav#main {
 		text-align: center;
 		padding: 80px 160px;
 		h2 {
-			font-family: 'AktivGrotesk-Light';
+			font-family: aktiv-grotesk-std;
 			font-size: 34px;
 			line-height: 43px;
 			font-weight: 200;
