@@ -1,0 +1,59 @@
+//-----------------------------------------------------------------------------
+// Buttons
+//-----------------------------------------------------------------------------
+
+.button {
+  font-family: 'ProximaNova-Semibold';
+  background: none;
+  background-color: transparent;
+  @include border-radius(0);
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.2s linear;
+  text-decoration: none;
+  letter-spacing: 1px;
+  border: 2px solid;
+  @include font-size(11);
+  padding: 10px 20px 10px;
+  &:hover {
+
+  }
+}
+
+.button-success {
+  @extend .button;
+  color: $green;
+  &:hover {
+    color: #FFF;
+    background-color: $green;
+    border: 2px solid $green;
+  }
+}
+
+.button-info {
+  @extend .button;
+  color: $blue;
+  &:hover {
+    color: #FFF;
+    background-color: $blue;
+    border: 2px solid $blue;
+  }
+}
+
+.button-primary {
+  @extend .button;
+  color: $orange;
+  &:hover {
+    color: #FFF;
+    background-color: $orange;
+    border: 2px solid $orange;
+  }
+}
+
+.button-large {
+  @extend .button;
+  padding: 19px 51px 17px;
+  font-size: 12px;
+  line-height: 16px;
+  border: 2px solid;
+}

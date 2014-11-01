@@ -17,12 +17,16 @@
   Imports
 -------------------------------------------------- */
 @import 'vendor/ui-font-solid.css';
+@import 'vendor/jeet/index';
 
 @import 'utilities/variables';
 @import 'utilities/mixins';
 
+
+
 @import 'modules/forms';
 @import 'modules/tables';
+@import 'modules/buttons';
 
 @import 'modules/flash_messages';
 
@@ -63,58 +67,7 @@ html, body {
   clear: both;
 }
 
-.button {
-	font-family: 'ProximaNova-Semibold';
-	background: none;
-	background-color: transparent;
-	border-radius: 0px;
-	text-transform: uppercase;
-	font-weight: bold;
-	transition: all 0.2s linear;
-	text-decoration: none;
-	letter-spacing: 1px;
-	border: 2px solid;
-	font-size: 11px;
-	padding: 10px 20px 10px;
 
-	&.success {
-		color: $green;
-		background-color: inherit;
-		&:hover {
-			color: #fff;
-			background-color: $green;
-			border: 2px solid $green;
-		}
-	}
-
-	&.info {
-		color: $blue;
-		background-color: inherit;
-		&:hover {
-			color: #fff;
-			background-color: $blue;
-			border: 2px solid $blue;
-		}
-	}
-
-	&.primary {
-		color: $orange;
-		background-color: inherit;
-		&:hover {
-			color: #fff;
-			background-color: $orange;
-			border: 2px solid $orange;
-		}
-
-	}
-
-	&.large {
-		padding: 19px 51px 17px;
-		font-size: 12px;
-		line-height: 16px;
-		border: 2px solid;
-	}
-}
 
 a:visited {
 	color: inherit;

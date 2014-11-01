@@ -15,9 +15,6 @@
 	font-size: $sizeValue + px;
 	font-size: ($sizeValue / 10) + rem;
 }
-@mixin flexible-width ($context, $target) {
-	width: (($target / $context) * 100%);
-}
 @mixin border-radius($radius) {
 	-webkit-border-radius: $radius;
 	border-radius: $radius;
