@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
 
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:new, :create, :index]
+  before_action :authenticate_user!, only: [:manage]
+  before_action :set_company
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :manage]
 
   # -------------------------------------------------------------------------------------------------------------------
   # GET /companies/:company_id/jobs
@@ -36,7 +37,7 @@ class JobsController < ApplicationController
     @job = @company.jobs.new(job_params)
 
     if @job.save
-      redirect_to @job, notice: 'Job was successfully created.'
+      redirect_to [@company, @job], notice: 'Job was successfully created.'
     else
       render :new
     end
@@ -47,7 +48,7 @@ class JobsController < ApplicationController
   # -------------------------------------------------------------------------------------------------------------------
   def update
     if @job.update(job_params)
-      redirect_to @job, notice: 'Job was successfully updated.'
+      redirect_to [@company, @job], notice: 'Job was successfully updated.'
     else
       render :edit
     end
@@ -58,7 +59,14 @@ class JobsController < ApplicationController
   # -------------------------------------------------------------------------------------------------------------------
   def destroy
     @job.destroy
-    redirect_to jobs_url, notice: 'Job was successfully destroyed.'
+    redirect_to company_jobs_path(@company), notice: 'Job was successfully destroyed.'
+  end
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # GET /jobs/:id/manage
+  # -------------------------------------------------------------------------------------------------------------------
+  def manage
+
   end
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -68,7 +76,7 @@ class JobsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_job
-    @job = Job.find(params[:id])
+    @job = @company.jobs.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

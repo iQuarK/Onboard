@@ -1,4 +1,6 @@
-@import 'variables.scss';
+//-----------------------------------------------------------------------------
+// Forms
+//-----------------------------------------------------------------------------
 
 form {
 	.field {
@@ -15,7 +17,7 @@ form {
 		font-size: 16px;
 		font-family: 'ProximaNova-Semibold';
 		line-height: 32px;
-		color: $darkGrey;
+		color: $nero;
 		margin-top: 3px;
 	}
 
