@@ -1,15 +1,6 @@
 <%= form_for(@company) do |f| %>
-  <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
-      <% @company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_list', model: @company %>
 
   <div class="field group">
     <%= f.label :name %>
@@ -17,24 +8,28 @@
       <%= f.text_field :name %>
     </div>
   </div>
+
   <div class="field">
     <%= f.label :subdomain %>
     <div class="input-right">
       <%= f.text_field :subdomain %>
     </div>
   </div>
+
   <div class="field">
     <%= f.label :description %>
     <div class="input-right">
-      <%= f.text_area :description, :rows => "12" %>
+      <%= f.text_area :description, rows: 5 %>
     </div>
   </div>
+
   <div class="field">
     <%= f.label :industry %>
     <div class="input-right">
       <%= f.text_field :industry %>
     </div>
   </div>
+
   <div class="field">
     <%= f.label :location %>
     <div class="input-right">
@@ -43,6 +38,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'Create Company', :class => "button" %>
+    <%= f.submit 'Create Company', class: "button" %>
   </div>
+
 <% end %>

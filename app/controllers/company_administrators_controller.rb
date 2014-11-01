@@ -2,19 +2,20 @@ class CompanyAdministratorsController < ApplicationController
 
   before_filter :authenticate_user!
 
+  # -------------------------------------------------------------------------------------------------------------------
+  # POST /companies/:company_id/company_administrators/
+  # -------------------------------------------------------------------------------------------------------------------
   def create
     @company = Company.find(params[:company_id])
-    @company_administrator = @company.company_administrator.create(company_investor_params)
+    @company_administrator = @company.company_administrators.create(company_investor_params)
   end
 
   # -----------------------------------------------------------------------------------------------------------------
-  # DELETE /company_investors/:id
+  # DELETE /company_administrators/:id
   # -----------------------------------------------------------------------------------------------------------------
   def destroy
-
-    @company_investor = CompanyInvestor.find(params[:id])
-    @company_investor.destroy
-
+    @company_administrator = CompanyAdministrator.find(params[:id])
+    @company_administrator.destroy
   end
 
   # -----------------------------------------------------------------------------------------------------------------

@@ -1,15 +1,6 @@
-<%= form_for(@job) do |f| %>
-  <% if @job.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+<%= form_for([@company, @job]) do |f| %>
 
-      <ul>
-      <% @job.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_list', model: @job %>
 
   <div class="field">
     <%= f.label :title %>
@@ -17,37 +8,44 @@
       <%= f.text_field :title %>
     </div>
   </div>
+
   <div class="field">
     <%= f.label :description %>
     <div class="input-right">
-      <%= f.text_area :description, :rows => "12" %>
+      <%= f.text_area :description, rows: 5 %>
     </div>
   </div>
+
   <div class="field">
     <%= f.label :location %>
     <div class="input-right">
       <%= f.text_field :location %>
     </div>
   </div>
+
   <div class="field">
     <%= f.label :remote %>
     <div class="input-right">
       <%= f.check_box :remote %>
     </div>
   </div>
+
   <div class="field">
     <%= f.label :industry %>
     <div class="input-right">
       <%= f.text_field :industry %>
     </div>
   </div>
+
   <div class="field">
     <%= f.label :job_type %>
     <div class="input-right">
       <%= f.text_field :job_type %>
     </div>
   </div>
+
   <div class="actions">
-    <%= f.submit 'Create Job', :class => "button" %>
+    <%= f.submit 'Create Job', class: "button" %>
   </div>
+
 <% end %>

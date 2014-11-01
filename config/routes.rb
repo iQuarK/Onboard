@@ -1,30 +1,41 @@
 Rails.application.routes.draw do
-  resources :jobs
 
-  resources :companies
+  root to: 'static_pages#home'
 
-  # Devise stuff
+  # -------------------------------------------------------------------------------------------------------------------
+  # Users
+  # -------------------------------------------------------------------------------------------------------------------
   devise_for :users
   devise_scope :user do
     get 'register', to: "devise/registrations#new"
     get 'login', to: "devise/sessions#new"
   end
 
+  # -------------------------------------------------------------------------------------------------------------------
+  # Companies
+  # -------------------------------------------------------------------------------------------------------------------
+  resources :companies, except: [:index] do
+    resources :company_administrators, only: [:create]
+    resources :jobs, only: [:new, :create, :index]
+  end
+  resources :jobs, only: [:show, :edit, :update, :delete]
+
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # Subdomains
+  # -------------------------------------------------------------------------------------------------------------------
 
   # Attempts at subdomain routing, first lets match www. to the home page to avoid mishaps
   match '/', to: 'static_pages#home', constraints: { subdomain: 'www' }, via: [:get, :post, :put, :patch, :delete]
   # now lets use a regex to point any subdomains to their relevant companies
   match '/', to: 'companies#show', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
 
-
-  # Root definition
-  root to: 'static_pages#home'
-
   # --------------------------------------------------------------------------------
   # Static Pages
   # --------------------------------------------------------------------------------
-  get 'home' => 'static_pages#home', as: :home 
-  get 'about' => 'static_pages#about', as: :about 
+  get 'home' => 'static_pages#home', as: :home
+  get 'about' => 'static_pages#about', as: :about
+  get 'dashboard' => 'static_pages#dashboard', as: :dashboard
 
 
   # The priority is based upon order of creation: first created -> highest priority.

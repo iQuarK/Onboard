@@ -1,0 +1,29 @@
+<h1>The dashboard</h1>
+
+<% if current_user.has_company? %>
+  <h2>You are owner of <%= current_user.company.name %></h2>
+
+  <% if current_user.company.has_jobs? %>
+
+    <h2>You have <%= pluralize(current_user.company.jobs.count,'job!') %></h2>
+
+    <ul>
+      <% current_user.company.jobs.each do |job| %>
+        <li><%= link_to job.title, job %></li>
+      <% end %>
+    </ul>
+
+  <% else %>
+
+    <h2>Oh noes, no jobs!</h2>
+    <%= link_to "Add new job", new_company_job_path(current_user.company) %>
+
+  <% end %>
+
+<% else %>
+
+  <h2>Oh noes, no companies!</h2>
+  <%= link_to "Add new company", new_company_path %>
+
+<% end %>
+
