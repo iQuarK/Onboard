@@ -1,6 +1,6 @@
 class CompanyAdministratorsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # -------------------------------------------------------------------------------------------------------------------
   # POST /companies/:company_id/company_administrators/

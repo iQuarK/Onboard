@@ -1,6 +1,4 @@
-<% if notice %>
-  <p id="notice"><%= notice %></p>
-<% end %>
+
 <p>
   <strong>Title:</strong>
   <%= @job.title %>
@@ -31,5 +29,5 @@
   <%= @job.job_type %>
 </p>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Edit', edit_company_job_path(@company, @job) %> |
 <%= link_to 'Back', company_jobs_path(current_user.company) %>

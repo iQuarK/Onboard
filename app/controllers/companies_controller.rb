@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:show ]
+  before_action :authenticate_user!, except: [:show ]
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   before_action :check_for_existing_company, only: [:new, :create]
 

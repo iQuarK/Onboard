@@ -10,17 +10,21 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
 /* --------------------------------------------------
   Imports
 -------------------------------------------------- */
-@import 'variables.scss';
-@import 'forms.scss';
-@import 'tables.scss';
-@import 'typography/ui-font-solid.css';
+@import 'vendor/ui-font-solid.css';
+
+@import 'utilities/variables';
+@import 'utilities/mixins';
+
+@import 'modules/forms';
+@import 'modules/tables';
+
+@import 'modules/flash_messages';
 
 
 /* --------------------------------------------------
@@ -121,12 +125,6 @@ a:visited {
 	margin: 0 auto;
 }
 
-#notice {
-	background-color: $blue;
-	padding: 15px;
-	color: white;
-	margin-bottom: 30px;
-}
 /* --------------------------------------------------
   Header Styles
 -------------------------------------------------- */
@@ -151,7 +149,7 @@ a:visited {
 
 nav#main {
 	float: right;
-	color: $darkGrey;
+	color: $nero;
 
 	ul {
 		list-style: none;
@@ -202,7 +200,7 @@ nav#main {
 #app-menu {
 	width: 250px;
 	height: 100%;
-	background-color: $darkGrey;
+	background-color: $nero;
 	float: left;
 
 	nav {
@@ -244,7 +242,7 @@ nav#main {
   Marketing Layout Template
 -------------------------------------------------- */
 #marketing-header {
-	background-color: $darkGrey;
+	background-color: $nero;
 	/*background: url(http://subtlepatterns.com/patterns/footer_lodyas.png);*/
 	background: url(http://subtlepatterns.com/patterns/cartographer.png);
 
