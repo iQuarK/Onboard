@@ -1,7 +1,7 @@
 <h1>The dashboard</h1>
 
 <% if current_user.has_company? %>
-  <h2>You are owner of <%= current_user.company.name %></h2>
+  <h2>You are the owner of <%= current_user.company.name %></h2>
 
   <% if current_user.company.has_jobs? %>
 
@@ -9,7 +9,7 @@
 
     <ul>
       <% current_user.company.jobs.each do |job| %>
-        <li><%= link_to job.title, job %></li>
+        <li><%= job.title %></li>
       <% end %>
     </ul>
 
