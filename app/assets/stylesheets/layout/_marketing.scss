@@ -1,0 +1,44 @@
+/* --------------------------------------------------
+  Marketing Layout Template
+-------------------------------------------------- */
+#marketing-header {
+  background-color: $nero;
+  /*background: url(http://subtlepatterns.com/patterns/footer_lodyas.png);*/
+  background: url(http://subtlepatterns.com/patterns/cartographer.png);
+
+  #hero-unit {
+    text-align: center;
+    padding: 100px 120px;
+
+    a {
+      display: inline-block;
+      margin-top: 40px;
+    }
+
+    h1 {
+      color: #fff;
+      font-family: aktiv-grotesk-std;
+      font-weight: normal;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: -2px;
+      font-size: 40px;
+      line-height: 46px;
+      font-weight: 400;
+    }
+  }
+}
+
+#marketing-content {
+
+  #elevator-pitch {
+    text-align: center;
+    padding: 80px 160px;
+    h2 {
+      font-family: aktiv-grotesk-std;
+      font-size: 34px;
+      line-height: 43px;
+      font-weight: 200;
+      -webkit-font-smooth: antialiased;
+    }
+  }
+}

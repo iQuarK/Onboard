@@ -1,13 +1,18 @@
 class CompaniesController < ApplicationController
 
   before_action :authenticate_user!, except: [:show ]
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:edit, :update, :destroy]
+  # before_action :get_company, only: [:show]
   before_action :check_for_existing_company, only: [:new, :create]
 
+  before_action :load_company, only: [:show]
+
+
   # -------------------------------------------------------------------------------------------------------------------
-  # GET /companies/1
+  # GET :subdomain.pinpoint.hr
   # -------------------------------------------------------------------------------------------------------------------
   def show
+    render layout: 'external'
   end
 
   # -------------------------------------------------------------------------------------------------------------------

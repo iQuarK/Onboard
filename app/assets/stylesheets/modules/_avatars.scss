@@ -1,0 +1,27 @@
+/*---------------------------------------------------
+  User Avatars
+---------------------------------------------------*/
+.avatar {
+  width: 36px;
+  height: 36px;
+  @include border-radius(50%);
+}
+.avatar-small {
+  @extend .avatar;
+  width: 24px;
+  height: 24px;
+}
+.avatar-large {
+  @extend .avatar;
+  width: 48px;
+  height: 48px;
+}
+.avatar-huge {
+  @extend .avatar;
+  width: 80px;
+  height: 80px;
+}
+.avatar-squared {
+  @extend .avatar;
+  @include border-radius(5px);
+}

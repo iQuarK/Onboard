@@ -22,219 +22,27 @@
 @import 'utilities/variables';
 @import 'utilities/mixins';
 
-
+@import "base/normalize";
+@import 'base/typography';
+@import 'base/core';
 
 @import 'modules/forms';
 @import 'modules/tables';
 @import 'modules/buttons';
-
 @import 'modules/flash_messages';
+@import 'modules/avatars';
+@import 'modules/links';
 
-
-/* --------------------------------------------------
-  General Styling
--------------------------------------------------- */
-* {
-	margin: 0;
-	padding: 0;
-	font-family: 'ProximaNova-Light';
-	box-sizing: border-box;
-	text-decoration: none;
-}
-
-html, body {
-	height: 100%;
-}
-
-.green_accent {
-	color: $green !important;
-}
-
-.blue_accent {
-	color: $blue !important;
-}
-
-.gravatar {
-	width: 40px;
-	vertical-align: middle;
-	height: auto;
-	border-radius: 50%;
-}
-
-.group:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-
-
-a:visited {
-	color: inherit;
-}
-
-.container {
-	width: 950px;
-	margin: 0 auto;
-}
-
-/* --------------------------------------------------
-  Header Styles
--------------------------------------------------- */
-#topbar {
-	background: #fff;
-	height: 88px;
-	box-shadow: 0 0 5px 0 #ccc;
-	padding: 25px 35px;
-
-	#logo {
-		float: left;
-		h1 {
-			line-height: 40px;
-			font-weight: 600;
-			letter-spacing: -1.5px;
-			font-size: 2em;
-			color: $orange;
-			font-family: 'ProximaNova-Semibold'
-		}
-	}
-}
-
-nav#main {
-	float: right;
-	color: $nero;
-
-	ul {
-		list-style: none;
-	}
-
-	li {
-		display: inline;
-		margin-left: 30px;
-	}
-
-	a {
-		text-transform: uppercase;
-		font-size: 14px;
-		line-height: 40px;
-		letter-spacing: 1.5px;
-		font-family: 'ProximaNova-Semibold'
-	}
-
-}
-
-/* --------------------------------------------------
-  Devise Layout Template
--------------------------------------------------- */
-.body-authentication {
-	background: url(http://subtlepatterns.com/patterns/cartographer.png);
-}
-
-#authentication {
-	background: #fff;
-	width: 550px;
-	margin: 200px auto;
-	padding: 50px;
-
-	h1 {
-			line-height: 40px;
-			font-weight: 600;
-			letter-spacing: -1.5px;
-			font-size: 2.5em;
-			color: $orange;
-			font-family: 'ProximaNova-Semibold';
-			text-align: center;
-		}
-}
-
-/* --------------------------------------------------
-  Application Layout Template
--------------------------------------------------- */
-#app-menu {
-	width: 250px;
-	height: 100%;
-	background-color: $nero;
-	float: left;
-
-	nav {
-		ul {
-			list-style-type: none;
-		}
-		li {
-			color: #E8E3E9;
-			padding: 40px;
-			text-transform: uppercase;
-			font-weight: 300;
-			border-top: 2px solid #2F405C;
-
-			i {
-				font-size: 24px;
-				line-height: 30px;
-				margin: 10px 15px 0px 0px;
-			}
-
-			span {
-				float: right;
-				color: $green;
-			}
-		}
-	}
-}
-
-#app-container {
-	padding: 50px;
-	position: absolute;
-	padding-left: 300px;
-	width: 100%;
-}
+@import 'layout/application';
+@import 'layout/external';
+@import 'layout/marketing';
+@import 'layout/top_bar';
 
 
 
 
-/* --------------------------------------------------
-  Marketing Layout Template
--------------------------------------------------- */
-#marketing-header {
-	background-color: $nero;
-	/*background: url(http://subtlepatterns.com/patterns/footer_lodyas.png);*/
-	background: url(http://subtlepatterns.com/patterns/cartographer.png);
 
-	#hero-unit {
-		text-align: center;
-		padding: 100px 120px;
 
-		a {
-			display: inline-block;
-			margin-top: 40px;
-		}
-
-		h1 {
-			color: #fff;
-			font-family: aktiv-grotesk-std;
-			font-weight: normal;
-			-webkit-font-smoothing: antialiased;
-			letter-spacing: -2px;
-			font-size: 40px;
-			line-height: 46px;
-			font-weight: 400;
-		}
-	}
-}
-
-#marketing-content {
-
-	#elevator-pitch {
-		text-align: center;
-		padding: 80px 160px;
-		h2 {
-			font-family: aktiv-grotesk-std;
-			font-size: 34px;
-			line-height: 43px;
-			font-weight: 200;
-			-webkit-font-smooth: antialiased;
-		}
-	}
-}
 
 
 

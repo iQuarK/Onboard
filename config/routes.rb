@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  # -------------------------------------------------------------------------------------------------------------------
+  # Subdomains
+  # http://railscasts.com/episodes/123-subdomains-revised
+  # -------------------------------------------------------------------------------------------------------------------
+  match '/', to: 'companies#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }, via: [:get, :post, :put, :patch, :delete]
   root to: 'static_pages#home'
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -23,19 +28,12 @@ Rails.application.routes.draw do
     end
   end
 
+
+
   # -------------------------------------------------------------------------------------------------------------------
   # Jobs
   # -------------------------------------------------------------------------------------------------------------------
 
-
-  # -------------------------------------------------------------------------------------------------------------------
-  # Subdomains
-  # -------------------------------------------------------------------------------------------------------------------
-
-  # Attempts at subdomain routing, first lets match www. to the home page to avoid mishaps
-  match '/', to: 'static_pages#home', constraints: { subdomain: 'www' }, via: [:get, :post, :put, :patch, :delete]
-  # now lets use a regex to point any subdomains to their relevant companies
-  match '/', to: 'companies#show', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
 
   # --------------------------------------------------------------------------------
   # Static Pages
@@ -43,6 +41,8 @@ Rails.application.routes.draw do
   get 'home' => 'static_pages#home', as: :home
   get 'about' => 'static_pages#about', as: :about
   get 'dashboard' => 'static_pages#dashboard', as: :dashboard
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

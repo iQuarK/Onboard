@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     dashboard_path
 	end
 
+
+
+  private
+
+  def load_company
+    @company = Company.find_by_subdomain!(request.subdomain)
+  end
+
 end

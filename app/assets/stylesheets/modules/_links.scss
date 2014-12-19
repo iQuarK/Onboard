@@ -1,0 +1,21 @@
+/*---------------------------------------------------
+  LINKS
+---------------------------------------------------*/
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    cursor: pointer;
+  }
+  &:visited {
+    color: inherit;
+  }
+  &.green-accent {
+    color: $green;
+  }
+  &.blue-accent {
+    color: $blue;
+  }
+}
+
+
