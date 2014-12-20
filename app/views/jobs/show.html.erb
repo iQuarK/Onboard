@@ -43,11 +43,8 @@
     <div class="intro">
       <h4>Apply Job</h4>
     </div>
-    
-    <p>Click here to apply for the job</p>
+
+    <%= link_to 'Apply', apply_job_url(@job, subdomain: @company.subdomain), class: 'button' %>
 
   </div>
 </section>
-
-
-
