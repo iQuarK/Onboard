@@ -1,0 +1,6 @@
+.row {
+	@extend .group;
+	.col-1-2 {
+		@include col(1/2, $gutter: 5);
+	}
+}
