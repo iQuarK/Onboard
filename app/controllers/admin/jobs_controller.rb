@@ -76,7 +76,7 @@ module Admin
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :location, :remote, :industry, :job_type)
+      params.require(:job).permit(:title, :description, :location, :remote, :industry, :job_type, :requirements, :benefits)
     end
 
   end

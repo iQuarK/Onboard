@@ -1,25 +1,53 @@
+<section class="hero">
+  <div class="content pad-vert-medium">
+    <h2><%= @company.name %></h2>
+    <h1>Work at <%= @company.name %></h1>
+    <a class="button button-white" href="#">View All Open Positions</a>
+  </div>
+</section>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+<section class="sub-nav">
+  <div class="content">
+    <ul>
+      <li><a href="#description">Job Description</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#apply-job">Apply for this job</a></li>
+    </ul>
+  </div>
+</section>
 
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
+<section class="overview" id="overview">
+  <div class="content pad-vert-medium">
+    <div class="intro">
+      <h4><%= @job.title %></h4>
+    </div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @job.location %>
-</p>
+    <p><%= @job.description.html_safe %></p>
 
-<p>
-  <strong>Remote:</strong>
-  <%= @job.remote %>
-</p>
+    <p><strong>Location:</strong><%= @job.location %></p>
+    <p><strong>Remote:</strong><%= @job.remote %></p>
+    <p><strong>Type:</strong><%= @job.job_type %></p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @job.job_type %>
-</p>
+    <h4>Requirements</h4>
+    <p><%= @job.requirements.html_safe %></p>
+
+    <h4>Benefits</h4>
+    <p><%= @job.benefits.html_safe %></p>
+
+  </div>
+</section>
+
+<section class="overview" id="open-positions">
+  <div class="content pad-vert-medium">
+    <div class="intro">
+      <h4>Apply Job</h4>
+    </div>
+    
+    <p>Click here to apply for the job</p>
+
+  </div>
+</section>
+
+
+
