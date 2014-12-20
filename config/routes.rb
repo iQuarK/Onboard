@@ -7,14 +7,28 @@ Rails.application.routes.draw do
   # -------------------------------------------------------------------------------------------------------------------
   # match '/', to: 'companies#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }, via: [:get, :post, :put, :patch, :delete]
 
+  # Company specific routes
   constraints(Subdomain) do
+
+    # The root url for a company
     get "/", to: "companies#show"
+
     resources :company_administrators, only: [:create]
 
+    # External Job views
     resources :jobs, only: [:index, :show]
 
+    # The admin section for a company
     namespace 'admin' do
-      get '/', to: 'jobs#index'
+
+      # The company itself
+      get '/', to: 'companies#show'
+      get '/edit', to: 'companies#edit'
+      put '/', to: 'companies#update'
+      patch '/', to: 'companies#update'
+      delete '/', to: 'companies#delete'
+
+      # Jobs
       resources :jobs
     end
 
