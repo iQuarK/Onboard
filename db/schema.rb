@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20141220183011) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
+    t.text     "requirements"
+    t.text     "benefits"
   end
 
   create_table "users", force: true do |t|
