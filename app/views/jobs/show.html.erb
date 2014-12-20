@@ -9,10 +9,10 @@
 <section class="sub-nav">
   <div class="content">
     <ul>
-      <li><a href="#description">Job Description</a></li>
-      <li><a href="#benefits">Benefits</a></li>
-      <li><a href="#requirements">Requirements</a></li>
-      <li><a href="#apply-job">Apply for this job</a></li>
+      <li><%= link_to 'Job Description', job_path %></li>
+      <li><%= link_to 'Requirements', job_path, :anchor => "requirements" %></li>
+      <li><%= link_to 'Benefits', job_path, :anchor => "benefits" %></li>
+      <li><%= link_to 'Apply for this job', apply_job_url(@job, subdomain: @company.subdomain) %></li>
     </ul>
   </div>
 </section>
@@ -29,11 +29,15 @@
     <p><strong>Remote: </strong><%= @job.remote %></p>
     <p><strong>Type: </strong><%= @job.job_type %></p>
 
-    <h4>Requirements</h4>
-    <p><%= @job.requirements.html_safe %></p>
+    <div id="requirements">
+      <h4>Requirements</h4>
+      <p><%= @job.requirements.html_safe %></p>
+    </div>
 
-    <h4>Benefits</h4>
-    <p><%= @job.benefits.html_safe %></p>
+    <div id="benefits">
+      <h4>Benefits</h4>
+      <p><%= @job.benefits.html_safe %></p>
+    </div>
 
   </div>
 </section>
