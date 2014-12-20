@@ -1,26 +1,15 @@
 <%= render 'layouts/header' %>
 
-<body>
+<body class="external-body">
 
-  <header id="topbar">
-    <%= link_to dashboard_path do %><div id="logo"><h1>pinpoint</h1></div><% end %>
-    <nav id="main">
-      <ul>
-        <%= link_to "Open Jobs", jobs_path(subdomain: @company.subdomain) %></li>
-        <% if user_signed_in? %>
-          <li><%= gravatar_for(current_user) %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Sign Up", register_path, class: "green-accent" %></li>
-          <li><%= link_to "Login", login_path, class: "blue-accent" %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </header>
+  <div class="external">
 
-  <div id="app-container">
-    <%= render 'shared/flash_message' %>
     <%= yield %>
+
+    <footer class="poweredby">
+      <p>Powered by <a href="http://www.pinpoint.hr">Pinpoint</a></p>
+    </footer>
+
   </div>
 
 </body>

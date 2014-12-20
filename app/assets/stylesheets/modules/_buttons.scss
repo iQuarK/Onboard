@@ -3,21 +3,23 @@
 //-----------------------------------------------------------------------------
 
 .button {
-  font-family: 'ProximaNova-Semibold';
-  background: none;
-  background-color: transparent;
-  @include border-radius(0);
-  text-transform: uppercase;
-  font-weight: bold;
-  transition: all 0.2s linear;
-  text-decoration: none;
+  font-family: 'Gotham SSm A';
+  min-width: 200px;
+  max-width: 100%;
+  min-height: 40px;
+  padding: 12px 40px;
+  border-radius: 3px;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   letter-spacing: 1px;
-  border: 2px solid;
-  @include font-size(11);
-  padding: 10px 20px 10px;
-  &:hover {
-
-  }
+  line-height: 22px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
 }
 
 .button-success {
@@ -27,6 +29,15 @@
     color: #FFF;
     background-color: $green;
     border: 2px solid $green;
+  }
+}
+
+.button-white {
+  @extend .button ;
+  background-color: #fff;
+  color: #2996cc;
+  &:visited {
+    color: #2996cc;
   }
 }
 
