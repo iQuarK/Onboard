@@ -1,21 +1,45 @@
-<h1>The application page for a job</h1>
-
-<%= form_for @application, url: apply_job_url(@job) do |f| %>
-
-  <%= render 'shared/error_list', model: @application %>
-
-  <div class="field-row">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<section class="hero">
+  <div class="content pad-vert-medium">
+    <h2><%= @company.name %></h2>
+    <h1>Work at <%= @company.name %></h1>
+    <a class="button button-white" href="#">View All Open Positions</a>
   </div>
+</section>
 
-  <div class="field-row">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+<section class="sub-nav">
+  <div class="content">
+    <ul>
+      <li><a href="#description">Job Description</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#apply-job">Apply for this job</a></li>
+    </ul>
   </div>
+</section>
 
-  <div class="action">
-    <%= f.submit 'Apply' %>
+<section class="overview" id="overview">
+  <div class="content pad-vert-medium">
+    <div class="intro">
+      <h4>Apply for <%= @job.title %></h4>
+    </div>
+    <%= form_for @application, url: apply_job_url(@job) do |f| %>
+
+      <%= render 'shared/error_list', model: @application %>
+
+      <div class="field-row">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field-row">
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="action">
+        <%= f.submit 'Apply', class: "button" %>
+      </div>
+
+    <% end %>
   </div>
-
-<% end %>
+</section>
