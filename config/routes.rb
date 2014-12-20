@@ -10,7 +10,14 @@ Rails.application.routes.draw do
   constraints(Subdomain) do
     get "/", to: "companies#show"
     resources :company_administrators, only: [:create]
-    resources :jobs
+
+    resources :jobs, only: [:index, :show]
+
+    namespace 'admin' do
+      get '/', to: 'jobs#index'
+      resources :jobs
+    end
+
   end
 
   root to: 'static_pages#home'

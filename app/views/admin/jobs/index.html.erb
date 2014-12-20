@@ -1,0 +1,31 @@
+<h1>Listing jobs</h1>
+<br /><br />
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Remote</th>
+      <th>Industry</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= job.description %></td>
+        <td><%= job.location %></td>
+        <td><%= job.remote %></td>
+        <td><%= job.industry %></td>
+        <td><%= job.job_type %></td>
+        <td><%= link_to 'Show', job, subdomain: @company.subdomain %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'Create new job', new_admin_job_url(subdomain: @company.subdomain) %></p>

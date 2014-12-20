@@ -6,17 +6,12 @@
 		<%= link_to dashboard_path do %><div id="logo"><h1>pinpoint</h1></div><% end %>
 		<nav id="main">
 			<ul>
-				<% if current_user.has_company? %>
-					<li><%= link_to "My Company", root_url(subdomain: @company.subdomain) %></li>
-					<li><%= link_to "Open Jobs", jobs_path(current_user.company) %></li>
-				<% end %>
-				<% if user_signed_in? %>
-					<li><%= gravatar_for(current_user) %></li>
-					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-				<% else %>
-					<li><%= link_to "Sign Up", register_path, class: "green-accent" %></li>
-					<li><%= link_to "Login", login_path, class: "blue-accent" %></li>
-				<% end %>
+
+				<li><%= link_to "My Company", admin_url(subdomain: @company.subdomain) %></li>
+				<li><%= link_to "Open Jobs", admin_jobs_url(subdomain: @company.subdomain) %></li>
+				<li><%= gravatar_for(current_user) %></li>
+				<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+
 			</ul>
 		</nav>
 	</header>
