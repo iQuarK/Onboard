@@ -1,0 +1,21 @@
+<h1>The application page for a job</h1>
+
+<%= form_for @application, url: apply_job_url(@job) do |f| %>
+
+  <%= render 'shared/error_list', model: @application %>
+
+  <div class="field-row">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field-row">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="action">
+    <%= f.submit 'Apply' %>
+  </div>
+
+<% end %>

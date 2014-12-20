@@ -13,10 +13,13 @@ Rails.application.routes.draw do
     # The root url for a company
     get "/", to: "companies#show"
 
-    resources :company_administrators, only: [:create]
-
     # External Job views
-    resources :jobs, only: [:index, :show]
+    resources :jobs, only: [:index, :show] do
+      member do
+        get 'apply', to: 'applications#new'
+        post 'apply', to: 'applications#create'
+      end
+    end
 
     # The admin section for a company
     namespace 'admin' do
@@ -29,7 +32,13 @@ Rails.application.routes.draw do
       delete '/', to: 'companies#delete'
 
       # Jobs
-      resources :jobs
+      resources :jobs do
+        resources :applications, only: [:index]
+      end
+
+      # Applications
+      resources :applications, only: [:show]
+
     end
 
   end
@@ -51,13 +60,6 @@ Rails.application.routes.draw do
   resources :companies, only: [:new, :create] do
 
   end
-
-
-
-  # -------------------------------------------------------------------------------------------------------------------
-  # Jobs
-  # -------------------------------------------------------------------------------------------------------------------
-
 
   # --------------------------------------------------------------------------------
   # Static Pages
