@@ -1,25 +1,57 @@
+<h1>Job Management Interface</h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+<h2>List of Applicants</h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
+<ul>
+  <% @job.applications.unallocated.each do |applicant| %>
+    <li>
+      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
+        <%= applicant.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Location:</strong>
-  <%= @job.location %>
-</p>
+<h2>Rejected</h2>
+<ul>
+  <% @job.applications.rejected.each do |applicant| %>
+    <li>
+      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
+        <%= applicant.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Remote:</strong>
-  <%= @job.remote %>
-</p>
+<h2>Under Review</h2>
+<ul>
+  <% @job.applications.under_review.each do |applicant| %>
+    <li>
+      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
+        <%= applicant.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Type:</strong>
-  <%= @job.job_type %>
-</p>
+<h2>Interviewing</h2>
+<ul>
+  <% @job.applications.interviewing.each do |applicant| %>
+    <li>
+      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
+        <%= applicant.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Hired</h2>
+<ul>
+  <% @job.applications.hired.each do |applicant| %>
+    <li>
+      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
+        <%= applicant.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -33,7 +33,14 @@ Rails.application.routes.draw do
 
       # Jobs
       resources :jobs do
-        resources :applications, only: [:index]
+        resources :applications, only: [:index, :show] do
+          member do
+            patch 'reject'
+            patch 'review'
+            patch 'interview'
+            patch 'hire'
+          end
+        end
       end
 
       # Applications
