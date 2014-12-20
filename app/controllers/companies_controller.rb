@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
   # -------------------------------------------------------------------------------------------------------------------
   def new
     @company = Company.new
-    render layout: 'external'
+    render layout: 'application'
   end
 
   # -------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,145 @@
+/* --------------------------------------------------
+  General Layout Components
+-------------------------------------------------- */
+.external-body {
+	background-color: #161B1F;
+}
+.external {
+	max-width: 1680px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.content {
+	width: 1016px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.pad-vert-medium {
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+
+section {
+	z-index: 1;
+	position: relative;
+}
+
+.intro {
+	text-align: center;
+	max-width: 38em;
+	margin-bottom: 60px;
+	margin-left: auto;
+	margin-right: auto;
+
+	h3 {
+		font-size: 32px;
+		line-height: 42px;
+		font-weight: 300;
+		text-transform: uppercase;	
+	}
+
+	h4 {
+		font-size: 28px;
+		font-weight: 300;
+		line-height: 32px;
+		text-rendering: optimizeLegibility;
+	}
+}
+
+/* --------------------------------------------------
+  Hero Unit
+-------------------------------------------------- */
+section.hero {
+	color: #fff;
+	text-align: center;
+
+	h1 {
+		font-size: 42px;
+		font-weight: 300;
+		letter-spacing: -1px;
+		font-style: normal;
+		text-rendering: optimizeLegibility;
+		margin-top: 0px;
+	}
+
+	h2 {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		margin-bottom: 5px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+}
+
+/* --------------------------------------------------
+  Sub Nav
+-------------------------------------------------- */
+.sub-nav {
+	background-color: #fafafa;
+	border: none;
+	border-top: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	max-width: 1680px;
+	z-index: 2;
+	height: 60px;
+	line-height: 60px;
+
+	ul {
+		text-align: center;
+		margin: 0;
+	}
+
+	li {
+		display: inline-block;
+		color: #5f6a7d;
+		margin-right: 30px;
+		text-transform: uppercase;
+		font-size: 11px;
+		font-weight: 400;
+		letter-spacing: 1px;
+	}
+}
+
+/* --------------------------------------------------
+  Overview Content
+-------------------------------------------------- */
+section.overview {
+	background-color: #fff;
+}
+
+/* --------------------------------------------------
+  Benefits Content
+-------------------------------------------------- */
+section.benefits {
+	background-color: #fafafa;
+	border-top: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+
+	h5 {
+		color: #2e3b4e;
+		margin-top: 22px;
+		font-size: 14px;
+		line-height: 22px;
+		font-weight: 500;
+		margin-bottom: 3px;
+	}
+
+	p {
+		margin-top: 0px;
+	}
+}
+
+
+/* --------------------------------------------------
+  Powered By
+-------------------------------------------------- */
+.poweredby {
+	text-align: right;
+	color: #555;
+	letter-spacing: -1px;
+
+	a {
+		color: #ccc
+	}
+}
