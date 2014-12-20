@@ -32,8 +32,8 @@ Rails.application.routes.draw do
       delete '/', to: 'companies#delete'
 
       # Jobs
-      resources :jobs do
-        resources :applications, only: [:index, :show] do
+      resources :jobs, except: [:index] do
+        resources :applications, only: [:show] do
           member do
             patch 'reject'
             patch 'review'

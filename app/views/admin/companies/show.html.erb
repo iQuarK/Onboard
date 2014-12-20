@@ -25,5 +25,18 @@
   <%= @company.location %>
 </p>
 
-<p><%= link_to 'View Jobs', admin_jobs_url(subdomain: @company.subdomain) %></p>
-<p><%= link_to 'New Job', new_admin_job_url(subdomain: @company.subdomain) %></p>
+
+<h2>Listing jobs</h2>
+
+<% @company.jobs.each do |job| %>
+  <div>
+    <h3><%= link_to job.title, admin_job_url(job, subdomain: @company.subdomain), class: 'button' %></h3>
+    <p>Description: <%= job.description %></p>
+    <p>Location: <%= job.location %></p>
+    <p>Remote?: <%= job.remote %></p>
+    <p>Type: <%= job.job_type %></p>
+    <p></p>
+  </div>
+<% end %>
+
+<p><%= link_to 'Create new job', new_admin_job_url(subdomain: @company.subdomain) %></p>

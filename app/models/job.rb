@@ -10,7 +10,7 @@ class Job < ActiveRecord::Base
   # Validations
   # -------------------------------------------------------------------------------------------------------------------
 
-  validates_presence_of :title, :description, :locatin, :job_type, :company_id, :requirements, :benefits
+  validates_presence_of :title, :description, :location, :job_type, :company_id, :requirements, :benefits
 
   # -------------------------------------------------------------------------------------------------------------------
   # Associations

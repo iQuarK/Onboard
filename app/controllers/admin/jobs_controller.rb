@@ -61,7 +61,7 @@ module Admin
     # -------------------------------------------------------------------------------------------------------------------
     def destroy
       @job.destroy
-      redirect_to admin_jobs_path(subdomain: @company.subdomain), notice: 'Job was successfully destroyed.'
+      redirect_to admin_url(subdomain: @company.subdomain), notice: 'Job was successfully destroyed.'
     end
 
     # -------------------------------------------------------------------------------------------------------------------

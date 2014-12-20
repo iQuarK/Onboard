@@ -49,4 +49,5 @@ gem 'spring',        group: :development
 # Include devise for user authentication
 gem 'devise'
 
-
+# For quality command line debugging
+gem 'awesome_print', :require => 'ap'

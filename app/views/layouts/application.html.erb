@@ -7,8 +7,7 @@
 		<nav id="main">
 			<ul>
 
-				<li><%= link_to "My Company", admin_url(subdomain: @company.subdomain) %></li>
-				<li><%= link_to "Open Jobs", admin_jobs_url(subdomain: @company.subdomain) %></li>
+				<li><%= link_to "Dashboard", admin_url(subdomain: @company.subdomain) %></li>
 				<li><%= gravatar_for(current_user) %></li>
 				<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 
