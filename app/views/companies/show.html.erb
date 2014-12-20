@@ -23,4 +23,4 @@
   <%= @company.location %>
 </p>
 
-<%= link_to 'Edit', edit_company_path(@company) %>
+<p><%= link_to 'Create new job', new_job_path(subdomain: @company.subdomain) %></p>

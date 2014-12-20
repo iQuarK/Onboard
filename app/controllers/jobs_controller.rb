@@ -1,33 +1,37 @@
 class JobsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:manage]
-  before_action :set_company
-  before_action :set_job, only: [:show, :edit, :update, :destroy, :manage]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :load_company
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # -------------------------------------------------------------------------------------------------------------------
-  # GET /companies/:company_id/jobs
+  # GET :subdomain.pinpoint.hr/jobs
   # -------------------------------------------------------------------------------------------------------------------
   def index
     @jobs = @company.jobs.all
+    render layout: 'external'
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # GET /jobs/1
+  # GET :subdomain.pinpoint.hr/jobs/1
   # -------------------------------------------------------------------------------------------------------------------
   def show
+    render layout: 'external'
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # GET /companies/:company_id/jobs/new
+  # GET :subdomain.pinpoint.hr/jobs/new
   # -------------------------------------------------------------------------------------------------------------------
   def new
     @job = @company.jobs.new
+    render layout: 'application'
   end
 
   # -------------------------------------------------------------------------------------------------------------------
   # GET /jobs/1/edit
   # -------------------------------------------------------------------------------------------------------------------
   def edit
+    render layout: 'application'
   end
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -39,7 +43,7 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to [@company, @job], notice: 'Job was successfully created.'
     else
-      render :new
+      render :new, layout: 'application'
     end
   end
 
@@ -50,7 +54,7 @@ class JobsController < ApplicationController
     if @job.update(job_params)
       redirect_to [@company, @job], notice: 'Job was successfully updated.'
     else
-      render :edit
+      render :edit, layout: 'application'
     end
   end
 
@@ -60,13 +64,6 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     redirect_to company_jobs_path(@company), notice: 'Job was successfully destroyed.'
-  end
-
-  # -------------------------------------------------------------------------------------------------------------------
-  # GET /jobs/:id/manage
-  # -------------------------------------------------------------------------------------------------------------------
-  def manage
-
   end
 
   # -------------------------------------------------------------------------------------------------------------------

@@ -2,7 +2,6 @@ class CompaniesController < ApplicationController
 
   before_action :authenticate_user!, except: [:show ]
   before_action :set_company, only: [:edit, :update, :destroy]
-  # before_action :get_company, only: [:show]
   before_action :check_for_existing_company, only: [:new, :create]
 
   before_action :load_company, only: [:show]
@@ -20,12 +19,14 @@ class CompaniesController < ApplicationController
   # -------------------------------------------------------------------------------------------------------------------
   def new
     @company = Company.new
+    render layout: 'external'
   end
 
   # -------------------------------------------------------------------------------------------------------------------
   # GET /companies/1/edit
   # -------------------------------------------------------------------------------------------------------------------
   def edit
+    render layout: 'application'
   end
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -34,12 +35,11 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
 
-    # If the company saves successfully, add a record to the company_administrators table tying it the user.
     if @company.save
       @company.company_administrators.create(user_id: current_user.id)
-      redirect_to @company, notice: 'Company was successfully created.'
+      redirect_to root_url(subdomain: @company.subdomain), notice: 'Company was successfully created.'
     else
-      render :new
+      render :new, layout: 'external'
     end
   end
 
@@ -50,7 +50,7 @@ class CompaniesController < ApplicationController
     if @company.update(company_params)
       redirect_to @company, notice: 'Company was successfully updated.'
     else
-      render :edit
+      render :edit, layout: 'application'
     end
   end
 
@@ -59,24 +59,13 @@ class CompaniesController < ApplicationController
   # -------------------------------------------------------------------------------------------------------------------
   def destroy
     @company.destroy
-    redirect_to companies_url, notice: 'Company was successfully destroyed.'
+    redirect_to root_url(subdomain: false), notice: 'Company was successfully destroyed.'
   end
 
   # -------------------------------------------------------------------------------------------------------------------
   # PRIVATE
   # -------------------------------------------------------------------------------------------------------------------
   private
-
-  # Workout which company we're after based on the subdomain
-  def get_company
-    companies = Company.where(subdomain: request.subdomain)
-
-    if companies.count > 0
-      @company = companies.first
-    elsif request.subdomain != 'www'
-      redirect_to root_url(subdomain: 'www')
-    end
-  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_company

@@ -9,7 +9,7 @@
       <th>Remote</th>
       <th>Industry</th>
       <th>Type</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -22,14 +22,8 @@
         <td><%= job.remote %></td>
         <td><%= job.industry %></td>
         <td><%= job.job_type %></td>
-        <td><%= link_to 'Show', [@company, job] %></td>
-        <td><%= link_to 'Edit', edit_company_job_path(@company, job) %></td>
-        <td><%= link_to 'Destroy', [@company, job], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', job, subdomain: @company.subdomain %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Job', new_company_job_path(current_user.company) %>

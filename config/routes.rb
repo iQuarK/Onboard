@@ -3,8 +3,16 @@ Rails.application.routes.draw do
   # -------------------------------------------------------------------------------------------------------------------
   # Subdomains
   # http://railscasts.com/episodes/123-subdomains-revised
+  # http://railscasts.com/episodes/221-subdomains-in-rails-3
   # -------------------------------------------------------------------------------------------------------------------
-  match '/', to: 'companies#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }, via: [:get, :post, :put, :patch, :delete]
+  # match '/', to: 'companies#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }, via: [:get, :post, :put, :patch, :delete]
+
+  constraints(Subdomain) do
+    get "/", to: "companies#show"
+    resources :company_administrators, only: [:create]
+    resources :jobs
+  end
+
   root to: 'static_pages#home'
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -19,13 +27,8 @@ Rails.application.routes.draw do
   # -------------------------------------------------------------------------------------------------------------------
   # Companies
   # -------------------------------------------------------------------------------------------------------------------
-  resources :companies, except: [:index] do
-    resources :company_administrators, only: [:create]
-    resources :jobs do
-      member do
-        get 'manage'
-      end
-    end
+  resources :companies, only: [:new, :create] do
+
   end
 
 
