@@ -1,0 +1,15 @@
+<h1>The internal Application Show Page</h1>
+
+<h2>Some details</h2>
+<p>Name: <%= @application.name %></p>
+<p>Email: <%= @application.email %></p>
+<p>Current Stage: <%= Application::STAGES[@application.stage] %></p>
+
+<h2>Some Actions</h2>
+<ul>
+  <li><%= button_to 'Reject', reject_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button' %></li>
+  <li><%= button_to 'Review', review_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button' %></li>
+  <li><%= button_to 'Interview', interview_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button' %></li>
+  <li><%= button_to 'Hire', hire_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button' %></li>
+  <li><%= link_to 'Back to JMI', admin_job_url(@job, subdomain: @company.subdomain), class: 'button' %></li>
+</ul>
