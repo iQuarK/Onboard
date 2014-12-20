@@ -1,6 +1,6 @@
 <h1>The dashboard</h1>
 
-<% if current_user.has_company? %>
+<% if current_user.companies.any? %>
   <h2>You are the owner of <%= current_user.company.name %></h2>
 
   <% if current_user.company.has_jobs? %>

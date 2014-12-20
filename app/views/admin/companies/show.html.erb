@@ -1,4 +1,4 @@
-<h1>The external Company Show page</h1>
+<h1>The Admin Dashboard page for the company</h1>
 
 <p>
   <strong>Name:</strong>
@@ -24,3 +24,6 @@
   <strong>Location:</strong>
   <%= @company.location %>
 </p>
+
+<p><%= link_to 'View Jobs', admin_jobs_url(subdomain: @company.subdomain) %></p>
+<p><%= link_to 'New Job', new_admin_job_url(subdomain: @company.subdomain) %></p>
