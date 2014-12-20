@@ -10,7 +10,8 @@ class Company < ActiveRecord::Base
   # Validations
   # -------------------------------------------------------------------------------------------------------------------
 
-
+  validates_presence_of :name, :description, :industry, :location
+  validates :subdomain, presence: true, uniqueness: true, subdomain: true
 
   # -------------------------------------------------------------------------------------------------------------------
   # Associations
@@ -18,7 +19,6 @@ class Company < ActiveRecord::Base
   has_many :company_administrators, dependent: :destroy
   has_many :administrators, through: :company_administrators, source: :user
   has_many :jobs
-
 
   # -------------------------------------------------------------------------------------------------------------------
   # Nested Attributes

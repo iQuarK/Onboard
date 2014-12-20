@@ -15,7 +15,7 @@ class ApplicationsController < ApplicationController
   # POST :subdomain.pinpoint.hr/jobs/:id/apply
   # -------------------------------------------------------------------------------------------------------------------
   def create
-    @application = @job.application.new(application_params)
+    @application = @job.applications.new(application_params)
 
     if @application.save
       redirect_to root_url(subdomain: @company.subdomain), notice: 'Thanks for your application. Someone will be in touch with you shortly'
