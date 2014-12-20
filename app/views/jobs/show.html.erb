@@ -23,3 +23,5 @@
   <strong>Type:</strong>
   <%= @job.job_type %>
 </p>
+
+<%= link_to 'Apply', apply_job_url(@job, subdomain: @company.subdomain), class: 'button' %>
