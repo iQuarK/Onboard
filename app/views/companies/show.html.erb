@@ -57,6 +57,10 @@
     <div class="intro">  
       <h4>Open Positions</h4>
     </div>
-      
+    <ul>
+    <% @company.jobs.each do |job| %>      
+        <li><%= link_to job.title, job, subdomain: @company.subdomain %><span><%= job.location %></li>
+    <% end %>
+    </ul>
   </div>
 </section>
