@@ -17,6 +17,13 @@ module Admin
     # GET :subdomain.pinpoint.hr/admin/jobs/1
     # -------------------------------------------------------------------------------------------------------------------
     def show
+      @stages = [
+        { name: 'Unallocated', stage: 0, applications: @job.applications.unallocated },
+        { name: 'Rejected', stage: 1, applications: @job.applications.rejected },
+        { name: 'Under Review', stage: 2, applications: @job.applications.under_review },
+        { name: 'Interviewing', stage: 3, applications: @job.applications.interviewing },
+        { name: 'Hired', stage: 4, applications: @job.applications.hired }
+      ]
     end
 
     # -------------------------------------------------------------------------------------------------------------------

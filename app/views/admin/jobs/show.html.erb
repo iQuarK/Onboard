@@ -1,59 +1,33 @@
-<h1>Job Management Interface</h1>
+<%= provide(:title, 'Job Management Interface') %>
 
-<%= link_to 'Back to Dashboard', admin_url(subdomain: @company.subdomain), class: 'button' %>
+<div class="boards">
 
-<h2>List of Applicants</h2>
+  <% @stages.each do |stage| %>
 
-<ul>
-  <% @job.applications.unallocated.each do |applicant| %>
-    <li>
-      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
-        <%= applicant.name %>
+    <section class="board" data-stage="<%= stage[:stage] %>">
+
+      <h2><%= stage[:name] %></h2>
+
+      <% if stage[:applications].any? %>
+
+        <ul>
+          <% stage[:applications].each do |application| %>
+            <li>
+              <%= link_to admin_job_application_url(@job, application, subdomain: @company.subdomain) do %>
+                <%= application[:name] %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+
+      <% else %>
+
+        <p>There are no applications</p>
+
       <% end %>
-    </li>
-  <% end %>
-</ul>
 
-<h2>Rejected</h2>
-<ul>
-  <% @job.applications.rejected.each do |applicant| %>
-    <li>
-      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
-        <%= applicant.name %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+    </section>
 
-<h2>Under Review</h2>
-<ul>
-  <% @job.applications.under_review.each do |applicant| %>
-    <li>
-      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
-        <%= applicant.name %>
-      <% end %>
-    </li>
   <% end %>
-</ul>
 
-<h2>Interviewing</h2>
-<ul>
-  <% @job.applications.interviewing.each do |applicant| %>
-    <li>
-      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
-        <%= applicant.name %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<h2>Hired</h2>
-<ul>
-  <% @job.applications.hired.each do |applicant| %>
-    <li>
-      <%= link_to admin_job_application_url(@job, applicant, subdomain: @company.subdomain) do %>
-        <%= applicant.name %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+</div>
