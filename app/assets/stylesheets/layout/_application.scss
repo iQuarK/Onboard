@@ -1,6 +1,10 @@
 /* --------------------------------------------------
   Application Layout Template
 -------------------------------------------------- */
+.application-body {
+  background-color: #EFF0F1;
+}
+
 #app-menu {
   width: 250px;
   height: 100%;
@@ -33,8 +37,9 @@
 }
 
 #app-container {
-  padding: 50px;
-  position: absolute;
-  padding-left: 300px;
-  width: 100%;
+  background-color: #fff;
+  margin: 30px;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  padding: 30px;
 }
