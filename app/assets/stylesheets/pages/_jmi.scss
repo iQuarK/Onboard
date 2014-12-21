@@ -4,6 +4,7 @@
 
 .boards {
   width: 100%;
+  padding: 5px;
   position: absolute;
   top: 100px;
   right: 0;
@@ -29,11 +30,11 @@
 .board {
   margin: 10px;
   padding: 10px;
-  background: cyan;
-  margin-right: 20px;
+  background: $white-smoke;
+  margin: 0 5px;
+  border: 1px solid $smoke;
 
   // Need this to make items fixed width
-  @include flex(0 0 280px);
+  @include flex(0 0 260px);
   width: 280px;
-  // height: 300px;
 }
