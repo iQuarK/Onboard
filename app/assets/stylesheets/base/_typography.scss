@@ -61,8 +61,8 @@ h6 {
   Other
 -------------------------------------------------- */
 p {
-  font-size: 14px;
-  line-height: 22px;
+  @include font-size(14);
+  line-height: 1.6;
   font-weight: 300;
 }
 
