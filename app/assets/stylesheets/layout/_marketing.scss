@@ -4,7 +4,9 @@
 #marketing-header {
   background-color: $nero;
   /*background: url(http://subtlepatterns.com/patterns/footer_lodyas.png);*/
-  background: url(http://subtlepatterns.com/patterns/cartographer.png);
+  background: url("hero-background.jpg") no-repeat fixed;
+  background-size: 100%;
+  min-height: 900px;
 
   #hero-unit {
     text-align: center;
@@ -23,6 +25,14 @@
       font-size: 40px;
       line-height: 46px;
       font-weight: 400;
+    }
+
+    h2 {
+      font-weight: 400;
+      letter-spacing: -.02em;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 36px;
     }
   }
 }
