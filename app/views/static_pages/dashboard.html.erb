@@ -1,29 +1,27 @@
-<h1>The dashboard</h1>
+<h1>The Dashboard</h1>
 
 <% if current_user.companies.any? %>
-  <h2>You are the owner of <%= current_user.company.name %></h2>
 
-  <% if current_user.company.has_jobs? %>
+  <% current_user.companies.each do |company| %>
 
-    <h2>You have <%= pluralize(current_user.company.jobs.count,'job!') %></h2>
+    <%= link_to admin_url(subdomain: company.subdomain) do %>
+      <h2><%= company.name %> (<%= pluralize(company.jobs.count,'job') %>)</h2>
+    <% end %>
 
-    <ul>
-      <% current_user.company.jobs.each do |job| %>
-        <li><%= job.title %></li>
-      <% end %>
-    </ul>
+    <% if company.jobs.any? %>
 
-  <% else %>
+      <ul>
+        <% company.jobs.each do |job| %>
+          <li><%= job.title %></li>
+        <% end %>
+      </ul>
 
-    <h2>Oh noes, no jobs!</h2>
-    <%= link_to "Add new job", new_company_job_path(current_user.company) %>
+    <% end %>
+
+    <%= link_to "Add new job", new_admin_job_url(subdomain: company.subdomain), class: 'button' %>
 
   <% end %>
 
-<% else %>
-
-  <h2>Oh noes, no companies!</h2>
-  <%= link_to "Add new company", new_company_path %>
-
 <% end %>
 
+<%= link_to "Add new company", new_company_url(subdomain: false) , class: 'button' %>
