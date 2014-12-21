@@ -1,12 +1,12 @@
 class CompaniesController < ApplicationController
 
   before_action :load_company, only: [:show]
-  layout 'external'
 
   # -------------------------------------------------------------------------------------------------------------------
   # GET :subdomain.pinpoint.hr
   # -------------------------------------------------------------------------------------------------------------------
   def show
+    render layout: 'external'
   end
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ class CompaniesController < ApplicationController
 
     if @company.save
       @company.company_administrators.create(user_id: current_user.id)
-      redirect_to root_url(subdomain: @company.subdomain), notice: 'Company was successfully created.'
+      redirect_to admin_url(subdomain: @company.subdomain), notice: 'Company was successfully created.'
     else
       render :new
     end
@@ -36,6 +36,9 @@ class CompaniesController < ApplicationController
   # -------------------------------------------------------------------------------------------------------------------
   private
 
-
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def company_params
+    params.require(:company).permit(:name, :subdomain, :description, :industry, :location, :website)
+  end
 
 end

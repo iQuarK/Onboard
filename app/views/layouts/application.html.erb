@@ -3,11 +3,15 @@
 <body>
 
 	<header id="topbar">
-		<%= link_to dashboard_path do %><div id="logo"><h1>pinpoint</h1></div><% end %>
+
+		<%= link_to dashboard_url(subdomain: false) do %>
+			<div id="logo"><h1>pinpoint</h1></div>
+		<% end %>
+
 		<nav id="main">
 			<ul>
 
-				<li><%= link_to "Dashboard", admin_url(subdomain: @company.subdomain) %></li>
+				<li><%= link_to "Dashboard", dashboard_url(subdomain: false) %></li>
 				<li><%= gravatar_for(current_user) %></li>
 				<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 
