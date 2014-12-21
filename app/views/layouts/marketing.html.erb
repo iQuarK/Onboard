@@ -3,21 +3,26 @@
 <body>
 
 	<header class="top-bar">
-		<%= link_to root_path do %><div id="logo"><h1>pinpoint</h1></div><% end %>
+
+		<%= link_to 'pinpoint', root_url(subdomain: false), class: 'logo' %>
+
 		<nav class="main-nav">
+
 			<ul>
-				<li><%= link_to "Home", home_path %></li>
-				<li><%= link_to "About", about_path %></li>
+				<li><%= link_to "Home", root_url(subdomain: false) %></li>
+				<li><%= link_to "About", about_url(subdomain: false) %></li>
 				<% if user_signed_in? %>
 					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 				<% else %>
-					<li><%= link_to "Login", login_path, :class => "button info" %></li>
+					<li><%= link_to "Login", login_path, class: "button info" %></li>
 				<% end %>
 			</ul>
+
 		</nav>
+
 	</header>
 
-		<%= yield %>
+	<%= yield %>
 
 </body>
 

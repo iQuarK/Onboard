@@ -1,0 +1,36 @@
+/*---------------------------------------------------
+  General
+---------------------------------------------------*/
+ol {
+  // color: $nero;
+}
+ul {
+  // color: $nero;
+}
+dl {
+  // color: $nero;
+}
+
+/*---------------------------------------------------
+  Defintion List
+---------------------------------------------------*/
+dt,dd {
+  margin: 0;
+  padding-bottom: 0.3em;
+}
+dt {
+  float: left;
+  clear: left;
+  width: 8em;
+  font-weight: 700;
+  text-align: right;
+  &:after {
+    content: ":";
+  }
+}
+dd {
+  padding-left: 9em;
+  font-weight: 300;
+}
+
+

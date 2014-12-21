@@ -101,6 +101,15 @@
   -ms-flex:  $values;
   flex:  $values;
 }
+@mixin flex-flow($values) {
+  -webkit-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+@mixin flex-content($values) {
+  -webkit-justify-content: $values;
+  justify-content: $values;
+}
 @mixin order($val) {
   -webkit-box-ordinal-group: $val;
   -moz-box-ordinal-group: $val;
