@@ -1,0 +1,47 @@
+/* --------------------------------------------------
+  Pricing
+-------------------------------------------------- */
+.pricing-plans {
+
+  @extend .group;
+
+  .plan {
+    @include col(1/3);
+    border: 1px solid $gainsboro;
+    background: $white-smoke;
+    padding: 15px;
+  }
+  .title {
+    text-align: center;
+  }
+  .price {
+    text-align: center;
+    margin: 30px 0 30px;
+    letter-spacing: -1px;
+  }
+  .currency {
+    position: relative;
+    top: -10px;
+  }
+  .amount {
+    @include font-size(32);
+    font-weight: 500;
+  }
+  .specification {
+    list-style: none;
+    padding: 0 20px;
+    margin: 0;
+    @include font-size(18);
+    font-weight: 500;
+
+    li {
+      margin-bottom: 10px;
+      span {
+        @include font-size(14);
+        font-weight: 400;
+        padding-left: 10px;
+      }
+    }
+
+  }
+}

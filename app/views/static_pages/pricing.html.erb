@@ -1,0 +1,74 @@
+<%= provide(:title, 'Pricing') %>
+
+<div class="content-wrapper">
+
+  <h1 class="page-header">Simple Pricing</h1>
+
+  <div class="pricing-plans">
+
+    <div class="plan">
+
+      <h2 class="title">Basic</h2>
+
+      <div class="price">
+        <span class="currency">&pound;</span>
+        <span class="amount">20</span>
+        / month
+      </div>
+
+      <ul class="specification">
+        <li>Unbranded</li>
+        <li>5<span>Job Postings</span></li>
+        <li>1<span>Admin</span></li>
+      </ul>
+
+      <%= link_to 'Sign Up', register_path, class: 'button' %>
+
+    </div>
+
+    <div class="plan popular">
+
+      <h2 class="title">Small Business</h2>
+
+      <div class="price">
+        <span class="currency">&pound;</span>
+        <span class="amount">100</span>
+        / month
+      </div>
+
+      <p class="pop-plan">Most Popular Plan</p>
+
+      <ul class="specification">
+        <li>White Labelled</li>
+        <li>20<span>Job Postings</span></li>
+        <li>5<span>Admins</span></li>
+      </ul>
+
+      <%= link_to 'Sign Up', register_path, class: 'button' %>
+
+    </div>
+
+    <div class="plan">
+
+      <h2 class="title">Enterprise</h2>
+
+      <div class="price">
+        <span class="currency">&pound;</span>
+        <span class="amount">500</span>
+        / month
+      </div>
+
+      <ul class="specification">
+        <li>Fully Brandable</li>
+        <li>Unlimited<span>Job Postings</span></li>
+        <li>Unlimited<span>Admins</span></li>
+        <li>24hr<span>Telephone Support</span></li>
+      </ul>
+
+      <%= link_to 'Sign Up', register_path, class: 'button' %>
+
+    </div>
+
+  </div>
+
+</div>

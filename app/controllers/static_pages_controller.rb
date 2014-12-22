@@ -6,7 +6,6 @@ class StaticPagesController < ApplicationController
   # GET /home
   # -------------------------------------------------------------------------------------------------------------------
 	def home
-		# Use the alternative marketing layout for the front-end
 		render layout: "marketing"
 	end
 
@@ -14,9 +13,15 @@ class StaticPagesController < ApplicationController
   # GET /about
   # -------------------------------------------------------------------------------------------------------------------
 	def about
-		# Use the alternative marketing layout for the front-end
 		render layout: "marketing"
 	end
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # GET /pricing
+  # -------------------------------------------------------------------------------------------------------------------
+  def pricing
+    render layout: "marketing"
+  end
 
   # -------------------------------------------------------------------------------------------------------------------
   # GET /dashboard
