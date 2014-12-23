@@ -51,3 +51,6 @@ gem 'devise'
 
 # For quality command line debugging
 gem 'awesome_print', :require => 'ap'
+
+# Wrapper for LinkedIn REST API
+gem 'linkedin'
