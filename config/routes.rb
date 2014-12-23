@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       member do
         get 'apply', to: 'applications#new'
         post 'apply', to: 'applications#create'
+        get 'auth', to: 'applications#auth'
+        get 'auth/callback', to: 'applications#auth_callback'
       end
     end
 
