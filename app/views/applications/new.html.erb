@@ -42,7 +42,9 @@
 
     <% end %>
 
-    <%= link_to 'Authorise Linkedin', auth_job_url(@job, subdomain: @company.subdomain), class: 'button' %>
+    <%= link_to 'Authorise Linkedin', auth_application_url(subdomain: @company.subdomain), class: 'button' %>
 
+    <%= image_tag @profile.picture_url %>
+    <p><%= @profile.headline %></p>
   </div>
 </section>

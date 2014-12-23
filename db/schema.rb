@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141220225349) do
+ActiveRecord::Schema.define(version: 20141223183520) do
 
   create_table "applications", force: true do |t|
     t.integer  "user_id"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 20141220225349) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "email"
-    t.integer  "stage",      default: 0
+    t.integer  "stage",           default: 0
+    t.string   "linkedin_token"
+    t.string   "linkedin_secret"
   end
 
   create_table "companies", force: true do |t|

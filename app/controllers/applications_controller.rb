@@ -2,6 +2,7 @@ class ApplicationsController < ApplicationController
 
   before_action :load_company
   before_action :set_job
+  before_action :set_application, only: [:auth, :auth_callback]
   layout 'external'
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -13,13 +14,75 @@ class ApplicationsController < ApplicationController
     # Do LinkedIn Stuff if we have a token
     if !session[:atoken].nil?
 
-      api_key = '777qx8iibhqxx9'
-      secret_key = 'EgdQSrwcyOaImzEH'
-
-      client = LinkedIn::Client.new(api_key, secret_key)
+      client = LinkedIn::Client.new(Rails.application.secrets.linkedin_api_key, Rails.application.secrets.linkedin_secret_key)
       client.authorize_from_access(session[:atoken], session[:asecret])
-      @profile = client.profile
-      # ap @profile
+      @profile = client.profile(fields: [
+        # Basic Profile Fields
+        "id",
+        "first-name",
+        "last-name",
+        "maiden-name",
+        "formatted-name",
+        "phonetic-first-name",
+        "phonetic-last-name",
+        "formatted-phonetic-name",
+        "headline",
+        "location",
+        "industry",
+        # "distance",
+        # "relation-to-viewer",
+        "current-share",
+        "num-connections",
+        "num-connections-capped",
+        "summary",
+        "specialties",
+        "positions",
+        "picture-url",
+        "site-standard-profile-request",
+        "api-standard-profile-request",
+        "public-profile-url",
+        # Email Fields
+        "email_address",
+        # Full Profile Fields
+        "last-modified-timestamp",
+        # "proposal-comments",
+        "associations",
+        "interests",
+        "publications",
+        "patents",
+        "languages",
+        "skills",
+        "certifications",
+        "educations",
+        "courses",
+        "volunteer",
+        "three-current-positions",
+        "three-past-positions",
+        "num-recommenders",
+        "recommendations-received",
+        "following",
+        "job-bookmarks",
+        # "suggestions",
+        "date-of-birth",
+        # "member-url-resources",
+        # "related-profile-views",
+        "honors-awards",
+        # Contact Info Fields
+        "phone-numbers",
+        "bound-account-types",
+        "im-accounts",
+        "main-address",
+        "twitter-accounts",
+        "primary-twitter-account",
+        # Connection Fields
+        # "connections",
+        # Group Membership Fields
+        "group-memberships"
+      ])
+      ap @profile
+
+      @application.name = [@profile.first_name, @profile.last_name].join(' ')
+      @application.email = @profile.email_address
 
     end
 
@@ -40,54 +103,29 @@ class ApplicationsController < ApplicationController
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # this
+  # GET :subdomain.pinpoint.hr/applications/:id/auth
   # -------------------------------------------------------------------------------------------------------------------
   def auth
-
-    api_key = '777qx8iibhqxx9'
-    secret_key = 'EgdQSrwcyOaImzEH'
-    user_token = 'a1cd8fb0-4131-48c2-b467-04ccf09a0960'
-    user_secret = '64729009-f56a-4b0f-8550-b4a242c12344'
-
-    # get your api keys at https://www.linkedin.com/secure/developer
-    client = LinkedIn::Client.new(api_key, secret_key)
-
-    # If you want to use one of the scopes from linkedin you have to pass it in at this point
-    # You can learn more about it here: http://developer.linkedin.com/documents/authentication
-    request_token = client.request_token(oauth_callback: auth_callback_job_url(@job, subdomain: @company.subdomain))
-    # request_token = client.request_token({}, :scope => "r_basicprofile+r_emailaddress")
-
+    client = LinkedIn::Client.new(Rails.application.secrets.linkedin_api_key, Rails.application.secrets.linkedin_secret_key)
+    request_token = client.request_token(oauth_callback: application_auth_callback_url(@application, subdomain: @company.subdomain))
     session[:rtoken] = request_token.token
     session[:rsecret] = request_token.secret
-
-    # to test from your desktop, open the following url in your browser
-    # and record the pin it gives you
     redirect_to request_token.authorize_url
-    # => "https://api.linkedin.com/uas/oauth/authorize?oauth_token=<generated_token>"
-
-    # then fetch your access keys
-    # client.authorize_from_request(rtoken, rsecret, pin)
-    # => ["OU812", "8675309"] # <= save these for future requests
-
-    # or authorize from previously fetched access keys
-    # client.authorize_from_access("OU812", "8675309")
-
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # this
+  # GET :subdomain.pinpoint.hr/applications/:id/auth/callback
   # -------------------------------------------------------------------------------------------------------------------
   def auth_callback
-
-    api_key = '777qx8iibhqxx9'
-    secret_key = 'EgdQSrwcyOaImzEH'
-
-    client = LinkedIn::Client.new(api_key, secret_key)
+    client = LinkedIn::Client.new(Rails.application.secrets.linkedin_api_key, Rails.application.secrets.linkedin_secret_key)
     if session[:atoken].nil?
       pin = params[:oauth_verifier]
       atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
+
       session[:atoken] = atoken
       session[:asecret] = asecret
+
+      @application.update_attributes(linkedin_token: atoken, linkedin_secret: asecret)
     end
     redirect_to apply_job_url(subdomain: @company.subdomain)
 
@@ -97,6 +135,10 @@ class ApplicationsController < ApplicationController
   # PRIVATE
   # -------------------------------------------------------------------------------------------------------------------
   private
+
+  def set_application
+    @application = Application.find(params[:id])
+  end
 
   def set_job
     @job = Job.find(params[:id])
