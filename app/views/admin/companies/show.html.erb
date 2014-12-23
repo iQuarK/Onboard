@@ -1,42 +1,48 @@
-<h1>The Admin Dashboard page for the company</h1>
+<h1 class="admin-page-title"><%= @company.name %> Dashboard</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+<div id="app-container">
 
-<p>
-  <strong>Subdomain:</strong>
-  <%= @company.subdomain %>
-</p>
+  <h1>The Admin Dashboard page for the company</h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @company.description %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @company.name %>
+  </p>
 
-<p>
-  <strong>Industry:</strong>
-  <%= @company.industry %>
-</p>
+  <p>
+    <strong>Subdomain:</strong>
+    <%= @company.subdomain %>
+  </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @company.location %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @company.description %>
+  </p>
+
+  <p>
+    <strong>Industry:</strong>
+    <%= @company.industry %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= @company.location %>
+  </p>
 
 
-<h2>Listing jobs</h2>
+  <h2>Listing jobs</h2>
 
-<% @company.jobs.each do |job| %>
-  <div>
-    <h3><%= link_to job.title, admin_job_url(job, subdomain: @company.subdomain), class: 'button' %></h3>
-    <p>Description: <%= job.description %></p>
-    <p>Location: <%= job.location %></p>
-    <p>Remote?: <%= job.remote %></p>
-    <p>Type: <%= job.job_type %></p>
-    <p></p>
-  </div>
-<% end %>
+  <% @company.jobs.each do |job| %>
+    <div>
+      <h3><%= link_to job.title, admin_job_url(job, subdomain: @company.subdomain), class: 'button' %></h3>
+      <p>Description: <%= job.description %></p>
+      <p>Location: <%= job.location %></p>
+      <p>Remote?: <%= job.remote %></p>
+      <p>Type: <%= job.job_type %></p>
+      <p></p>
+    </div>
+  <% end %>
 
-<p><%= link_to 'Create new job', new_admin_job_url(subdomain: @company.subdomain) %></p>
+  <p><%= link_to 'Create new job', new_admin_job_url(subdomain: @company.subdomain), class: 'button-blue' %></p>
+
+</div>
