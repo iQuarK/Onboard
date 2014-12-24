@@ -1,19 +1,75 @@
+<div class="sub-header">
+  <%= link_to "#{@company.name} Dashboard", admin_url(subdomain: @company.subdomain) %> &rarr; <%= link_to @job.title, admin_job_url(@job, subdomain: @company.subdomain) %> &rarr; <span><%= @application.name %></span>
+</div>
+
 <div id="app-container">
 
-	<h1>The internal Application Show Page</h1>
+	<div class="applicant-header">
+		<h1><%= @application.name %></h1>
 
-	<h2>Some details</h2>
-	<p>Name: <%= @application.name %></p>
-	<p>Email: <%= @application.email %></p>
-	<p>Current Stage: <%= Application::STAGES[@application.stage] %></p>
+		<ul>
+		  <li><%= button_to 'Reject', reject_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-red' %></li>
+		  <li><%= button_to 'Review', review_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-yellow' %></li>
+		  <li><%= button_to 'Interview', interview_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-blue' %></li>
+		  <li><%= button_to 'Hire', hire_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-green' %></li>
+		</ul>
 
-	<h2>Some Actions</h2>
-	<ul>
-	  <li><%= button_to 'Reject', reject_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button' %></li>
-	  <li><%= button_to 'Review', review_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button' %></li>
-	  <li><%= button_to 'Interview', interview_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button' %></li>
-	  <li><%= button_to 'Hire', hire_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button' %></li>
-	  <li><%= link_to 'Back to JMI', admin_url(@job, subdomain: @company.subdomain), class: 'button' %></li>
-	</ul>
+	</div>
+
+	<div class="linkedin">
+
+		<p class="summary">I especially enjoy building things, whether it's a classic mini or a piece of software. I love drawing insights from interesting sets of data and learning about pretty much everything.</p>
+
+		<section>
+			<div class="job-details">
+				<div class="left">
+					<p class="job-title">Lead Developer</p>
+					<p class="job-company">Calligo Limited</p>
+				</div>
+				<div class="right">
+					<p class="job-dates">October 2013 - Present <span>(1 year 3 months)</span></p>
+					<p class="job-location">Jersey, United Kingdom</p>
+				</div>
+			</div>
+			<p class="job-description">My main role involves building web apps in Ruby on Rails and HTML/CSS/jQuery. I handle everything in the construction process from building virtual servers to coding up every part of the app. I also train new members of staff</p>
+		</section>
+
+		<section>
+			<div class="job-details">
+				<div class="left">
+					<p class="job-title">Founding Director</p>
+					<p class="job-company">Altus Analytics Ltd</p>
+				</div>
+				<div class="right">
+					<p class="job-dates">August 2011 - Present <span>(3 years 5 months)</span></p>
+					<p class="job-location">Jersey, United Kingdom</p>
+				</div>
+			</div>
+			<p class="job-description">Using my past experience as a professional online poker player I was able to analyse data regarding e-gaming traffic and write software to aid game selection for professional poker players.<br /><br />
+
+			This manifested into a poker coaching/staking/software business that focusses on managing the continued professional development of other professional poker players.<br /><br />
+
+			Co-run with a friend from Cambridge, this takes the form of maximising their hourly rate whilst improving their mental side with respect to both working ethic and handling variance.</p>
+		</section>
+
+		<section>
+			<div class="job-details">
+				<div class="left">
+					<p class="job-title">Lead Developer</p>
+					<p class="job-company">Infuse Internet</p>
+				</div>
+				<div class="right">
+					<p class="job-dates">May 2012 - September 2013 <span>(1 years 5 months)</span></p>
+					<p class="job-location">Jersey, United Kingdom</p>
+				</div>
+			</div>
+			<p class="job-description">I built web apps and websites using LAMP architecture so have a decent knowledge of SQL, PHP, HTML, CSS and jQuery. I'm a big fan of open source technologies and like using Wordpress as a CMS.</p>
+		</section>
+
+
+
+
+	
+	</div>
 
 </div>

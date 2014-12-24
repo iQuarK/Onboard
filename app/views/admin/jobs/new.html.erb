@@ -1,3 +1,9 @@
-<h1>New Job</h1>
+<div class="sub-header">
+  <%= link_to "#{@company.name} Dashboard", admin_path %> > <span><%= link_to "Add a new Job", new_admin_job_path %></span>
+</div>
 
-<%= render 'form' %>
+<div id="app-container">
+
+	<%= render 'form' %>
+
+</div>

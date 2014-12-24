@@ -1,0 +1,48 @@
+.linkedin {
+	width: 700px;
+
+	section {
+		margin-top: 40px;
+		padding-bottom: 20px;
+		border-bottom: 1px dashed #dedede;
+		&:last-child {
+			border-bottom: none;
+			padding-bottom: 0px;
+		}
+	}
+
+	.summary {
+		@include font-size(22);
+		font-weight: 300;
+		margin-top: 40px;
+	}
+
+	.job-title {
+		text-transform: uppercase;
+		font-weight: 500;
+		margin: 0px;
+	}
+
+	.job-company {
+		margin-top: 0;
+	}
+
+	.job-dates {
+		text-align: right;
+		font-weight: 300;
+		margin: 0;
+
+		span {
+			font-style: italic;
+		}
+	}
+
+	.job-location {
+		margin-top: 0;
+		text-align: right;
+	}
+
+	.job-details {
+		@extend .group;
+	}
+}

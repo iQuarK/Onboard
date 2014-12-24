@@ -2,22 +2,47 @@
   Devise Layout Template
 -------------------------------------------------- */
 .body-authentication {
-  background: url(http://subtlepatterns.com/patterns/cartographer.png);
+  background-color: #EFF0F1;
 }
 
 #authentication {
-  background: #fff;
+  background-color: #fff;
   width: 550px;
   margin: 200px auto;
   padding: 50px;
+  border: 1px solid #dedede;
+  border-radius: 3px;
 
   h1 {
-      line-height: 40px;
-      font-weight: 600;
-      letter-spacing: -1.5px;
-      font-size: 2.5em;
-      color: $orange;
-      font-family: 'ProximaNova-Semibold';
-      text-align: center;
+      color: #4D9DE0;
+      font-weight: normal;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: -4px;
+      font-size: 46px;
+      line-height: 46px;
+      font-weight: 300;
+      text-align: center; 
     }
+
+  .login-actions {
+    @extend .group;
+    margin: 20px 0px;
+
+    .remember-me {
+      width: 220px;
+      float: left;
+    }
+
+    input[type="submit"] {
+      float: right; 
+    }
+
+    input[type="checkbox"] {
+      margin-top: 12px
+    }
+
+    label {
+      width: 70%;
+    }
+  }
 }

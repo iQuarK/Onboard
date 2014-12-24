@@ -49,3 +49,28 @@
   font-weight: 300;
   letter-spacing: -1.5px;
 }
+
+.applicant-header {
+  @extend .group;
+  border-bottom: 1px solid #dedede;
+  display: block;
+
+  h1 {
+    font-weight: 300;
+    letter-spacing: -2px;
+    margin: 10px 0px 0px 0px;
+    float: left;
+  }
+
+  ul {
+    float: right;
+    margin-top: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 10px;
+    &:last-child { margin-right: 0px; }
+  }
+
+}

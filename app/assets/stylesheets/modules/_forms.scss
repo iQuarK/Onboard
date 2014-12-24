@@ -15,7 +15,6 @@ form {
 		float: left;
 		width: 25%;
 		font-size: 16px;
-		font-family: 'ProximaNova-Semibold';
 		line-height: 32px;
 		color: $nero;
 		margin-top: 3px;
@@ -28,8 +27,8 @@ form {
 	}
 
 	.actions {
+		@extend .group;
 		margin-top: 20px;
-		float: right;
 	}
 }
 
@@ -40,6 +39,5 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
 	border: 1px solid $alto;
 	padding: 10px 10px 8px;
 	width: 100%;
-	font-family: 'ProximaNova-Light';
 	font-size: 14px;
 }

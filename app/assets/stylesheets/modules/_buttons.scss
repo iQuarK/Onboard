@@ -22,14 +22,31 @@
   cursor: pointer;
 }
 
-.button-success {
+.button-green {
   @extend .button;
-  color: $green;
-  &:hover {
-    color: #FFF;
-    background-color: $green;
-    border: 2px solid $green;
+  background-color: $green;
+  color: #fff;
+  &:visited {
+    color: #fff;
   }
+}
+
+.button-yellow {
+  @extend .button;
+  background-color: #FFC526;
+  color: #fff;
+  &:visited {
+    color: #fff;
+  }
+}
+
+.button-red {
+  @extend .button;
+    background-color: #DF4853;
+    color: #fff;
+    &:visited {
+      color: #fff;
+    }
 }
 
 .button-white {
@@ -48,32 +65,4 @@
   &:visited {
     color: #fff;
   }
-}
-
-.button-info {
-  @extend .button;
-  color: $blue;
-  &:hover {
-    color: #FFF;
-    background-color: $blue;
-    border: 2px solid $blue;
-  }
-}
-
-.button-primary {
-  @extend .button;
-  color: $orange;
-  &:hover {
-    color: #FFF;
-    background-color: $orange;
-    border: 2px solid $orange;
-  }
-}
-
-.button-large {
-  @extend .button;
-  padding: 19px 51px 17px;
-  font-size: 12px;
-  line-height: 16px;
-  border: 2px solid;
 }

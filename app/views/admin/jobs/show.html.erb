@@ -1,5 +1,9 @@
 <%= provide(:title, 'Job Management Interface') %>
 
+<div class="sub-header">
+  <%= link_to "#{@company.name} Dashboard", admin_path %> &rarr; <span><%= @job.title %></span>
+</div>
+
 <div class="boards">
 
   <% @stages.each do |stage| %>
