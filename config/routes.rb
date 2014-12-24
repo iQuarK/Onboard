@@ -21,11 +21,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :applications, only: [] do
-      member do
-        get 'auth'
-        get 'auth_callback'
-      end
+    # For authenticating with LinkedIn
+    scope :linkedin do
+      get 'auth' => 'linkedin#auth', as: 'linkedin_auth'
+      get 'callback' => 'linkedin#callback', as: 'linkedin_callback'
     end
 
     # The admin section for a company

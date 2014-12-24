@@ -11,6 +11,9 @@ class ApplicationsController < ApplicationController
   def new
     @application = Application.new
 
+    # If they authenticate with LinkedIn, we need to know what Job to link take them back to
+    session[:job_id] = @job.id
+
     # Do LinkedIn Stuff if we have a token
     if !session[:atoken].nil?
 
@@ -79,8 +82,9 @@ class ApplicationsController < ApplicationController
         # Group Membership Fields
         "group-memberships"
       ])
-      ap @profile
+      # ap @profile
 
+      # Use this data to populate the form
       @application.name = [@profile.first_name, @profile.last_name].join(' ')
       @application.email = @profile.email_address
 
@@ -94,40 +98,17 @@ class ApplicationsController < ApplicationController
   def create
     @application = @job.applications.new(application_params)
 
+    # If theyve authenticated with LinkedIn then we want to save their token and key
+    if session[:atoken].present?
+      @application.linkedin_token = session[:atoken]
+      @application.linkedin_secret = session[:asecret]
+    end
+
     if @application.save
       redirect_to root_url(subdomain: @company.subdomain), notice: 'Thanks for your application. Someone will be in touch with you shortly'
     else
       render 'new'
     end
-
-  end
-
-  # -------------------------------------------------------------------------------------------------------------------
-  # GET :subdomain.pinpoint.hr/applications/:id/auth
-  # -------------------------------------------------------------------------------------------------------------------
-  def auth
-    client = LinkedIn::Client.new(Rails.application.secrets.linkedin_api_key, Rails.application.secrets.linkedin_secret_key)
-    request_token = client.request_token(oauth_callback: application_auth_callback_url(@application, subdomain: @company.subdomain))
-    session[:rtoken] = request_token.token
-    session[:rsecret] = request_token.secret
-    redirect_to request_token.authorize_url
-  end
-
-  # -------------------------------------------------------------------------------------------------------------------
-  # GET :subdomain.pinpoint.hr/applications/:id/auth/callback
-  # -------------------------------------------------------------------------------------------------------------------
-  def auth_callback
-    client = LinkedIn::Client.new(Rails.application.secrets.linkedin_api_key, Rails.application.secrets.linkedin_secret_key)
-    if session[:atoken].nil?
-      pin = params[:oauth_verifier]
-      atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
-
-      session[:atoken] = atoken
-      session[:asecret] = asecret
-
-      @application.update_attributes(linkedin_token: atoken, linkedin_secret: asecret)
-    end
-    redirect_to apply_job_url(subdomain: @company.subdomain)
 
   end
 
