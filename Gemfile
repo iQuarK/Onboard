@@ -54,3 +54,9 @@ gem 'awesome_print', :require => 'ap'
 
 # Wrapper for LinkedIn REST API
 gem 'linkedin'
+
+# Wrapper for the clearbit API
+gem 'clearbit'
+
+# Wrapper for Postmark Emails
+gem 'postmark-rails'

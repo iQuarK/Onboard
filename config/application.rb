@@ -23,5 +23,8 @@ module Pinpoint
     # Lib contains things like our subdomain file
     config.autoload_paths << Rails.root.join('lib')
 
+    config.action_mailer.delivery_method = :postmark
+    config.action_mailer.postmark_settings = { :api_key => "6f71a4ca-bcd6-4c44-99b7-a5bdacbf9ec7" }
+
   end
 end
