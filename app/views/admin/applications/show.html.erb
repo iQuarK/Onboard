@@ -5,36 +5,50 @@
 <div id="app-container">
 
 	<div class="applicant-header">
+		<%= image_tag(@profile.picture_url) %>
 		<h1><%= @application.name %></h1>
 
 		<ul>
 		  <li><%= button_to 'Reject', reject_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-red' %></li>
-		  <li><%= button_to 'Review', review_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-yellow' %></li>
+		  <!-- <li><%= button_to 'Review', review_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-yellow' %></li> -->
 		  <li><%= button_to 'Interview', interview_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-blue' %></li>
-		  <li><%= button_to 'Hire', hire_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-green' %></li>
+		 <!--  <li><%= button_to 'Hire', hire_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-green' %></li> -->
 		</ul>
 
 	</div>
 
 	<div class="linkedin">
 
-		<p class="summary">I especially enjoy building things, whether it's a classic mini or a piece of software. I love drawing insights from interesting sets of data and learning about pretty much everything.</p>
+		<p class="summary"><% @profile.summary %></p>
+
+		<% @profile.positions.all.each do |position| %> 
 
 		<section>
 			<div class="job-details">
 				<div class="left">
-					<p class="job-title">Lead Developer</p>
-					<p class="job-company">Calligo Limited</p>
+					<p class="job-title"><%= position.title %></p>
+					<p class="job-company"><%= position.company.name %></p>
 				</div>
 				<div class="right">
-					<p class="job-dates">October 2013 - Present <span>(1 year 3 months)</span></p>
-					<p class="job-location">Jersey, United Kingdom</p>
+					<p class="job-dates">
+						<%= linkedin_date(position.start_date.month) %> <%= position.start_date.year %>  - 
+						<% if position.is_current %>
+							Present
+						<% else %>
+							<%= linkedin_date(position.end_date.month) %> <%= position.end_date.year %>
+						<% end %>
+						<span>(Need to sort this out)</span>
+					</p>
+					<p class="job-location">
+					</p>
 				</div>
 			</div>
-			<p class="job-description">My main role involves building web apps in Ruby on Rails and HTML/CSS/jQuery. I handle everything in the construction process from building virtual servers to coding up every part of the app. I also train new members of staff</p>
+			<p class="job-description"><%= position.summary %></p>
 		</section>
 
-		<section>
+		<% end %>
+
+		<!-- <section>
 			<div class="job-details">
 				<div class="left">
 					<p class="job-title">Founding Director</p>
@@ -64,7 +78,7 @@
 				</div>
 			</div>
 			<p class="job-description">I built web apps and websites using LAMP architecture so have a decent knowledge of SQL, PHP, HTML, CSS and jQuery. I'm a big fan of open source technologies and like using Wordpress as a CMS.</p>
-		</section>
+		</section> -->
 
 
 
