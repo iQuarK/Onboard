@@ -1,25 +1,29 @@
 <%= render 'layouts/header' %>
 
-<body>
+<body class="l-marketing">
 
 	<header class="top-bar">
 
-		<%= link_to 'pinpoint', root_url(subdomain: false), class: 'logo' %>
+		<div class="content-wrapper">
 
-		<nav class="main-nav">
+			<%= link_to 'pinpoint', root_url(subdomain: false), class: 'logo' %>
 
-			<ul>
-				<li><%= link_to "Home", root_url(subdomain: false) %></li>
-				<li><%= link_to "About", about_url(subdomain: false) %></li>
-				<li><%= link_to "Pricing", pricing_url(subdomain: false) %></li>
-				<% if user_signed_in? %>
-					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-				<% else %>
-					<li><%= link_to "Login", login_path, class: "button info" %></li>
-				<% end %>
-			</ul>
+			<nav class="main-nav">
 
-		</nav>
+				<ul>
+					<li><%= link_to "Home", root_url(subdomain: false) %></li>
+					<li><%= link_to "About", about_url(subdomain: false) %></li>
+					<li><%= link_to "Pricing", pricing_url(subdomain: false) %></li>
+					<% if user_signed_in? %>
+						<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+					<% else %>
+						<li><%= link_to "Login", login_path, class: "button info" %></li>
+					<% end %>
+				</ul>
+
+			</nav>
+
+		</div>
 
 	</header>
 

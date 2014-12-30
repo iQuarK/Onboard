@@ -60,3 +60,6 @@ gem 'clearbit'
 
 # Wrapper for Postmark Emails
 gem 'postmark-rails'
+
+# Breadcrumbs, mmmm tasty https://github.com/weppos/breadcrumbs_on_rails
+# gem "breadcrumbs_on_rails"

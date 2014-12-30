@@ -1,37 +1,45 @@
 <%= provide(:title, 'Job Management Interface') %>
 
 <div class="sub-header">
-  <%= link_to "#{@company.name} Dashboard", admin_path %> &rarr; <span><%= @job.title %></span>
+
+  <div class="content-wrapper">
+    <%= link_to "#{@company.name} Dashboard", admin_path %> &rarr; <span><%= @job.title %></span>
+  </div>
+
 </div>
 
-<div class="boards">
+<div class="content-wrapper">
 
-  <% @stages.each do |stage| %>
+  <div class="boards">
 
-    <section class="board" data-stage="<%= stage[:stage] %>">
+    <% @stages.each do |stage| %>
 
-      <h2><%= stage[:name] %></h2>
+      <section class="board" data-stage="<%= stage[:stage] %>">
 
-      <% if stage[:applications].any? %>
+        <h2><%= stage[:name] %></h2>
 
-        <ul>
-          <% stage[:applications].each do |application| %>
-            <li>
-              <%= link_to admin_job_application_url(@job, application, subdomain: @company.subdomain) do %>
-                <%= application[:name] %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+        <% if stage[:applications].any? %>
 
-      <% else %>
+          <ul>
+            <% stage[:applications].each do |application| %>
+              <li>
+                <%= link_to admin_job_application_url(@job, application, subdomain: @company.subdomain) do %>
+                  <%= application[:name] %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
 
-        <p>There are no applications</p>
+        <% else %>
 
-      <% end %>
+          <p>There are no applications</p>
 
-    </section>
+        <% end %>
 
-  <% end %>
+      </section>
+
+    <% end %>
+
+  </div>
 
 </div>

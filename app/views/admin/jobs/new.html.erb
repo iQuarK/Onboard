@@ -1,9 +1,17 @@
 <div class="sub-header">
-  <%= link_to "#{@company.name} Dashboard", admin_path %> > <span><%= link_to "Add a new Job", new_admin_job_path %></span>
+
+  <div class="content-wrapper">
+    <%= link_to "#{@company.name} Dashboard", admin_path %> > <span><%= link_to "Add a new Job", new_admin_job_path %></span>
+  </div>
+
 </div>
 
-<div id="app-container">
+<div class="content-wrapper">
 
-	<%= render 'form' %>
+  <div id="app-container">
+
+  	<%= render 'form' %>
+
+  </div>
 
 </div>

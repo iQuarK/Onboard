@@ -1,50 +1,58 @@
 <div class="sub-header">
-  <%= link_to "#{@company.name} Dashboard", admin_path %>
+
+  <div class="content-wrapper">
+    <%= link_to "#{@company.name} Dashboard", admin_path %>
+  </div>
+
 </div>
 
-<div id="app-container">
+<div class="content-wrapper">
 
-  <h1>The Admin Dashboard page for the company</h1>
+  <div id="app-container">
 
-  <p>
-    <strong>Name:</strong>
-    <%= @company.name %>
-  </p>
+    <h1>The Admin Dashboard page for the company</h1>
 
-  <p>
-    <strong>Subdomain:</strong>
-    <%= @company.subdomain %>
-  </p>
+    <p>
+      <strong>Name:</strong>
+      <%= @company.name %>
+    </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= @company.description %>
-  </p>
+    <p>
+      <strong>Subdomain:</strong>
+      <%= @company.subdomain %>
+    </p>
 
-  <p>
-    <strong>Industry:</strong>
-    <%= @company.industry %>
-  </p>
+    <p>
+      <strong>Description:</strong>
+      <%= @company.description %>
+    </p>
 
-  <p>
-    <strong>Location:</strong>
-    <%= @company.location %>
-  </p>
+    <p>
+      <strong>Industry:</strong>
+      <%= @company.industry %>
+    </p>
+
+    <p>
+      <strong>Location:</strong>
+      <%= @company.location %>
+    </p>
 
 
-  <h2>Listing jobs</h2>
+    <h2>Listing jobs</h2>
 
-  <% @company.jobs.each do |job| %>
-    <div>
-      <h3><%= link_to job.title, admin_job_url(job, subdomain: @company.subdomain), class: 'button' %></h3>
-      <p>Description: <%= job.description %></p>
-      <p>Location: <%= job.location %></p>
-      <p>Remote?: <%= job.remote %></p>
-      <p>Type: <%= job.job_type %></p>
-      <p></p>
-    </div>
-  <% end %>
+    <% @company.jobs.each do |job| %>
+      <div>
+        <h3><%= link_to job.title, admin_job_url(job, subdomain: @company.subdomain), class: 'button' %></h3>
+        <p>Description: <%= job.description %></p>
+        <p>Location: <%= job.location %></p>
+        <p>Remote?: <%= job.remote %></p>
+        <p>Type: <%= job.job_type %></p>
+        <p></p>
+      </div>
+    <% end %>
 
-  <p><%= link_to 'Create new job', new_admin_job_url(subdomain: @company.subdomain), class: 'button-blue' %></p>
+    <p><%= link_to 'Create new job', new_admin_job_url(subdomain: @company.subdomain), class: 'button-blue' %></p>
+
+  </div>
 
 </div>

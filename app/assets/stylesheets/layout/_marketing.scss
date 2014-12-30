@@ -1,52 +1,61 @@
 /* --------------------------------------------------
   Marketing Layout Template
 -------------------------------------------------- */
-#marketing-header {
-  background-color: $nero;
-  /*background: url(http://subtlepatterns.com/patterns/footer_lodyas.png);*/
-  background: asset-url("hero-background.jpg") no-repeat fixed;
-  background-size: 100%;
-  min-height: 900px;
+.l-marketing {
 
-  #hero-unit {
-    text-align: center;
-    padding: 100px 120px;
+  .content-wrapper {
+    width: 1000px;
+    margin: 0 auto;
+  }
 
-    a {
-      display: inline-block;
-      margin-top: 40px;
-    }
+  #marketing-header {
+    background-color: $nero;
+    /*background: url(http://subtlepatterns.com/patterns/footer_lodyas.png);*/
+    background: asset-url("hero-background.jpg") no-repeat fixed;
+    background-size: 100%;
+    min-height: 900px;
 
-    h1 {
-      color: #fff;
-      font-weight: normal;
-      -webkit-font-smoothing: antialiased;
-      letter-spacing: -2px;
-      font-size: 40px;
-      line-height: 46px;
-      font-weight: 400;
-    }
+    #hero-unit {
+      text-align: center;
+      padding: 100px 120px;
 
-    h2 {
-      font-weight: 400;
-      letter-spacing: -.02em;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 36px;
+      a {
+        display: inline-block;
+        margin-top: 40px;
+      }
+
+      h1 {
+        color: #fff;
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+        letter-spacing: -2px;
+        font-size: 40px;
+        line-height: 46px;
+        font-weight: 400;
+      }
+
+      h2 {
+        font-weight: 400;
+        letter-spacing: -.02em;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 36px;
+      }
     }
   }
-}
 
-#marketing-content {
+  #marketing-content {
 
-  #elevator-pitch {
-    text-align: center;
-    padding: 80px 160px;
-    h2 {
-      font-size: 34px;
-      line-height: 43px;
-      font-weight: 200;
-      -webkit-font-smooth: antialiased;
+    #elevator-pitch {
+      text-align: center;
+      padding: 80px 160px;
+      h2 {
+        font-size: 34px;
+        line-height: 43px;
+        font-weight: 200;
+        -webkit-font-smooth: antialiased;
+      }
     }
   }
+
 }

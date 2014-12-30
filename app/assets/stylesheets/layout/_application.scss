@@ -1,83 +1,88 @@
 /* --------------------------------------------------
   Application Layout Template
 -------------------------------------------------- */
-.application-body {
+.l-application {
   background-color: #EFF0F1;
-}
 
-#app-menu {
-  width: 250px;
-  height: 100%;
-  background-color: $nero;
-  float: left;
-
-  nav {
-    ul {
-      list-style-type: none;
-    }
-    li {
-      color: #E8E3E9;
-      padding: 40px;
-      text-transform: uppercase;
-      font-weight: 300;
-      border-top: 2px solid #2F405C;
-
-      i {
-        font-size: 24px;
-        line-height: 30px;
-        margin: 10px 15px 0px 0px;
-      }
-
-      span {
-        float: right;
-        color: $green;
-      }
-    }
+  .content-wrapper {
+    width: 1000px;
+    margin: 0 auto;
   }
-}
 
-#app-container {
-  background-color: #fff;
-  margin: 30px;
-  border: 1px solid #dedede;
-  border-radius: 3px;
-  padding: 30px;
-}
-
-.admin-page-title {
-  margin: 30px 30px 0px 30px;
-  font-weight: 300;
-  letter-spacing: -1.5px;
-}
-
-.applicant-header {
-  @extend .group;
-  border-bottom: 1px solid #dedede;
-  display: block;
-
-  img {
+  #app-menu {
+    width: 250px;
+    height: 100%;
+    background-color: $nero;
     float: left;
-    margin: 0px 20px 20px 0px;
+
+    nav {
+      ul {
+        list-style-type: none;
+      }
+      li {
+        color: #E8E3E9;
+        padding: 40px;
+        text-transform: uppercase;
+        font-weight: 300;
+        border-top: 2px solid #2F405C;
+
+        i {
+          font-size: 24px;
+          line-height: 30px;
+          margin: 10px 15px 0px 0px;
+        }
+
+        span {
+          float: right;
+          color: $green;
+        }
+      }
+    }
   }
 
-  h1 {
+  #app-container {
+    background-color: #fff;
+    margin: 30px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    padding: 30px;
+  }
+
+  .admin-page-title {
+    margin: 30px 30px 0px 30px;
     font-weight: 300;
-    letter-spacing: -2px;
-    margin: 0px;
-    padding: 18px 0px 0px 5px;
-    @include font-size(36);
-    float: left;
+    letter-spacing: -1.5px;
   }
 
-  ul {
-    float: right;
-    margin-top: 20px;
-  }
+  .applicant-header {
+    @extend .group;
+    border-bottom: 1px solid #dedede;
+    display: block;
 
-  li {
-    display: inline-block;
-    margin-right: 10px;
-    &:last-child { margin-right: 0px; }
-  }
+    img {
+      float: left;
+      margin: 0px 20px 20px 0px;
+    }
 
+    h1 {
+      font-weight: 300;
+      letter-spacing: -2px;
+      margin: 0px;
+      padding: 18px 0px 0px 5px;
+      @include font-size(36);
+      float: left;
+    }
+
+    ul {
+      float: right;
+      margin-top: 20px;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: 10px;
+      &:last-child { margin-right: 0px; }
+    }
+
+  }
 }

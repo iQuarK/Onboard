@@ -23,26 +23,31 @@ class ApplicationMailer < ActionMailer::Base
 
   def thanks(application)
     load_resources(application)
+    @title = 'New Hire'
     mail( subject: 'Application Received', to: @application.email, track_opens: 'true' )
   end
 
   def reject(application)
     load_resources(application)
+    @title = 'Application Update'
     mail( subject: 'Application Update', to: @application.email, track_opens: 'true' )
   end
 
   def interview_invite(application)
     load_resources(application)
+    @title = 'Application Update'
     mail( subject: 'Application Update', to: @application.email, track_opens: 'true' )
   end
 
   def info_request(application)
     load_resources(application)
+    @title = 'Application Update'
     mail( subject: 'Application Update', to: @application.email, track_opens: 'true' )
   end
 
   def hire(application)
     load_resources(application)
+    @title = 'Application Update'
     mail( subject: 'Application Update', to: @application.email, track_opens: 'true' )
   end
 
