@@ -79,4 +79,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Using lvh.me to point to localhost for dev
+  config.session_store :cookie_store, key: '_pinpoint_session', domain: '.pinpointhq.com'
+
 end

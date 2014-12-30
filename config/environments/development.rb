@@ -40,4 +40,8 @@ Rails.application.configure do
 
   require "awesome_print"
 
+  # Using lvh.me to point to localhost for dev
+  config.session_store :cookie_store, key: '_pinpoint_session', domain: '.lvh.me'
+
+
 end
