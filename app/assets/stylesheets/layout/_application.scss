@@ -55,16 +55,23 @@
   border-bottom: 1px solid #dedede;
   display: block;
 
+  img {
+    float: left;
+    margin: 0px 20px 20px 0px;
+  }
+
   h1 {
     font-weight: 300;
     letter-spacing: -2px;
-    margin: 10px 0px 0px 0px;
+    margin: 0px;
+    padding: 18px 0px 0px 5px;
+    @include font-size(36);
     float: left;
   }
 
   ul {
     float: right;
-    margin-top: 0;
+    margin-top: 20px;
   }
 
   li {
