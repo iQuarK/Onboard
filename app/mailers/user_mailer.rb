@@ -4,26 +4,8 @@ class UserMailer < ActionMailer::Base
 
   def welcome(user)
     @user = user
-
     @title = "Welcome to Pinpoint"
-    @content =  "<p>Hi #{@user.first_name}</p>"\
-                "<p>I'm some multi paragraph content</p>"
     mail( subject: 'Welcome', to: @user.email, track_opens: 'true' )
-  end
-
-  def new_applicant(user)
-    @user = user
-    mail( subject: 'New Applicant', to: @user.email, track_opens: 'true' )
-  end
-
-  def new_job(user)
-    @user = user
-    mail( subject: 'New Job Posting', to: @user.email, track_opens: 'true' )
-  end
-
-  def new_hire(user)
-    @user = user
-    mail( subject: 'New Hire', to: @user.email, track_opens: 'true' )
   end
 
   def marketing_3_day(user)

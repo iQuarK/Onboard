@@ -2,7 +2,6 @@ class ApplicationsController < ApplicationController
 
   before_action :load_company
   before_action :set_job
-  before_action :set_application, only: [:auth, :auth_callback]
   layout 'external'
 
   # -------------------------------------------------------------------------------------------------------------------

@@ -50,7 +50,7 @@ class Application < ActiveRecord::Base
   # Callbacks
   # -------------------------------------------------------------------------------------------------------------------
 
-
+  after_create :send_emails
 
   # -------------------------------------------------------------------------------------------------------------------
   # Public Methods
@@ -63,5 +63,9 @@ class Application < ActiveRecord::Base
   # -------------------------------------------------------------------------------------------------------------------
   private
 
+  def send_emails
+    ApplicationMailer.thanks(self).deliver # For the applicant
+    ApplicationMailer.new_application(self).deliver # For the company administrators
+  end
 
 end
