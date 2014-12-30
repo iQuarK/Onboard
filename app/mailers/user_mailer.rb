@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
     @user = user
 
     @title = "Welcome to Pinpoint"
-    @content =  "<p>Hi there!</p>"\
+    @content =  "<p>Hi #{@user.full_name}</p>"\
                 "<p>I'm some multi paragraph content</p>"
     mail( subject: 'Welcome', to: @user.email, track_opens: 'true' )
   end
