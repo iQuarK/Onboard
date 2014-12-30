@@ -1,0 +1,383 @@
+
+
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+<title>Pure</title>
+
+<style type="text/css">
+
+div, p, a, li, td { -webkit-text-size-adjust:none; }
+
+*{
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.ReadMsgBody
+{width: 100%; background-color: #ffffff;}
+.ExternalClass
+{width: 100%; background-color: #ffffff;}
+body{width: 100%; height: 100%; background-color: #n/a; margin:0; padding:0; -webkit-font-smoothing: antialiased;}
+html{width: 100%;}
+
+@font-face {font-family: 'proxima_nova_softmedium';src: url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_medium-webfont.eot');src: url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_medium-webfont.eot?#iefix') format('embedded-opentype'),url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_medium-webfont.woff') format('woff'),url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_medium-webfont.ttf') format('truetype');font-weight: normal;font-style: normal;
+}
+
+@font-face {font-family: 'proxima_nova_softregular';src: url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_regular-webfont.eot'); src: url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_regular-webfont.eot?#iefix') format('embedded-opentype'),url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_regular-webfont.woff') format('woff'),url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_regular-webfont.ttf') format('truetype');font-weight: normal;font-style: normal;
+}
+
+
+@font-face {font-family: 'proxima_nova_softsemibold';src: url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_semibold-webfont.eot'); src: url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_semibold-webfont.eot?#iefix') format('embedded-opentype'),url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_semibold-webfont.woff') format('woff'),url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_semibold-webfont.ttf') format('truetype');font-weight: normal;font-style: normal;
+
+}
+
+@font-face {font-family: 'proxima_nova_softbold';src: url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_bold-webfont.eot');src: url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_bold-webfont.eot?#iefix') format('embedded-opentype'),url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_bold-webfont.woff') format('woff'),url('http://rocketway.net/themebuilder/template/templates/pure/font/mark_simonson_-_proxima_nova_soft_bold-webfont.ttf') format('truetype');font-weight: normal;font-style: normal;
+
+}
+
+p {padding: 0!important; margin-top: 0!important; margin-right: 0!important; margin-bottom: 0!important; margin-left: 0!important;}
+
+.hover:hover {
+  opacity:0.85;
+  filter:alpha(opacity=85);
+}
+
+.jump:hover {
+  opacity:0.85;
+  filter:alpha(opacity=75);
+  padding-top: 10px!important;
+
+}
+
+.headerScale img {width: 600px; height: auto!important;}
+.icon img {width: 35px; height: auto!important;}
+.image img {width: 185px; height: auto!important;}
+.iconsImages img {width: 84px; height: auto!important;}
+.screenLeft img {width: 139px;}
+.screenRight img {width: 139px;}
+.imageMobile img {width: 292px;}
+.vidScale img {width: 512px;}
+
+</style>
+
+
+<!-- @media only screen and (max-width: 640px)
+       {*/
+       -->
+<style type="text/css"> @media only screen and (max-width: 640px){
+    body{width:auto!important;}
+
+    table[class=full] {width: 100%; clear: both; }
+    table[class=mobile] {width: 100%; padding-left: 20px; padding-right: 20px; clear: both; }
+    table[class=fullCenter] {width: 100%; text-align: center!important; clear: both; }
+    td[class=fullCenter] {width: 100%; text-align: center!important; clear: both; }
+    td[class=textCenter] {width: 100%; text-align: center!important; clear: both; }
+    table[class=headerScale] {width: 100%!important; text-align: center!important; clear: both; }
+    .headerScale img {width: 100%!important; height: auto;}
+    table[class=vidScale] {width: 100%!important; text-align: center!important; clear: both; }
+    .vidScale img {width: 100%!important; height: auto;}
+    body[yahoo] .erase {display: none;}
+    table[class=screenLeft] {padding-right: 6px;}
+    table[class=screenRight] {padding-left: 6px;}
+    table[class=w90] {width: 90%!important;}
+    table[class=icon] {width: 100%; text-align: center!important; clear: both; }
+    table[class=imageMobile] {width: 100%; clear: both;}
+    .imageMobile img {width: 292px!important;}
+    .voucher1 {width: 100%!important; border-left: none!important; text-align: center!important;}
+    .fullOne {background-color: #efefef; height: 1px!important;}
+    .h25 {height:25px!important;}
+    .w40 {width: 40px!important;}
+
+
+
+} </style>
+<!--
+
+@media only screen and (max-width: 479px)
+       {
+       -->
+<style type="text/css"> @media only screen and (max-width: 479px){
+    body{width:auto!important;}
+
+
+    table[class=full] {width: 100%; clear: both; }
+    table[class=mobile] {width: 100%; padding-left: 20px; padding-right: 20px; clear: both; }
+    table[class=fullCenter] {width: 100%; text-align: center!important; clear: both; }
+    td[class=fullCenter] {width: 100%; text-align: center!important; clear: both; }
+    td[class=textCenter] {width: 100%; text-align: center!important; clear: both; }
+    table[class=headerScale] {width: 100%!important; text-align: center!important; clear: both; }
+    .headerScale img {width: 100%!important; height: auto;}
+    table[class=vidScale] {width: 100%!important; text-align: center!important; clear: both; }
+    .vidScale img {width: 100%!important; height: auto;}
+    body[yahoo] .erase {display: none;}
+    table[class=screenLeft] {padding-right: 6px;}
+    table[class=screenRight] {padding-left: 6px;}
+    .font20 {font-size: 20px!important; line-height: 30px!important;}
+    table[class=w90] {width: 90%!important;}
+    table[class=icon] {width: 100%; text-align: center!important; clear: both; }
+    table[class=imageMobile] {width: 100%; clear: both;}
+    .imageMobile img {width: 80%!important; height:auto!important;}
+    .voucher1 {width: 100%!important; border-left: none!important; text-align: center!important;}
+    .fullOne {background-color: #efefef; height: 1px!important;}
+    .h25 {height:25px!important;}
+    .w40 {width: 40px!important;}
+
+    }
+
+
+} </style>
+
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix">
+
+
+<!-- Wrapper 1 (Nav) -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="full"  bgcolor="#ffffff"style="background-color: rgb(255, 255, 255);">
+  <tr>
+    <td width="100%" valign="top" align="center">
+
+
+      <!-- Start Nav -->
+      <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="mobile">
+        <tr>
+          <td width="100%" height="20"></td>
+        </tr>
+        <tr>
+          <td width="100%" align="center">
+
+            <!-- Logo -->
+            <table width="240" border="0" cellpadding="0" cellspacing="0" align="left" class="fullCenter">
+              <tr>
+                <td valign="left" width="100%" style="text-align: left;" class="fullCenter" align="left">
+                  <a href="#" style="text-align: left;" ><img src="http://itsrainingsideways.com/images/pinpoint_logo.png" width="100" height="auto" style="width: 150px; height: auto;" alt="" border="0"  cu-identify="element_04749751449562609"></a>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+        <tr>
+          <td width="100%" height="20"></td>
+        </tr>
+      </table><!-- End Nav -->
+
+    </div>
+    </td>
+  </tr>
+</table><!-- End Wrapper 1 -->
+
+<!-- Wrapper 2 (Header) -->
+<div style="display: none" id="element_03544803021941334"></div><!-- End Wrapper 2 -->
+
+<!-- Wrapper 2 (2 Buttons) -->
+<div style="display: none" id="element_03190768335480243"></div><!-- End Wrapper 3 -->
+
+<!-- Wrapper 3 (Divider) -->
+<div style="display: none" id="element_0027979159262031317"></div><!-- End Wrapper 3 -->
+
+<!-- Wrapper 2 (3 Column Round Images) -->
+<div style="display: none" id="element_02126982209738344"></div><!-- Wrapper 2 -->
+
+<!-- Wrapper 3 (Divider) -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="full"  bgcolor="#ffffff"style="background-color: rgb(255, 255, 255);">
+  <tr>
+    <td width="100%" valign="top">
+
+
+      <!-- Divider -->
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="full">
+        <!-- <tr>
+          <td width="100%" height="30"></td>
+        </tr> -->
+        <tr>
+          <td width="100%" height="1" bgcolor="#f1f1f1" style="font-size: 1px; line-height: 1px;"></td>
+        </tr>
+        <!-- <tr>
+          <td width="100%" height="30"></td>
+        </tr> -->
+      </table><!-- End Divider -->
+
+    </div>
+    </td>
+  </tr>
+</table><!-- End Wrapper 3 -->
+
+<!-- Wrapper 3 (2 Column - Image Left , Text Right) -->
+<div style="display: none" id="element_09608186928089708"></div><!-- Wrapper 4 -->
+
+<!-- Wrapper 3 (Divider) -->
+<div style="display: none" id="element_06678854562342167"></div><!-- End Wrapper 3 -->
+
+<!-- Wrapper 2 (3 Column Round Images) -->
+<div style="display: none" id="element_06246514345984906"></div><!-- Wrapper 2 -->
+
+<!-- Wrapper 2 (Long Image 1) -->
+<div style="display: none" id="element_013410392682999372"></div><!-- End Wrapper 2 -->
+
+<!-- Wrapper 3 (2 Column - Image Left , Text Right) -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="full"  bgcolor="#ffffff"style="background-color: rgb(255, 255, 255);">
+  <tr>
+    <td width="100%" valign="top" align="center">
+
+
+      <!-- Wrapper -->
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="mobile">
+        <tr>
+          <td align="center">
+
+            <!-- Wrapper -->
+            <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="full">
+              <tr>
+                <td width="100%" align="center">
+
+                  <!-- Space -->
+                  <!-- <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="full">
+                    <tr>
+                      <td width="100%" height="30"></td>
+                    </tr>
+                  </table> -->
+                  <!-- End Space -->
+
+                  <!-- Image 1 Text -->
+                  <table width="600" border="0" cellpadding="0" cellspacing="0" align="right" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="full">
+                    <tr>
+                      <td width="100%" height="30"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" style="font-size: 18px; color: rgb(51, 51, 51); text-align: left; font-family: proxima_nova_softregular, Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: top;"class="textCenter" >
+                        <p  cu-identify="element_09700620688963681"><h1><%= @title %></h1>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="15"></td>
+                    </tr>
+                    <tr>
+                      <td width="100%" style="font-size: 14px; color: rgb(119, 119, 119); text-align: left; font-family: proxima_nova_softregular, Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: top;" class="textCenter"><%= @content.html_safe %></td>
+                    </tr>
+                  </table>
+
+                </td>
+              </tr>
+            </table><!-- End Wrapper 2 -->
+
+            <!-- Space -->
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="full">
+              <tr>
+                <td width="100%" height="30"></td>
+              </tr>
+            </table><!-- End Space -->
+
+
+          </td>
+        </tr>
+      </table><!-- End Wrapper -->
+
+    </div>
+    </td>
+  </tr>
+</table><!-- Wrapper 4 -->
+
+<!-- Wrapper 3 (Divider) -->
+<div style="display: none" id="element_026656939508393407"></div><!-- End Wrapper 3 -->
+
+<!-- Wrapper 3 (2 Column - Image Left , Text Right) -->
+<div style="display: none" id="element_0013198546599596739"></div><!-- Wrapper 4 -->
+
+<!-- Wrapper 2 (Screenshots) -->
+<div style="display: none" id="element_06036260870750993"></div><!-- Wrapper 2 -->
+
+<!-- Wrapper 2 (Subscribe) -->
+<div style="display: none" id="element_07844572553876787"></div><!-- End Wrapper 2 -->
+
+<!-- Wrapper 3 (2 Column - Image Left , Text Right) -->
+<div style="display: none" id="element_08991890936158597"></div><!-- Wrapper 4 -->
+
+<!-- Wrapper 2 (Video Image) -->
+<div style="display: none" id="element_06458954776171595"></div><!-- End Wrapper 2 -->
+
+<!-- Wrapper 3 (Divider) -->
+<div style="display: none" id="element_09949068713467568"></div><!-- End Wrapper 3 -->
+
+<!-- Wrapper 3 (Headline) -->
+<div style="display: none" id="element_036087226727977395"></div><!-- End Wrapper 3 -->
+
+<!-- Wrapper 2 (Pricing, 4 tables) -->
+<div style="display: none" id="element_014749448467046022"></div><!-- Wrapper 2 -->
+
+<!-- Wrapper 2 (Pricing, 3 tables) -->
+<div style="display: none" id="element_010067854169756174"></div><!-- Wrapper 2 -->
+
+<!-- Wrapper 2 (Pricing, 2 tables) -->
+<div style="display: none" id="element_08455853522755206"></div><!-- Wrapper 2 -->
+
+<!-- Wrapper 3 (Divider) -->
+<div style="display: none" id="element_0678331449162215"></div><!-- End Wrapper 3 -->
+
+
+<!-- Wrapper 2 (Voucher) -->
+<div style="display: none" id="element_01939222407527268"></div><!-- End Wrapper 2 -->
+
+<!-- Wrapper 2 (Footer Logo) -->
+<div style="display: none" id="element_02370704710483551"></div><!-- End Wrapper 2 -->
+
+<!-- Wrapper 2 (Footer) -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="full"  bgcolor="#ffffff"style="background-color: rgb(255, 255, 255);">
+  <tr>
+    <td width="100%" valign="top" align="center">
+
+
+      <!-- Start Footer Wrapper -->
+      <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="mobile">
+        <tr>
+          <td width="100%" height="30"></td>
+        </tr>
+        <tr>
+          <td width="100%" align="center">
+
+            <!-- Copyright -->
+            <table width="250" border="0" cellpadding="0" cellspacing="0" align="left" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="fullCenter">
+              <tr>
+                <td height="60" width="100%" style="font-size: 12px; color: rgb(119, 119, 119); text-align: left; font-family: proxima_nova_softregular, Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle;" class="textCenter">
+                  <p  cu-identify="element_029253197996877134">Copyright © 2014 Pinpoint
+                </td>
+              </tr>
+            </table>
+
+            <!-- Nav -->
+            <table width="340" border="0" cellpadding="0" cellspacing="0" align="right" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align: right;" class="fullCenter">
+              <tr>
+                <td height="60" valign="middle" width="33%" style="font-size: 12px; color: #777777; text-align: center; font-family: 'proxima_nova_softregular', Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle;" >
+                  <!--subscribe--><a href="#" style="text-decoration: none; color: rgb(119, 119, 119);">Unsubscribe</a><!--unsub-->
+                </td>
+                <td valign="middle" width="33%" style="font-size: 12px; color: #777777; text-align: center; font-family: 'proxima_nova_softregular', Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle;" >
+                  <a href="#" style="text-decoration: none; color: rgb(119, 119, 119);" >Privacy</a>
+                </td>
+                <td valign="middle" width="33%" style="font-size: 12px; color: #da5453; text-align: center; font-family: 'proxima_nova_softregular', Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: middle;" >
+                  <a href="mailto:support@pinpointhq.com" style="text-decoration: none; color: rgb(77, 157, 224);" cu-identify="element_05933450737502426">support@pinpointhq.com</a>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+      </table><!-- End Footer -->
+
+      <!-- Divider -->
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="full">
+        <tr>
+          <td width="100%" height="30">
+          </td>
+        </tr>
+        <tr>
+          <td width="100%" height="1">
+          </td>
+        </tr>
+      </table><!-- End Divider -->
+
+    </div>
+    </td>
+  </tr>
+</table><!-- End Wrapper 2 -->
+</div>
+</body></html>  <style>body{ background: none !important; } </style>
