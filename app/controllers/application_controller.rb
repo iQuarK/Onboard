@@ -10,8 +10,11 @@ class ApplicationController < ActionController::Base
 
   # Devise redirect to companies index view after logging in
   def after_sign_in_path_for(resource)
-    @company = resource.companies.first
-    admin_url(subdomain: @company.subdomain)
+    if @company = resource.companies.first
+      admin_url(subdomain: @company.subdomain)
+    else
+      new_company_url(subdomain: false)
+    end
 	end
 
   # Devise redirect to home page after logging out
