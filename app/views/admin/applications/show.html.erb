@@ -10,8 +10,8 @@
 
 	<div id="app-container">
 
-		<div class="applicant-header">s
-			<%= image_tag(@profile.picture_url) ss			<h1><%= @application.name %></hsf1>
+		<div class="applicant-header">
+			<%= image_tag(@profile.picture_url)	%><h1><%= @application.name %></h1>
 
 			<ul>
 			  <li><%= button_to 'Reject', reject_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-red' %></li>
