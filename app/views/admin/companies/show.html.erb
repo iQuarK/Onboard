@@ -31,8 +31,8 @@
             <% end %>
             <footer>
               <ul>
-                <li><%= link_to 'View', job_url(job, subdomain: @company.subdomain) %></li>
-                <li><%= link_to 'Edit', edit_admin_job_url(job, subdomain: @company.subdomain) %></li>
+                <li><%= link_to 'View Job Position', job_url(job, subdomain: @company.subdomain) %></li>
+                <li><%= link_to 'Edit Position', edit_admin_job_url(job, subdomain: @company.subdomain) %></li>
                 <li class="right">Last application received: 10 minutes ago</li>
               </ul>
             </footer>

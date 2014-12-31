@@ -8,14 +8,21 @@
 <div class="field">
   <%= f.label :subdomain %>
   <div class="input-right">
-    <%= f.text_field :subdomain %>
+      <%= f.text_field :subdomain, class: "subdomain-input" %> <span>.pinpointhq.com</span>
   </div>
 </div>
 
 <div class="field">
   <%= f.label :description %>
   <div class="input-right">
-    <%= f.text_area :description, rows: 5 %>
+    <%= f.text_area :description, class: "trumbowyg", rows: 5 %>
+  </div>
+</div>
+
+<div class="field">
+  <%= f.label :benefits %>
+  <div class="input-right">
+    <%= f.text_area :benefits, class: "trumbowyg", rows: 5 %>
   </div>
 </div>
 

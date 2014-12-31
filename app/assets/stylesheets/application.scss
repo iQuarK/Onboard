@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require trumbowyg/trumbowyg
  *= require_self
  */
 
@@ -23,7 +24,7 @@
 @import 'utilities/variables';
 @import 'utilities/mixins';
 
-@import "base/normalize";
+@import 'base/normalize';
 @import 'base/typography';
 @import 'base/core';
 

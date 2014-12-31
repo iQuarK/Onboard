@@ -26,6 +26,11 @@ form {
 		display: block;
 	}
 
+	span {
+		font-weight: 500;
+		margin-left: 2px;
+	}
+
 	.actions {
 		@extend .group;
 		margin-top: 20px;
@@ -40,4 +45,18 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
 	padding: 10px 10px 8px;
 	width: 100%;
 	font-size: 14px;
+}
+
+.subdomain-input {
+	width: 200px !important;
+	text-align: right;
+}
+
+.trumbowyg-box {
+	width: 100%;
+	margin: 0px;
+}
+
+.trumbowyg-editor {
+	padding: 15px;
 }

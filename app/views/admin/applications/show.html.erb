@@ -8,72 +8,80 @@
 
 <div class="content-wrapper">
 
-	<div id="app-container">
+	<div class="row">
 
-		<div class="applicant-header">
-			<%= image_tag(@profile.picture_url)	%><h1><%= @application.name %></h1>
+    <div class="col-8-12">
 
-			<ul>
-			  <li><%= button_to 'Reject', reject_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-red' %></li>
-			  <!-- <li><%= button_to 'Review', review_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-yellow' %></li> -->
-			  <li><%= button_to 'Interview', interview_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-blue' %></li>
-			 <!--  <li><%= button_to 'Hire', hire_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-green' %></li> -->
-			</ul>
+			<div id="app-container">
 
-		</div>
+				<div class="applicant-header">
+					<%= image_tag(@profile.picture_url)	%><h1><%= @application.name %></h1>
 
-		<div class="tabs applicant-tabs">
+					<ul>
+					  <!-- <li><%= button_to 'Reject', reject_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-red' %></li> -->
+					  <!-- <li><%= button_to 'Review', review_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-yellow' %></li> -->
+					  <li><%= button_to 'Interview', interview_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-blue' %></li>
+					 <!--  <li><%= button_to 'Hire', hire_admin_job_application_url(@job,@application, subdomain: @company.subdomain), method: :patch, class: 'button-green' %></li> -->
+					</ul>
 
-			<ul class="tab-links">
-				<li><a href="#tab-1"><i class="icon-notepad"></i></a></li>
-				<li><a href="#tab-2"><i class="socicon-linkedin"></i></a></li>
-				<li><a href="#tab-3"><i class="socicon-twitter"></i></a></li>
-				<li><a href="#tab-4"><i class="socicon-facebook"></i></a></li>
-			</ul>
+				</div>
 
-			<div id="tab-1" class="user-submitted">
-				Form
-			</div>
+				<div class="tabs applicant-tabs">
 
-			<div id="tab-2" class="linkedin">
+					<ul class="tab-links">
+						<li><a href="#tab-1"><i class="icon-notepad"></i></a></li>
+						<li><a href="#tab-2"><i class="socicon-linkedin"></i></a></li>
+						<li><a href="#tab-3"><i class="socicon-twitter"></i></a></li>
+						<li><a href="#tab-4"><i class="socicon-facebook"></i></a></li>
+					</ul>
 
-				<p class="summary"><% @profile.summary %></p>
+					<div id="tab-1" class="user-submitted">
+						Overview Page
+					</div>
 
-				<% @profile.positions.all.each do |position| %>
+					<div id="tab-2" class="linkedin">
 
-					<section>
-						<div class="job-details">
-							<div class="left">
-								<p class="job-title"><%= position.title %></p>
-								<p class="job-company"><%= position.company.name %></p>
-							</div>
-							<div class="right">
-								<p class="job-dates">
-									<%= linkedin_date(position.start_date.month) %> <%= position.start_date.year %>  -
-									<% if position.is_current %>
-										Present
-									<% else %>
-										<%= linkedin_date(position.end_date.month) %> <%= position.end_date.year %>
-									<% end %>
-									<span>(Need to sort this out)</span>
-								</p>
-								<p class="job-location">
-								</p>
-							</div>
-						</div>
-						<p class="job-description"><%= position.summary %></p>
-					</section>
+						<p class="summary"><%= @profile.summary %></p>
 
-				<% end %>
+						<% @profile.positions.all.each do |position| %>
 
-			</div>
+							<section>
+								<div class="job-details">
+									<div class="left">
+										<p class="job-title"><%= position.title %></p>
+										<p class="job-company"><%= position.company.name %></p>
+									</div>
+									<div class="right">
+										<p class="job-dates">
+											<%= linkedin_date(position.start_date.month) %> <%= position.start_date.year %>  -
+											<% if position.is_current %>
+												Present
+											<% else %>
+												<%= linkedin_date(position.end_date.month) %> <%= position.end_date.year %>
+											<% end %>
+											<span>(Need to sort this out)</span>
+										</p>
+										<p class="job-location">
+										</p>
+									</div>
+								</div>
+								<p class="job-description"><%= position.summary %></p>
+							</section>
 
-			<div id="tab-3" class="twitter">
-				Twitter
-			</div>
+						<% end %>
 
-			<div id="tab-4" class="facebook">
-				Facebook
+					</div>
+
+					<div id="tab-3" class="twitter">
+						Twitter
+					</div>
+
+					<div id="tab-4" class="facebook">
+						Facebook
+					</div>
+
+				</div>
+
 			</div>
 
 		</div>

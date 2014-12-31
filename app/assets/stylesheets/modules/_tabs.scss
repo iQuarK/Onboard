@@ -20,9 +20,12 @@
   .tab-links li {
 
     float: left;
-    width: 60px;
+    width: 25%;
     height: 60px;
     background: $smoke;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+    line-height: 60px;
 
     a {
       display: block;
@@ -32,6 +35,7 @@
 
         font-size: 30px;
         line-height: 60px;
+        margin-right: 15px;
 
         // Hack to get round annoying padding on UI8 Icons
         &[class^="icon"] {

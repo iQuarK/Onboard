@@ -10,35 +10,53 @@
 
 <div class="content-wrapper">
 
-  <div class="boards">
+  <div class="row">
 
-    <% @stages.each do |stage| %>
+    <div class="col-8-12">
 
-      <section class="board" data-stage="<%= stage[:stage] %>">
+      <div id="app-container">
 
-        <h2><%= stage[:name] %></h2>
+        <% @stages.each do |stage| %>
 
-        <% if stage[:applications].any? %>
+            <h2><%= stage[:name] %></h2>
 
-          <ul>
-            <% stage[:applications].each do |application| %>
-              <li>
-                <%= link_to admin_job_application_url(@job, application, subdomain: @company.subdomain) do %>
-                  <%= application[:name] %>
+            <% if stage[:applications].any? %>
+
+                <% stage[:applications].each do |application| %>
+
+                  <div class="job-widget">
+                    <%= link_to admin_job_application_url(@job, application, subdomain: @company.subdomain) do %>
+                    <header>
+                      <div class="left">
+                        <h2><%= application[:name] %></h2>
+                      </div>
+                      <div class="right">
+                        <p>Test</p><p>More Test</p>
+                      </div>
+                    </header>
+                    <% end %>
+                    <footer>
+                      <ul>
+                        <li>+44 (0) 7700714811</li>
+                        <li>tom@hacquoil.com</li>
+                        <li class="right">Download CV</li>
+                      </ul>
+                    </footer>
+                  </div>  
+
                 <% end %>
-              </li>
+
+            <% else %>
+
+              <p>There are no applications</p>
+
             <% end %>
-          </ul>
-
-        <% else %>
-
-          <p>There are no applications</p>
 
         <% end %>
 
-      </section>
+      </div>
 
-    <% end %>
+    </div>
 
   </div>
 
