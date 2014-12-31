@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require jquery-ui/tabs
 //= require init
-//= require turbolinks
 //= require trumbowyg/trumbowyg
+//= require turbolinks
+

@@ -10,7 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require trumbowyg/trumbowyg
  *= require_self
  */
 
@@ -20,6 +19,7 @@
 @import 'vendor/ui-font-solid';
 @import 'vendor/socicon';
 @import 'vendor/jeet/index';
+@import 'vendor/trumbowyg';
 
 @import 'utilities/variables';
 @import 'utilities/mixins';
