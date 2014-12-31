@@ -1,3 +1,0 @@
-jQuery ->
-
-  $('.applicant-tabs').tabs()

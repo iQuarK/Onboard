@@ -69,3 +69,6 @@ gem "rolify"
 # For payment processing
 gem "stripe-rails"
 # gem "stripe_event"
+
+# Trumbowyg WYSIWYG Editor
+gem 'trumbowyg_rails'

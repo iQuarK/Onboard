@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20141231165216) do
     t.datetime "updated_at"
     t.string   "subdomain"
     t.string   "website"
+    t.text     "benefits"
   end
 
   add_index "companies", ["subdomain"], name: "index_companies_on_subdomain", unique: true, using: :btree

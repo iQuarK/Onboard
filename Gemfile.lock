@@ -143,6 +143,10 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    trumbowyg_rails (1.1.2)
+      rails (>= 3.1)
+      railties (>= 3.1)
+      sass (>= 3.2)
     turbolinks (2.5.1)
       coffee-rails
     tzinfo (1.2.2)
@@ -175,5 +179,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   stripe-rails
+  trumbowyg_rails
   turbolinks
   uglifier (>= 1.3.0)

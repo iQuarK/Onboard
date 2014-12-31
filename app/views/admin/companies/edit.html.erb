@@ -8,21 +8,29 @@
 
 <div class="content-wrapper">
 
-  <div id="app-container">
+  <div class="row">
 
-		<h2 class="page-header">Edit Company</h2>
+    <div class="col-8-12">
 
-			<%= form_for @company, url: admin_url do |f| %>
+		  <div id="app-container">
 
-			  <%= render 'shared/error_list', model: @company %>
+				<h2 class="page-header">Edit Company</h2>
 
-			  <%= render 'shared/companies/form', f: f %>
+					<%= form_for @company, url: admin_url do |f| %>
 
-			  <div class="actions">
-			    <%= f.submit 'Edit Company', class: "button-green" %>
-			  </div>
+					  <%= render 'shared/error_list', model: @company %>
 
-			<% end %>
+					  <%= render 'shared/companies/form', f: f %>
+
+					  <div class="actions">
+					    <%= f.submit 'Save Changes', class: "button-green" %>
+					  </div>
+
+					<% end %>
+
+			</div>
+
+		</div>
 
 	</div>
 
