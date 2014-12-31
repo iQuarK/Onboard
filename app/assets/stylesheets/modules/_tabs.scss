@@ -17,7 +17,8 @@
 -------------------------------------------------- */
 .applicant-tabs {
 
-  li {
+  .tab-links li {
+
     float: left;
     width: 60px;
     height: 60px;
@@ -25,9 +26,23 @@
 
     a {
       display: block;
-      font-size: 30px;
-      line-height: 60px;
       text-align: center;
+
+      i {
+
+        font-size: 30px;
+        line-height: 60px;
+
+        // Hack to get round annoying padding on UI8 Icons
+        &[class^="icon"] {
+          font-size: 42px;
+        }
+      }
+    }
+
+    &:hover, &.ui-tabs-active {
+      color: #FFF;
+      background: $blue;
     }
   }
 }
