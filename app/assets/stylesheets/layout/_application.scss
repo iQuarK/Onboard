@@ -42,10 +42,17 @@
 
   #app-container {
     background-color: #fff;
-    margin: 30px;
+    margin: 30px 0px;
     border: 1px solid #dedede;
     border-radius: 3px;
     padding: 30px;
+
+    .page-header {
+      font-weight: 300;
+      @include font-size(32);
+      letter-spacing: -2px;
+      margin-top: 0px;
+    }
   }
 
   .admin-page-title {
