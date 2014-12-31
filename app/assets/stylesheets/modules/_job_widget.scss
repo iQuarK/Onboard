@@ -1,7 +1,8 @@
 .job-widget {
 	margin-bottom: 30px;
-	border-radius: 4px;
-	width: 70%;
+	&:last-child {
+		margin-bottom: 0px;
+	}
 
 	header {
 		@extend .group;
@@ -16,6 +17,7 @@
 			font-weight: 300;
 			@include font-size(26);
 			margin: 0px;
+			letter-spacing: -1px;
 		}
 
 		p {

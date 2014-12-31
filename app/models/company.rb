@@ -25,6 +25,12 @@ class Company < ActiveRecord::Base
   # -------------------------------------------------------------------------------------------------------------------
 
 
+  # -----------------------------------------------------------------------------------------------------------------
+  # Static Arrays of Data
+  # -----------------------------------------------------------------------------------------------------------------
+  INDUSTRY = ["Agriculture", "Accounting", "Advertising", "Aerospace", "Apparel & Accessories", "Automotive", "Broadcasting", "Biotechnology", "Call Centres", "Consulting", "Cosmetics", "Defense", "Education", "Electronics", "Energy", "Entertainment & Leisure", "Financial Services", "Food & Beverage", "Healthcare", "Legal", "Manufacturing", "Music / Film", "Pharmaceuticals", "Publishing", "Real Estate", "Retail & Wholesale", "Software", "Sports", "Technology", "Telecommunications", "Transporation", "Venture Capital"]
+  NUM_EMPLOYEES = ["1 - 10", "11 - 25", "26 - 50", "51 - 100", "101 - 200", "200 - 1,000", "1,000+"]
+
 
   # -------------------------------------------------------------------------------------------------------------------
   # Constants

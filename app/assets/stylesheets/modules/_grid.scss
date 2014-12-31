@@ -3,4 +3,10 @@
 	.col-1-2 {
 		@include col(1/2, $gutter: 5);
 	}
+	.col-4-12 {
+		@include col(4/12);
+	}
+	.col-8-12 {
+		@include col(8/12, $gutter: 2);
+	}
 }
