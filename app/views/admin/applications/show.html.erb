@@ -23,68 +23,54 @@
 
 		</div>
 
-		<div class="linkedin">
+		<div class="tabs applicant-tabs">
 
-			<p class="summary"><% @profile.summary %></p>
+			<ul>
+				<li><a href="#tab-1"><i class="icon-bar-chart"></i></a></li>
+				<li><a href="#tab-2"><i class="icon-bar-chart-up"></i></a></li>
+				<li><a href="#tab-3"><i class="icon-bar-chart"></i></a></li>
+			</ul>
 
-			<% @profile.positions.all.each do |position| %>
+			<div id="tab-1" class="user-submitted">
+				Form
+			</div>
 
-			<section>
-				<div class="job-details">
-					<div class="left">
-						<p class="job-title"><%= position.title %></p>
-						<p class="job-company"><%= position.company.name %></p>
-					</div>
-					<div class="right">
-						<p class="job-dates">
-							<%= linkedin_date(position.start_date.month) %> <%= position.start_date.year %>  -
-							<% if position.is_current %>
-								Present
-							<% else %>
-								<%= linkedin_date(position.end_date.month) %> <%= position.end_date.year %>
-							<% end %>
-							<span>(Need to sort this out)</span>
-						</p>
-						<p class="job-location">
-						</p>
-					</div>
-				</div>
-				<p class="job-description"><%= position.summary %></p>
-			</section>
+			<div id="tab-2" class="linkedin">
 
-			<% end %>
+				<p class="summary"><% @profile.summary %></p>
 
-			<!-- <section>
-				<div class="job-details">
-					<div class="left">
-						<p class="job-title">Founding Director</p>
-						<p class="job-company">Altus Analytics Ltd</p>
-					</div>
-					<div class="right">
-						<p class="job-dates">August 2011 - Present <span>(3 years 5 months)</span></p>
-						<p class="job-location">Jersey, United Kingdom</p>
-					</div>
-				</div>
-				<p class="job-description">Using my past experience as a professional online poker player I was able to analyse data regarding e-gaming traffic and write software to aid game selection for professional poker players.<br /><br />
+				<% @profile.positions.all.each do |position| %>
 
-				This manifested into a poker coaching/staking/software business that focusses on managing the continued professional development of other professional poker players.<br /><br />
+					<section>
+						<div class="job-details">
+							<div class="left">
+								<p class="job-title"><%= position.title %></p>
+								<p class="job-company"><%= position.company.name %></p>
+							</div>
+							<div class="right">
+								<p class="job-dates">
+									<%= linkedin_date(position.start_date.month) %> <%= position.start_date.year %>  -
+									<% if position.is_current %>
+										Present
+									<% else %>
+										<%= linkedin_date(position.end_date.month) %> <%= position.end_date.year %>
+									<% end %>
+									<span>(Need to sort this out)</span>
+								</p>
+								<p class="job-location">
+								</p>
+							</div>
+						</div>
+						<p class="job-description"><%= position.summary %></p>
+					</section>
 
-				Co-run with a friend from Cambridge, this takes the form of maximising their hourly rate whilst improving their mental side with respect to both working ethic and handling variance.</p>
-			</section>
+				<% end %>
 
-			<section>
-				<div class="job-details">
-					<div class="left">
-						<p class="job-title">Lead Developer</p>
-						<p class="job-company">Infuse Internet</p>
-					</div>
-					<div class="right">
-						<p class="job-dates">May 2012 - September 2013 <span>(1 years 5 months)</span></p>
-						<p class="job-location">Jersey, United Kingdom</p>
-					</div>
-				</div>
-				<p class="job-description">I built web apps and websites using LAMP architecture so have a decent knowledge of SQL, PHP, HTML, CSS and jQuery. I'm a big fan of open source technologies and like using Wordpress as a CMS.</p>
-			</section> -->
+			</div>
+
+			<div id="tab-3" class="twitter">
+				Blah
+			</div>
 
 		</div>
 
