@@ -1,0 +1,48 @@
+/* --------------------------------------------------
+  General Tabs
+-------------------------------------------------- */
+.tabs {
+
+  ul {
+    @extend .group;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+}
+
+/* --------------------------------------------------
+  Application Show Tabs
+-------------------------------------------------- */
+.applicant-tabs {
+
+  .tab-links li {
+
+    float: left;
+    width: 60px;
+    height: 60px;
+    background: $smoke;
+
+    a {
+      display: block;
+      text-align: center;
+
+      i {
+
+        font-size: 30px;
+        line-height: 60px;
+
+        // Hack to get round annoying padding on UI8 Icons
+        &[class^="icon"] {
+          font-size: 42px;
+        }
+      }
+    }
+
+    &:hover, &.ui-tabs-active {
+      color: #FFF;
+      background: $blue;
+    }
+  }
+}

@@ -16,7 +16,8 @@
 /* --------------------------------------------------
   Imports
 -------------------------------------------------- */
-@import 'vendor/ui-font-solid.css';
+@import 'vendor/ui-font-solid';
+@import 'vendor/socicon';
 @import 'vendor/jeet/index';
 
 @import 'utilities/variables';
@@ -33,6 +34,7 @@
 @import 'modules/avatars';
 @import 'modules/links';
 @import 'modules/grid';
+@import 'modules/tabs';
 @import 'modules/job_widget';
 
 @import 'layout/application';
