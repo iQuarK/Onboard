@@ -62,5 +62,10 @@ gem 'clearbit'
 # Wrapper for Postmark Emails
 gem 'postmark-rails'
 
-# Breadcrumbs, mmmm tasty https://github.com/weppos/breadcrumbs_on_rails
-# gem "breadcrumbs_on_rails"
+# For roles
+gem "cancan"
+gem "rolify"
+
+# For payment processing
+gem "stripe-rails"
+# gem "stripe_event"
