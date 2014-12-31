@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module Pinpoint
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -23,11 +24,18 @@ module Pinpoint
     # Lib contains things like our subdomain file
     config.autoload_paths << Rails.root.join('lib')
 
+    # Need the secrets to set config stuff
+    YAML.load_file("#{::Rails.root}/config/secrets.yml")[::Rails.env].each {|k,v| ENV[k] = v }
+
     config.action_mailer.delivery_method = :postmark
-    config.action_mailer.postmark_settings = { :api_key => "6f71a4ca-bcd6-4c44-99b7-a5bdacbf9ec7" }
+    config.action_mailer.postmark_settings = { :api_key => ENV['postmark_api_key'] }
     config.action_mailer.default_options = {
         from: "support@pinpointhq.com"
     }
+
+    # Stripe config
+    config.stripe.secret_key = ENV['stripe_api_key']
+    config.stripe.publishable_key = ENV['stripe_public_key']
 
   end
 end
