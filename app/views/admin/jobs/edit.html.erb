@@ -1,3 +1,19 @@
-<h1>Editing job</h1>
+<div class="sub-header">
 
-<%= render 'form' %>
+  <div class="content-wrapper">
+    <%= link_to "#{@company.name}", admin_path %> &rarr; Jobs &rarr; Edit &rarr; <span><%= @job.title %></span>
+  </div>
+
+</div>
+
+<div class="content-wrapper">
+
+  <div id="app-container">
+
+	  <h2 class="page-header">Editing job</h2>
+
+		<%= render 'form' %>
+
+	</div>
+
+</div>

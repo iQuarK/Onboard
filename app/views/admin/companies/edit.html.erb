@@ -1,13 +1,29 @@
-<h1>Edit Company</h1>
+<div class="sub-header">
 
-<%= form_for @company, url: admin_url do |f| %>
-
-  <%= render 'shared/error_list', model: @company %>
-
-  <%= render 'shared/companies/form', f: f %>
-
-  <div class="actions">
-    <%= f.submit 'Edit Company', class: "button" %>
+  <div class="content-wrapper">
+    <%= link_to "#{@company.name}", admin_path %> &rarr; <span>Edit Company Details</span>
   </div>
 
-<% end %>
+</div>
+
+<div class="content-wrapper">
+
+  <div id="app-container">
+
+		<h2 class="page-header">Edit Company</h2>
+
+			<%= form_for @company, url: admin_url do |f| %>
+
+			  <%= render 'shared/error_list', model: @company %>
+
+			  <%= render 'shared/companies/form', f: f %>
+
+			  <div class="actions">
+			    <%= f.submit 'Edit Company', class: "button-green" %>
+			  </div>
+
+			<% end %>
+
+	</div>
+
+</div>
