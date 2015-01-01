@@ -58,22 +58,24 @@
 
   .dashboard-actions {
     border-bottom: 2px dashed #dedede;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     margin-bottom: 15px;
 
     ul {
       margin: 0px;
       padding: 0px;
+      margin-bottom: 0px;
     }
 
     li {
       list-style-type: none;
-      margin-bottom: 20px;
       display: block;
+      margin-bottom: 10px;
     }
 
     a {
       width: 100%;
+      display: block;
     }
   }
 

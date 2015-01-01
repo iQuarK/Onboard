@@ -22,13 +22,9 @@
 
             <% if stage[:applications].any? %>
 
-                <% animCounter = 0 %>
-
                 <% stage[:applications].each do |application| %>
 
-                  <% animCounter += 0.2 %> 
-
-                  <div class="job-widget wow fadeIn" data-wow-delay="<%= animCounter %>s">
+                  <div class="job-widget">
                     <%= link_to admin_job_application_url(@job, application, subdomain: @company.subdomain) do %>
                     <header>
                       <div class="left">
