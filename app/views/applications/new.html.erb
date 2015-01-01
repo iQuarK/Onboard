@@ -36,8 +36,23 @@
         <%= f.email_field :email %>
       </div>
 
+      <div class="field-row">
+        <%= f.label :phone %>
+        <%= f.text_field :phone %>
+      </div>
+
+      <div class="field-row">
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+      </div>
+
+      <div class="field-row">
+        <%= f.label :summary %>
+        <%= f.text_area :summary, rows: 5 %>
+      </div>
+
       <div class="action">
-        <%= f.submit 'Apply', class: "button" %>
+        <%= f.submit 'Apply', class: "button-green" %>
       </div>
 
     <% end %>
