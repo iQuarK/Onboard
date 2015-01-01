@@ -18,27 +18,29 @@
 
         <% @stages.each do |stage| %>
 
-            <h2><%= stage[:name] %></h2>
+            <h2 class="page-header"><%= stage[:name] %></h2>
 
             <% if stage[:applications].any? %>
 
+                <% animCounter = 0 %>
+
                 <% stage[:applications].each do |application| %>
 
-                  <div class="job-widget">
+                  <% animCounter += 0.2 %> 
+
+                  <div class="job-widget wow fadeIn" data-wow-delay="<%= animCounter %>s">
                     <%= link_to admin_job_application_url(@job, application, subdomain: @company.subdomain) do %>
                     <header>
                       <div class="left">
                         <h2><%= application[:name] %></h2>
                       </div>
                       <div class="right">
-                        <p>Test</p><p>More Test</p>
+                        <p><%= application[:phone] %></p><p><%= application[:email] %></p>
                       </div>
                     </header>
                     <% end %>
                     <footer>
                       <ul>
-                        <li>+44 (0) 7700714811</li>
-                        <li>tom@hacquoil.com</li>
                         <li class="right">Download CV</li>
                       </ul>
                     </footer>

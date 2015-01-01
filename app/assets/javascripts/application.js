@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui/tabs
+//= require wow
 //= require init
 //= require trumbowyg/trumbowyg
 //= require turbolinks
