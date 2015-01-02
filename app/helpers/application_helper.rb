@@ -44,4 +44,13 @@ module ApplicationHelper
   	return month
   end
 
+  # Returns "-" instead of the number zero
+  def not_zero(number)
+    if number == 0
+      return "-"
+    else 
+      return number
+    end
+  end
+
 end

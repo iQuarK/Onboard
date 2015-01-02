@@ -29,6 +29,28 @@
               </div>
             </header>
             <% end %>
+            <div class="stage-counter row">
+              <div class="col-1-5">
+                <p class="stage-count"><%= not_zero(job.applications.applied.count) %></p>
+                <p class="stage-name">Applied</p>
+              </div>
+              <div class="col-1-5">
+                <p class="stage-count"><%= not_zero(job.applications.rejected.count) %></p>
+                <p class="stage-name">Rejected</p>
+              </div>
+              <div class="col-1-5">
+                <p class="stage-count"><%= not_zero(job.applications.under_review.count) %></p>
+                <p class="stage-name">Review</p>
+              </div>
+              <div class="col-1-5">
+                <p class="stage-count"><%= not_zero(job.applications.interviewing.count) %></p>
+                <p class="stage-name">Interviewing</p>
+              </div>
+              <div class="col-1-5">
+                <p class="stage-count"><%= not_zero(job.applications.hired.count) %></p>
+                <p class="stage-name">Hired</p>
+              </div>
+            </div>
             <footer>
               <ul>
                 <li><%= link_to 'Manage', admin_job_url(job, subdomain: @company.subdomain) %></li>
