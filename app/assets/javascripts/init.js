@@ -19,6 +19,15 @@ $(document).ready(function() {
      });
   });
 
+   $('.trumbowyg-minimal').each(function() {
+     $(this).trumbowyg({
+      autoAjustHeight: true,
+      btns: [ 'bold', 'italic', 'underline',
+           '|', 'unorderedList', 'orderedList',
+           '|', 'link']
+     });
+  });
+
 
   // -------------------------------------------------------------------------
   // Activate WOW JS

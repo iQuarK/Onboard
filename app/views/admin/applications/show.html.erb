@@ -36,10 +36,10 @@
 					</ul>
 
 					<div id="tab-1" class="user-submitted">
-						Overview Page
+						<h2 class="page-header">Overview</h2>
 						<p><strong>Address:</strong> <%= @application.address %></p>
 						<p><strong>Phone:</strong> <%= @application.phone %></p>
-						<p><strong>Summary:</strong> <%= @application.summary %></p>
+						<p><strong>Summary:</strong> <%= @application.summary %></p>			
 
 					</div>
 
@@ -94,8 +94,28 @@
 
 		<div class="col-4-12">
       <div id="app-container">
-        <h2 class="page-header">Sidebar</h2>
-        <p>Do some stuff here</p>
+      	<section class="notes">
+
+		      <h2 class="page-header">Notes</h2>
+	        <% @application.notes.order("created_at desc").all.each do |note| %>
+						<div class="candidate-note">
+							<div class="note-content">
+								<%= note.content.html_safe %>
+							</div>
+							<div class="note-details">
+								<p class="note-by left">by <span><%= User.find(note.user_id).full_name %></span></p>
+								<p class="note-date right"><%= time_ago_in_words(note.created_at) %> ago</p>
+							</div>
+						</div>
+					<% end %>
+
+					<!-- NEW NOTE FORM -->
+					<%= form_for Note.new, url: admin_job_application_notes_url(@job, @application) do |f| %>
+						<%= f.text_area :content, rows: 4, class: 'trumbowyg-minimal' %>
+						<%= f.submit class: 'button-green' %>
+					<% end %>
+
+				</section>
       </div>
     </div>
 

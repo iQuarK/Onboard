@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :company_administrators
   has_many :companies, through: :company_administrators
   has_many :applications
+  has_many :notes
 
 
   # -------------------------------------------------------------------------------------------------------------------

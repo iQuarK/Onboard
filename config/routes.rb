@@ -46,11 +46,12 @@ Rails.application.routes.draw do
             patch 'interview'
             patch 'hire'
           end
+          resources :notes, only: [:create, :delete]
         end
       end
 
-      # Applications
-      resources :applications, only: [:show]
+      # Notes
+      
 
     end
 
