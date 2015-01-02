@@ -57,9 +57,6 @@
   }
 
   .dashboard-actions {
-    border-bottom: 2px dashed #dedede;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
 
     ul {
       margin: 0px;
@@ -71,11 +68,18 @@
       list-style-type: none;
       display: block;
       margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     a {
       width: 100%;
       display: block;
+    }
+
+    .strikethrough {
+      text-decoration: line-through;
     }
   }
 

@@ -90,12 +90,31 @@
           </ul>
         </div>
 
-        <div class="dashboard-actions">
-          Onboarding Checklist
-        </div>
+      </div>
+
+      <div id="app-container">
 
         <div class="dashboard-actions">
-          Plan / Subscription Information
+          <h2 class="page-header">Get Started</h2>
+          <ul>
+            <li>Upload your company logo</li>
+            <li>Update your company profile</li>
+            <li class="strikethrough">Post your first job</li>
+            <li>Invite team members</li>
+          </li>
+        </div>
+
+      </div>
+
+      <div id="app-container">
+
+        <div class="dashboard-actions">
+          <h2 class="page-header"><%= @company.plan %> Plan</h2>
+          <p>You're currently on the <%= @company.plan %> plan. You've got 5 days to upgrade. You're using the following:</p>
+          <ul>
+            <li><%= @company.jobs.count %> of 5 Jobs</li>
+            <li><%= @company.company_administrators.count %> of 5 Users</li>
+
         </div>
 
       </div>
