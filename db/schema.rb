@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150102095138) do
+=======
+ActiveRecord::Schema.define(version: 20150102153436) do
+>>>>>>> b1972f703665de767db215a3067196ccffbced57
 
   create_table "applications", force: true do |t|
     t.integer  "user_id"
@@ -38,6 +42,9 @@ ActiveRecord::Schema.define(version: 20150102095138) do
     t.string   "subdomain"
     t.string   "website"
     t.text     "benefits"
+    t.string   "plan"
+    t.string   "stripe_customer_id"
+    t.boolean  "is_account_current", default: false
   end
 
   add_index "companies", ["subdomain"], name: "index_companies_on_subdomain", unique: true, using: :btree
@@ -82,12 +89,12 @@ ActiveRecord::Schema.define(version: 20150102095138) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -101,8 +108,6 @@ ActiveRecord::Schema.define(version: 20150102095138) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "role"
-    t.string   "stripe_customer_id"
-    t.boolean  "is_account_current",     default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

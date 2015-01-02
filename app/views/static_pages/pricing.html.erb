@@ -11,28 +11,28 @@
       <h2 class="title">Basic</h2>
 
       <div class="price">
-        <span class="currency">&pound;</span>
-        <span class="amount">20</span>
+        <span class="currency">&dollar;</span>
+        <span class="amount"><%= Stripe::Plans['basic_monthly'].amount / 100 %></span>
         / month
       </div>
 
       <ul class="specification">
         <li>Unbranded</li>
-        <li>5<span>Job Postings</span></li>
+        <li>2<span>Job Postings</span></li>
         <li>1<span>Admin</span></li>
       </ul>
 
-      <%= link_to 'Sign Up', register_path, class: 'button' %>
+      <%= link_to 'Sign Up', register_path, class: 'button-blue' %>
 
     </div>
 
     <div class="plan popular">
 
-      <h2 class="title">Small Business</h2>
+      <h2 class="title">Professional</h2>
 
       <div class="price">
-        <span class="currency">&pound;</span>
-        <span class="amount">100</span>
+        <span class="currency">&dollar;</span>
+        <span class="amount"><%= Stripe::Plans['professional_monthly'].amount / 100 %></span>
         / month
       </div>
 
@@ -40,11 +40,11 @@
 
       <ul class="specification">
         <li>White Labelled</li>
-        <li>20<span>Job Postings</span></li>
+        <li>10<span>Job Postings</span></li>
         <li>5<span>Admins</span></li>
       </ul>
 
-      <%= link_to 'Sign Up', register_path, class: 'button' %>
+      <%= link_to 'Sign Up', register_path, class: 'button-green' %>
 
     </div>
 
@@ -53,8 +53,8 @@
       <h2 class="title">Enterprise</h2>
 
       <div class="price">
-        <span class="currency">&pound;</span>
-        <span class="amount">500</span>
+        <span class="currency">&dollar;</span>
+        <span class="amount"><%= Stripe::Plans['enterprise_monthly'].amount / 100 %></span>
         / month
       </div>
 
@@ -65,7 +65,7 @@
         <li>24hr<span>Telephone Support</span></li>
       </ul>
 
-      <%= link_to 'Sign Up', register_path, class: 'button' %>
+      <%= link_to 'Sign Up', register_path, class: 'button-blue' %>
 
     </div>
 
