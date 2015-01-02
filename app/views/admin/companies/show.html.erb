@@ -56,7 +56,13 @@
                 <li><%= link_to 'Manage', admin_job_url(job, subdomain: @company.subdomain) %></li>
                 <li><%= link_to 'Edit', edit_admin_job_url(job, subdomain: @company.subdomain) %></li>
                 <li><%= link_to 'View', job_url(job, subdomain: @company.subdomain) %></li>
-                <li class="right time-count">Last application received: <%= time_ago_in_words(job.applications.last.created_at) %> ago</li>
+                <li class="right time-count">
+                  <% if job.applications.count > 0 %>
+                    Last application received: <%= time_ago_in_words(job.applications.last.created_at) %> ago
+                  <% else %>
+                    No applications yet
+                  <% end %>
+                </li>
               </ul>
             </footer>
           </div>
