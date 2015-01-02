@@ -3,9 +3,9 @@
 <head>
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stripe_javascript_tag %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%= stripe_javascript_tag %>
 
   <!-- Gotham -->
   <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7476132/786046/css/fonts.css" />

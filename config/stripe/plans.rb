@@ -1,7 +1,37 @@
-Stripe.plan :basic do |plan|
-  plan.name = 'Basic'
+Stripe.plan :basic_monthly do |plan|
+  plan.name = 'Pinpoint Basic Monthly Plan'
+  plan.amount = 2900 # $29
+  plan.interval = 'month'
+end
+
+Stripe.plan :basic_yearly do |plan|
+  plan.name = 'Pinpoint Basic Annual Plan'
+  plan.amount = 29000 # $290
+  plan.interval = 'year'
+end
+
+Stripe.plan :professional_monthly do |plan|
+  plan.name = 'Pinpoint Professional Monthly Plan'
   plan.amount = 9900 # $99
   plan.interval = 'month'
+end
+
+Stripe.plan :professional_yearly do |plan|
+  plan.name = 'Pinpoint Professional Annual Plan'
+  plan.amount = 99000 # $990
+  plan.interval = 'year'
+end
+
+Stripe.plan :enterprise_monthly do |plan|
+  plan.name = 'Pinpoint Enterprise Monthly Plan'
+  plan.amount = 49900 # $499
+  plan.interval = 'month'
+end
+
+Stripe.plan :enterprise_yearly do |plan|
+  plan.name = 'Pinpoint Enterprise Annual Plan'
+  plan.amount = 499000 # $4,990
+  plan.interval = 'year'
 end
 
 # This file contains descriptions of all your stripe plans
