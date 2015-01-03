@@ -64,7 +64,7 @@ gem 'postmark-rails'
 
 # For roles
 gem "cancan"
-gem "rolify"
+# gem "rolify"
 
 # For payment processing
 gem "stripe-rails"
