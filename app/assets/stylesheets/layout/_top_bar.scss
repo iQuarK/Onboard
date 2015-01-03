@@ -2,7 +2,6 @@
   Header Styles
 -------------------------------------------------- */
 .top-bar {
-
   background: #4D9DE0;
   height: $top-bar-height;
   box-shadow: 0 0 5px 0 #ccc;
@@ -37,12 +36,12 @@
 
   li {
     margin-left: 30px;
+    line-height: 40px;
   }
 
   a {
     text-transform: uppercase;
     @include font-size(14);
-    line-height: 40px;
     letter-spacing: 1.5px;
     text-rendering: optimizeLegibility;
     color: #FFF;
