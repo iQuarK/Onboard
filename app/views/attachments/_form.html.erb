@@ -1,0 +1,14 @@
+<%= form_for [@attachable, @attachment],  html: { multipart: true } do |f| %>
+  <%= f.label "attachment", "Click to select files or alternatively drag and drop", class: "attachment-label", id: "attachment_label" %>
+  <%= f.file_field "attachment", multiple: true, name: 'attachment[attachment]', class: "attachment-field" %>
+
+<% end %>
+
+<script id="template-upload" type="text/x-tmpl">
+<div class="upload">
+  {%=o.name%}
+  <div class="progress">
+    <div class="bar" style="width: 0%"></div>
+  </div>
+</div>
+</script>

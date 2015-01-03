@@ -22,7 +22,7 @@
     <div class="intro">
       <h4>Apply for <%= @job.title %></h4>
     </div>
-    <%= form_for @application, url: apply_job_url(@job) do |f| %>
+    <%= form_for @application, url: apply_job_url(@job), html: { multipart: true } do |f| %>
 
       <%= render 'shared/error_list', model: @application %>
 
@@ -50,6 +50,19 @@
         <%= f.label :summary %>
         <%= f.text_area :summary, rows: 5 %>
       </div>
+
+      <div class="field-row">
+        <%= f.label :resume %>
+        <%= f.file_field :resume %>
+        <%= f.hidden_field :resume_cache %>
+      </div>
+
+      <%= f.fields_for :attachments do |a| %>
+        <div class="field-row">
+          <%= a.label :attachment %>
+          <%= a.file_field :attachment, multiple: true, name: 'attachments[attachment][]' %>
+        </div>
+      <% end %>
 
       <div class="action">
         <%= f.submit 'Apply', class: "button-green" %>

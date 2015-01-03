@@ -10,6 +10,9 @@ class ApplicationsController < ApplicationController
   def new
     @application = Application.new
 
+    # @attachable = @application
+    @attachments = @application.attachments.build
+
     # If they authenticate with LinkedIn, we need to know what Job to link take them back to
     session[:job_id] = @job.id
 
@@ -104,6 +107,12 @@ class ApplicationsController < ApplicationController
     end
 
     if @application.save
+
+      # Due to multiple file select field, we need this to be able to save multiple attachments
+      params[:attachments]['attachment'].each do |attachment|
+        @attachment = @application.attachments.create(attachment: attachment)
+      end
+
       redirect_to root_url(subdomain: @company.subdomain), notice: 'Thanks for your application. Someone will be in touch with you shortly'
     else
       render 'new'
@@ -125,7 +134,16 @@ class ApplicationsController < ApplicationController
   end
 
   def application_params
-    params.require(:application).permit(:name, :email, :phone, :address, :summary)
+    params.require(:application).permit(
+      :name,
+      :email,
+      :phone,
+      :address,
+      :summary,
+      :resume,
+      :resume_cache,
+      attachments_attributes: [:attachment]
+    )
   end
 
 

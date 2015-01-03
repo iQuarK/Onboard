@@ -39,8 +39,25 @@
 						<h2 class="page-header">Overview</h2>
 						<p><strong>Address:</strong> <%= @application.address %></p>
 						<p><strong>Phone:</strong> <%= @application.phone %></p>
-						<p><strong>Summary:</strong> <%= @application.summary %></p>			
+						<p><strong>Summary:</strong> <%= @application.summary %></p>
 
+						<h2>Resume</h2>
+						<% if @application.resume.present? %>
+							<%= link_to 'Download Resume', @application.resume.url %>
+						<% else %>
+							<p>There is no resume</p>
+						<% end %>
+
+						<h2>Attachments</h2>
+						<% if @application.attachments.any? %>
+							<ul>
+								<% @application.attachments.each do |a| %>
+									<li><%= link_to a.attachment.file.filename, a.attachment.url %></li>
+								<% end %>
+							</ul>
+						<% else %>
+							<p>There are no attachments</p>
+						<% end %>
 					</div>
 
 					<!-- LINKEDIN -->

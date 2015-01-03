@@ -1,0 +1,17 @@
+<% provide(:title, "New #{@attachable.class.name.titleize} Attachment") %>
+
+<div class="content-wrap group">
+
+  <h2>Add Attachments</h2>
+
+  <%= render 'form' %>
+
+  <p>Uploaded Files</p>
+
+  <ul class="sortable-list uploaded-files" id="uploaded-attachments-level-0" data-level="0">
+    <% @attachments.each do |attachment| %>
+      <%= render 'attachments/attachment', attachment: attachment %>
+    <% end %>
+  </ul>
+
+</div>

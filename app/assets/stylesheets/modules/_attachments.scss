@@ -1,0 +1,53 @@
+//-------------------------------------------------------------------------------------------------------------------
+// New attachment drag and drop zone
+//-------------------------------------------------------------------------------------------------------------------
+.attachment-label {
+  display: block;
+  color: $charcoal;
+  width: 100%;
+  height: 60px;
+  @include font-size(16);
+  line-height: 60px;
+  border: 2px dashed $silver;
+  text-align: center;
+  cursor: pointer;
+  margin: 20px 0;
+  &:before {
+    content: asset-url('icons/upload.svg') no-repeat;
+    margin-right: 10px;
+  }
+}
+
+// Hiding this file input and instead using the label above to style the drag and drop area
+.attachment-field {
+  display: none;
+}
+
+//-------------------------------------------------------------------------------------------------------------------
+// List of uploads below drag and drop zone
+//-------------------------------------------------------------------------------------------------------------------
+.uploaded-files {
+  padding: 10px;
+  border-bottom: 1px solid $smoke;
+  background: $smoke;
+  min-height: 40px;
+  margin-bottom: 50px;
+}
+
+//-------------------------------------------------------------------------------------------------------------------
+// Progress bar for uploads that appears between the two
+//-------------------------------------------------------------------------------------------------------------------
+.upload {
+  margin: 20px 0;
+}
+.progress {
+  margin: 5px 0;
+  background-color: $grey;
+  @include border-radius(16px);
+  height: 8px;
+}
+.bar {
+  background-color: $blue;
+  height: 100%;
+  @include border-radius(16px);
+}

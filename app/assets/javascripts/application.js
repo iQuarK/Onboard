@@ -14,8 +14,12 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui/tabs
+//= require jquery-fileupload/basic
 //= require wow
-//= require init
 //= require trumbowyg/trumbowyg
+
+//= require init
+//= require attachments
+
 //= require turbolinks
 
