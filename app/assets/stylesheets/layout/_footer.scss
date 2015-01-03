@@ -11,3 +11,73 @@
 		text-decoration-color: #ddd;
 	}
 }
+
+
+.trial-hero {
+  background-color: $blue;
+  padding: 20px;
+  text-align: center;
+
+  .content-wrapper {
+  	width: 1100px;
+  	margin: 0 auto;
+  }
+
+  p {
+    color: #fff;
+    @include font-size(18);
+  }
+
+  a {
+  	margin-left: 30px;
+  }
+}
+
+.marketing-footer {
+	background-color: #212B3A;
+	padding: 15px 0px;
+
+	.trial-hero {
+		background-color: $blue;
+		color: white;
+	}
+
+	.footer-logo {
+		text-align: center;
+	}
+
+	.footer-social {
+		text-align: right;
+		margin-right: 20px;
+	}
+
+	ul {
+		list-style-type: none;
+	}
+
+	li {
+		list-style-type: none;
+		display: inline-block;
+		@include font-size(12);
+		text-transform: uppercase;
+		margin-right: 20px;
+
+		a {
+			color: #6E7681;
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+
+	.logo {
+    @include font-size(28);
+    line-height: 50px;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+    color: #FFF;
+    font-variant: small-caps;
+    text-align: center;
+  }
+
+}
