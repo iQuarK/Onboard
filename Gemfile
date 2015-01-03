@@ -78,3 +78,5 @@ gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave'
 
 # Jquery file upload
 gem 'jquery-fileupload-rails'
+
+gem 'cocoon'

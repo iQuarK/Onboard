@@ -17,6 +17,7 @@
 //= require jquery-fileupload/basic
 //= require wow
 //= require trumbowyg/trumbowyg
+//= require cocoon
 
 //= require init
 //= require attachments
