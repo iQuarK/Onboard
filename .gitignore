@@ -17,3 +17,6 @@
 
 # All the secrets
 config/secrets.yml
+
+# Uploads
+public/uploads

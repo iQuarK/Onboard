@@ -72,3 +72,9 @@ gem "stripe-rails"
 
 # Trumbowyg WYSIWYG Editor
 gem 'trumbowyg_rails'
+
+# Uploads
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave'
+
+# Jquery file upload
+gem 'jquery-fileupload-rails'

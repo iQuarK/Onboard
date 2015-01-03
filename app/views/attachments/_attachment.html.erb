@@ -1,0 +1,5 @@
+<li id="<%= dom_id(attachment) %>" class="<%= file_type(attachment.attachment_file_name) %>" data-id="<%= attachment.id %>">
+  <span></span>
+  <%= link_to attachment.attachment_file_name, attachment.attachment.url %>
+  <%= link_to '', attachment, method: :delete, class: "button-icon button-delete", remote: true, data: { confirm: "Are you sure you want to delete #{attachment.attachment_file_name}?" } %>
+</li>
