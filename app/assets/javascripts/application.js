@@ -15,12 +15,14 @@
 //= require jquery_ujs
 //= require jquery-ui/tabs
 //= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require wow
 //= require trumbowyg/trumbowyg
 //= require cocoon
 
 //= require init
 //= require attachments
+//= require payments
 
 //= require turbolinks
 

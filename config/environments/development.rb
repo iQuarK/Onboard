@@ -44,5 +44,7 @@ Rails.application.configure do
   # Using lvh.me to point to localhost for dev
   config.session_store :cookie_store, key: '_pinpoint_session', domain: '.lvh.me'
 
+  # Stripe debugging
+  config.stripe.debug_js = false
 
 end

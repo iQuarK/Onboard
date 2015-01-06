@@ -7,6 +7,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= stripe_javascript_tag %>
+  <%#= tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_publishable_key %>
   <%= favicon_link_tag 'favicon.ico' %>
 
 

@@ -1,0 +1,55 @@
+<div class="sub-header">
+
+  <div class="content-wrapper">
+    <%= link_to "#{@company.name}", admin_path %> &rarr; <span>Subscriptions</span>
+  </div>
+
+</div>
+
+<div class="content-wrapper">
+
+  <%= render 'shared/flash_message' %>
+
+  <%= form_for @company, url: admin_subscription_url(subdomain: @company.subdomain), html: { id: 'card-details-form' } do |f| %>
+
+    <%= render 'shared/error_list', model: @company %>
+
+    <% if @company.stripe_card_token %>
+
+      <p>Credit card acceptance is pending.</p>
+
+    <% else %>
+
+      <div class="field-row">
+        <%= label_tag :card_number, "Credit Card Number" %>
+        <%= text_field_tag :card_number, nil, name: nil %>
+      </div>
+
+      <div class="field-row">
+        <%= label_tag :card_code, "Card Security Code (CVV)" %>
+        <%= text_field_tag :card_code, nil, name: nil %>
+      </div>
+
+      <div class="field-row">
+        <%= label_tag :card_month, "Card Expiration" %>
+        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+      </div>
+
+      <div class="field-row">
+        <%= f.select :plan_id, options_for_select([['Basic','basic_monthly']]) %>
+      </div>
+
+    <% end %>
+
+    <%= f.hidden_field :stripe_card_token %>
+
+    <div id="stripe-error" class="alert alert-error" style="display:none">
+      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+    </div>
+
+    <%= f.submit 'Update Payment Information' %>
+
+  <% end %>
+
+</div>

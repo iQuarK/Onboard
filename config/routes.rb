@@ -37,6 +37,10 @@ Rails.application.routes.draw do
       patch '/', to: 'companies#update'
       delete '/', to: 'companies#delete'
 
+      # Subscriptions
+      get 'subscription', to: 'companies#subscription'
+      patch 'subscription', to: 'companies#manage_subscription'
+
       # Jobs
       resources :jobs, except: [:index] do
         resources :applications, only: [:show] do
@@ -46,10 +50,7 @@ Rails.application.routes.draw do
             patch 'interview'
             patch 'hire'
           end
-          # resources :attachments, only: [:create]
-          resources :notes, only: [:create, :delete] do
-            # resources :attachments, only: [:create]
-          end
+          resources :notes, only: [:create, :delete]
         end
       end
 
