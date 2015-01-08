@@ -10,7 +10,33 @@
 
   <%= render 'shared/flash_message' %>
 
-  <%= form_for @company, url: admin_subscription_url(subdomain: @company.subdomain), html: { id: 'card-details-form' } do |f| %>
+  <h2>Subscription Status</h2>
+
+  <h3>Plan</h3>
+  <p><%= @company.plan_id %></p>
+
+  <h3>Update Plan</h3>
+  <%= form_for @company, url: admin_subscription_plan_url(subdomain: @company.subdomain) do |f| %>
+
+    <%= render 'shared/error_list', model: @company %>
+
+    <div class="field-row">
+      <%= f.select :plan_id, options_for_select([['Basic Monthly','basic_monthly'],['Basic Yearly','basic_yearly']]) %>
+    </div>
+
+    <%= f.submit 'Update Plan' %>
+
+  <% end %>
+
+  <h3>Payment Details</h3>
+  <p>Card: XXXX-XXXX-XXXX-last4</p>
+  <p>Last Payment:</p>
+  <p>Next Payment:</p>
+  <p>Amount</p>
+
+  <h3>Update Payment Details</h3>
+
+  <%= form_for @company, url: admin_subscription_billing_url(subdomain: @company.subdomain), html: { id: 'card-details-form' } do |f| %>
 
     <%= render 'shared/error_list', model: @company %>
 
@@ -37,7 +63,7 @@
       </div>
 
       <div class="field-row">
-        <%= f.select :plan_id, options_for_select([['Basic','basic_monthly']]) %>
+        <%= f.select :plan_id, options_for_select([['Basic Monthly','basic_monthly'],['Basic Yearly','basic_yearly']]) %>
       </div>
 
     <% end %>

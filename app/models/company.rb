@@ -58,16 +58,21 @@ class Company < ActiveRecord::Base
     self.jobs.any?
   end
 
-  # Used when updating Stripe subscription
+  # -------------------------------------------------------------------------------------------------------------------
+  # Create or Update Stripe subscription
+  # -------------------------------------------------------------------------------------------------------------------
   def save_with_payment(email)
     if valid?
       if stripe_customer_id.nil? # New to stripe
-        # if stripe_card_token.blank?
-        #   raise "Stripe token not present. Can't create account."
-        # end
-        customer = Stripe::Customer.create(email: email, description: name, plan: plan_id, card: stripe_card_token)
-        self.stripe_customer_token = customer.id
-        save!
+        if stripe_card_token.blank?
+          raise "Stripe token not present. Can't create account."
+        end
+        customer = Stripe::Customer.create(
+          email: email,
+          description: name,
+          plan: plan_id,
+          card: stripe_card_token
+        )
       else
         customer = Stripe::Customer.retrieve(stripe_customer_id)
         if stripe_card_token.present?
@@ -77,6 +82,10 @@ class Company < ActiveRecord::Base
         customer.description = name
         customer.save
       end
+      self.stripe_customer_id = customer.id
+      # self.last_4_digits = customer.cards.data.first["last4"]
+      save!
+      self.stripe_card_token = nil
     end
   rescue Stripe::StripeError => e
     logger.error "Stripe Error: " + e.message
@@ -85,38 +94,26 @@ class Company < ActiveRecord::Base
     false
   end
 
-  # def update_stripe(email)
-  #   # return if email.include?(ENV['ADMIN_EMAIL'])
-  #   # return if email.include?('@example.com') and not Rails.env.production?
-  #   if stripe_customer_id.nil?
-  #     if !stripe_token.present?
-  #       raise "Stripe token not present. Can't create account."
-  #     end
-  #     customer = Stripe::Customer.create(
-  #       :email => email,
-  #       :description => name,
-  #       :card => stripe_token,
-  #       :plan => roles.first.name
-  #     )
-  #   else
-  #     customer = Stripe::Customer.retrieve(stripe_customer_id)
-  #     if stripe_token.present?
-  #       customer.card = stripe_token
-  #     end
-  #     customer.email = email
-  #     customer.description = name
-  #     customer.save
-  #   end
-  #   # self.last_4_digits = customer.cards.data.first["last4"]
-  #   self.stripe_customer_id = customer.id
-  #   self.stripe_token = nil
-  # rescue Stripe::StripeError => e
-  #   logger.error "Stripe Error: " + e.message
-  #   errors.add :base, "#{e.message}."
-  #   self.stripe_token = nil
-  #   false
-  # end
-
+  # -------------------------------------------------------------------------------------------------------------------
+  # Update plan in stripe then if all good update it in the database
+  # -------------------------------------------------------------------------------------------------------------------
+  def update_plan(new_plan_id)
+    if stripe_customer_id.nil?
+      errors.add :base, "Unable to update your plan as there is no existing subscription"
+      false
+    else
+      customer = Stripe::Customer.retrieve(stripe_customer_id)
+      customer.plan = new_plan_id
+      customer.save
+      self.plan_id = new_plan_id
+      save!
+      true
+    end
+  rescue Stripe::StripeError => e
+    logger.error "Stripe Error: " + e.message
+    errors.add :base, "Unable to update your plan. #{e.message}."
+    false
+  end
 
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -125,7 +122,7 @@ class Company < ActiveRecord::Base
   private
 
   def set_plan
-    self.plan ||= 'trial'
+    self.plan_id ||= 'trial'
   end
 
 end
