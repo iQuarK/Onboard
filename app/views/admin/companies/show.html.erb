@@ -81,11 +81,11 @@
 
         <div class="dashboard-actions">
           <ul>
-            <li><%= link_to 'View Company Page', root_url(subdomain: @company.subdomain), 
-                    class: 'button-yellow' %></li> 
-            <li><%= link_to 'Edit Company', admin_edit_url(subdomain: @company.subdomain), 
+            <li><%= link_to 'View Company Page', root_url(subdomain: @company.subdomain),
+                    class: 'button-yellow' %></li>
+            <li><%= link_to 'Edit Company', admin_edit_url(subdomain: @company.subdomain),
                     class: 'button-green' %></li>
-            <li><%= link_to 'Create new job', new_admin_job_url(subdomain: @company.subdomain), 
+            <li><%= link_to 'Create new job', new_admin_job_url(subdomain: @company.subdomain),
                     class: 'button-blue' %></li>
           </ul>
         </div>
@@ -109,8 +109,8 @@
       <div id="app-container">
 
         <div class="dashboard-actions">
-          <h2 class="page-header"><%= @company.plan %> Plan</h2>
-          <p>You're currently on the <%= @company.plan %> plan. You've got 5 days to upgrade. You're using the following:</p>
+          <h2 class="page-header"><%= @company.plan_id %> Plan</h2>
+          <p>You're currently on the <%= @company.plan_id %> plan. You've got 5 days to upgrade. You're using the following:</p>
           <ul>
             <li><%= @company.jobs.count %> of 5 Jobs</li>
             <li><%= @company.company_administrators.count %> of 5 Users</li>
