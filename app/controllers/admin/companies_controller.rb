@@ -44,14 +44,32 @@ module Admin
     end
 
     # -------------------------------------------------------------------------------------------------------------------
-    # POST :subdomain.pinpoint.hr/admin/subscription
+    # PATCH :subdomain.pinpoint.hr/admin/subscription/billing
     # -------------------------------------------------------------------------------------------------------------------
     def manage_subscription
+
+      @company.stripe_card_token = company_params[:stripe_card_token]
+      @company.plan_id = company_params[:plan_id]
+
       if @company.save_with_payment(current_user.email)
-        redirect_to admin_subscription_url(subdomain: @company.subdomain), :notice => "Thank you for subscribing!"
+        redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: "Thank you for subscribing!"
       else
         render :subscription
       end
+
+    end
+
+    # -------------------------------------------------------------------------------------------------------------------
+    # PATCH :subdomain.pinpoint.hr/admin/subscription/plan
+    # -------------------------------------------------------------------------------------------------------------------
+    def update_plan
+
+      if @company.update_plan(company_params[:plan_id])
+        redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: 'Updated plan.'
+      else
+        render :subscription
+      end
+
     end
 
     # -------------------------------------------------------------------------------------------------------------------

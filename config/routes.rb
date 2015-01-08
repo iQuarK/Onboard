@@ -39,7 +39,8 @@ Rails.application.routes.draw do
 
       # Subscriptions
       get 'subscription', to: 'companies#subscription'
-      patch 'subscription', to: 'companies#manage_subscription'
+      patch 'subscription/billing', to: 'companies#manage_subscription'
+      patch 'subscription/plan', to: 'companies#update_plan'
 
       # Jobs
       resources :jobs, except: [:index] do
