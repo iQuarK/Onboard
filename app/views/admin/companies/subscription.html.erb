@@ -1,81 +1,101 @@
 <div class="sub-header">
 
   <div class="content-wrapper">
-    <%= link_to "#{@company.name}", admin_path %> &rarr; <span>Subscriptions</span>
+    <%= link_to "#{@company.name}", admin_path %> &rarr; Account Management &rarr; <span>Subscription</span>
   </div>
 
 </div>
 
 <div class="content-wrapper">
 
-  <%= render 'shared/flash_message' %>
+  <div class="row">
 
-  <h2>Subscription Status</h2>
+    <div class="col-8-12">
 
-  <h3>Plan</h3>
-  <p><%= @company.plan_id %></p>
+      <div id="app-container">
 
-  <h3>Update Plan</h3>
-  <%= form_for @company, url: admin_subscription_plan_url(subdomain: @company.subdomain) do |f| %>
+        <%= render 'shared/flash_message' %>
 
-    <%= render 'shared/error_list', model: @company %>
+        <h2 class="page-header">Your Subscription Status</h2>
+        <p>You're currently on the <strong><%= @company.plan_id %> monthly plan</strong>, paying &dollar;99 per month.</p>
+        <p>Your next payment date is the <strong>14th February 2015</strong>.
 
-    <div class="field-row">
-      <%= f.select :plan_id, options_for_select([['Basic Monthly','basic_monthly'],['Basic Yearly','basic_yearly']]) %>
-    </div>
+        <h3>Update Plan</h3>
+        <div class="subscription-container">
+          <div class="subscription-choice">
+            <p>Downgrade</p>
+            <p class="plan-title">Basic</p>
+            <p>&dollar;29 per month</p>
+            <a class="button-blue">Switch to Basic</a>
+          </div>
+          <div class="subscription-choice">
+            <p>Upgrade</p>
+            <p class="plan-title">Enterprise</p>
+            <p>&dollar;499 per month</p>
+            <a class="button-blue">Switch to Enterprise</a>
+          </div>
+        </div>
 
-    <%= f.submit 'Update Plan' %>
+        <%= form_for @company, url: admin_subscription_plan_url(subdomain: @company.subdomain) do |f| %>
 
-  <% end %>
+          <%= render 'shared/error_list', model: @company %>
 
-  <h3>Payment Details</h3>
-  <p>Card: XXXX-XXXX-XXXX-last4</p>
-  <p>Last Payment:</p>
-  <p>Next Payment:</p>
-  <p>Amount</p>
+          <div class="field-row">
+            <%= f.select :plan_id, options_for_select([['Basic Monthly','basic_monthly'],['Basic Yearly','basic_yearly']]) %>
+          </div>
 
-  <h3>Update Payment Details</h3>
+          <%= f.submit 'Update Plan', class: "button-green" %>
 
-  <%= form_for @company, url: admin_subscription_billing_url(subdomain: @company.subdomain), html: { id: 'card-details-form' } do |f| %>
+        <% end %>
 
-    <%= render 'shared/error_list', model: @company %>
+        <h3>Payment Details</h3>
+        <p>Card: XXXX-XXXX-XXXX-last4</p>
+        <p>Last Payment:</p>
+        <p>Next Payment:</p>
+        <p>Amount</p>
 
-    <% if @company.stripe_card_token %>
+        <h3>Update Payment Details</h3>
 
-      <p>Credit card acceptance is pending.</p>
+        <%= form_for @company, url: admin_subscription_billing_url(subdomain: @company.subdomain), html: { id: 'card-details-form' } do |f| %>
 
-    <% else %>
+          <%= render 'shared/error_list', model: @company %>
 
-      <div class="field-row">
-        <%= label_tag :card_number, "Credit Card Number" %>
-        <%= text_field_tag :card_number, nil, name: nil %>
+          <% if @company.stripe_card_token %>
+
+            <p>Credit card acceptance is pending.</p>
+
+          <% else %>
+
+            <div class="field-row">
+              <%= label_tag :card_number, "Credit Card Number" %>
+              <%= text_field_tag :card_number, nil, name: nil %>
+            </div>
+
+            <div class="field-row">
+              <%= label_tag :card_code, "Card Security Code (CVV)" %>
+              <%= text_field_tag :card_code, nil, name: nil %>
+            </div>
+
+            <div class="field-row">
+              <%= label_tag :card_month, "Card Expiration" %>
+              <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
+              <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+            </div>
+
+            <div class="field-row">
+              <%= f.select :plan_id, options_for_select([['Basic Monthly','basic_monthly'],['Basic Yearly','basic_yearly']]) %>
+            </div>
+
+          <% end %>
+
+          <%= f.hidden_field :stripe_card_token %>
+
+          <div id="stripe-error" class="alert alert-error" style="display:none">
+            <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+          </div>
+
+          <%= f.submit 'Update Payment Information', class: "button-green" %>
+
+        <% end %>
+
       </div>
-
-      <div class="field-row">
-        <%= label_tag :card_code, "Card Security Code (CVV)" %>
-        <%= text_field_tag :card_code, nil, name: nil %>
-      </div>
-
-      <div class="field-row">
-        <%= label_tag :card_month, "Card Expiration" %>
-        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
-        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
-      </div>
-
-      <div class="field-row">
-        <%= f.select :plan_id, options_for_select([['Basic Monthly','basic_monthly'],['Basic Yearly','basic_yearly']]) %>
-      </div>
-
-    <% end %>
-
-    <%= f.hidden_field :stripe_card_token %>
-
-    <div id="stripe-error" class="alert alert-error" style="display:none">
-      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-    </div>
-
-    <%= f.submit 'Update Payment Information' %>
-
-  <% end %>
-
-</div>

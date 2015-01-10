@@ -1,0 +1,29 @@
+.subscription-container {
+	@extend .group;
+	margin-bottom: 30px;
+}
+
+.subscription-choice {
+	display: block;
+	background: #EFF0F1;
+	border-radius: 4px;
+	width: 343px;
+	float: left;
+	margin-right: 30px;
+	padding: 30px;
+	text-align: center;
+	&:last-child {
+		margin-right: 0;
+	}
+
+	.plan-title {
+		@include font-size(24);
+		font-weight: 500;
+		letter-spacing: -1px;
+		margin: 0;
+	}
+
+	a {
+		margin: 0 auto;
+	}
+}
