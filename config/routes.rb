@@ -37,10 +37,16 @@ Rails.application.routes.draw do
       patch '/', to: 'companies#update'
       delete '/', to: 'companies#delete'
 
-      # Subscriptions
-      get 'subscription', to: 'companies#subscription'
-      patch 'subscription/billing', to: 'companies#manage_subscription'
-      patch 'subscription/plan', to: 'companies#update_plan'
+      # Settings
+      namespace 'settings' do
+
+        # Subscriptions
+        get 'subscription', to: 'companies#subscription'
+        patch 'subscription/billing', to: 'companies#manage_subscription'
+        patch 'subscription/plan', to: 'companies#update_plan'
+        patch 'subscription/cancel', to: 'companies#cancel'
+
+      end
 
       # Jobs
       resources :jobs, except: [:index] do

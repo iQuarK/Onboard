@@ -63,15 +63,17 @@ class Company < ActiveRecord::Base
   # -------------------------------------------------------------------------------------------------------------------
   def save_with_payment(email)
     if valid?
-      if stripe_customer_id.nil? # New to stripe
+      if stripe_customer_id.blank? # New to stripe
         if stripe_card_token.blank?
           raise "Stripe token not present. Can't create account."
         end
+        trial_end_timestamp = (created_at + 2.week).to_i
         customer = Stripe::Customer.create(
           email: email,
           description: name,
           plan: plan_id,
-          card: stripe_card_token
+          card: stripe_card_token,
+          trial_end: trial_end_timestamp
         )
       else
         customer = Stripe::Customer.retrieve(stripe_customer_id)

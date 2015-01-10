@@ -37,14 +37,14 @@ module Admin
     end
 
     # -------------------------------------------------------------------------------------------------------------------
-    # GET :subdomain.pinpoint.hr/admin/subscription
+    # GET :subdomain.pinpoint.hr/admin/settings/subscription
     # -------------------------------------------------------------------------------------------------------------------
     def subscription
 
     end
 
     # -------------------------------------------------------------------------------------------------------------------
-    # PATCH :subdomain.pinpoint.hr/admin/subscription/billing
+    # PATCH :subdomain.pinpoint.hr/admin/settings/subscription/billing
     # -------------------------------------------------------------------------------------------------------------------
     def manage_subscription
 
@@ -60,12 +60,25 @@ module Admin
     end
 
     # -------------------------------------------------------------------------------------------------------------------
-    # PATCH :subdomain.pinpoint.hr/admin/subscription/plan
+    # PATCH :subdomain.pinpoint.hr/admin/settings/subscription/plan
     # -------------------------------------------------------------------------------------------------------------------
     def update_plan
 
       if @company.update_plan(company_params[:plan_id])
         redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: 'Updated plan.'
+      else
+        render :subscription
+      end
+
+    end
+
+    # -------------------------------------------------------------------------------------------------------------------
+    # PATCH :subdomain.pinpoint.hr/admin/settings/subscription/cancel
+    # -------------------------------------------------------------------------------------------------------------------
+    def cancel
+
+      if @company.cancel_subscription(current_user.email)
+        redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: "Thank you for subscribing!"
       else
         render :subscription
       end
