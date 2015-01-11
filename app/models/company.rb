@@ -3,7 +3,7 @@ class Company < ActiveRecord::Base
   # -------------------------------------------------------------------------------------------------------------------
   # Attributes
   # -------------------------------------------------------------------------------------------------------------------
-  attr_accessor :stripe_card_token
+  attr_accessor :stripe_card_token, :next_invoice
 
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -95,14 +95,15 @@ class Company < ActiveRecord::Base
       else
         customer = Stripe::Customer.retrieve(stripe_customer_id)
         if stripe_card_token.present?
-          customer.card = stripe_token
+          customer.card = stripe_card_token
         end
         customer.email = email
         customer.description = name
         customer.save
       end
       self.stripe_customer_id = customer.id
-      # self.last_4_digits = customer.cards.data.first["last4"]
+      self.stripe_card_brand = customer.cards.data.first["brand"]
+      self.stripe_card_last_4 = customer.cards.data.first["last4"]
       save!
       self.stripe_card_token = nil
     end
@@ -131,6 +132,22 @@ class Company < ActiveRecord::Base
   rescue Stripe::StripeError => e
     logger.error "Stripe Error: " + e.message
     errors.add :base, "Unable to update your plan. #{e.message}."
+    false
+  end
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # Retrieves next invoice from Stripe
+  # -------------------------------------------------------------------------------------------------------------------
+  def next_invoice?
+    if stripe_customer_id.nil?
+      errors.add :base, "Unable to find next invoice as there is no existing subscription"
+      false
+    else
+      self.next_invoice = Stripe::Invoice.upcoming(customer: stripe_customer_id)
+    end
+  rescue Stripe::StripeError => e
+    logger.error "Stripe Error: " + e.message
+    errors.add :base, "Unable to find next invoice. #{e.message}."
     false
   end
 

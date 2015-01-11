@@ -18,7 +18,7 @@ module ApplicationHelper
   			month = "January"
   		when 2
   			month = "February"
-  		when 3 
+  		when 3
   			month = "March"
   		when 4
   			month = "April"
@@ -48,9 +48,13 @@ module ApplicationHelper
   def not_zero(number)
     if number == 0
       return "-"
-    else 
+    else
       return number
     end
+  end
+
+  def format_date(date)
+    date.strftime("#{date.day.ordinalize} of %B %Y")
   end
 
 end

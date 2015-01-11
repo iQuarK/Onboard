@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110232932) do
+ActiveRecord::Schema.define(version: 20150111165812) do
 
   create_table "applications", force: true do |t|
     t.integer  "user_id"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20150110232932) do
     t.text     "benefits"
     t.string   "plan_id"
     t.string   "stripe_customer_id"
+    t.string   "stripe_card_brand"
+    t.string   "stripe_card_last_4"
     t.boolean  "expired",            default: false
   end
 

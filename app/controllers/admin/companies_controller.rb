@@ -49,7 +49,11 @@ module Admin
     def manage_subscription
 
       @company.stripe_card_token = company_params[:stripe_card_token]
-      @company.plan_id = company_params[:plan_id]
+
+      # If the company is on trial then we need to save the plan they've selected
+      if @company.on_trial?
+        @company.plan_id = company_params[:plan_id]
+      end
 
       if @company.save_with_payment(current_user.email)
         redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: "Thank you for subscribing."
