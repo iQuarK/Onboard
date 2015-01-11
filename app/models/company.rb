@@ -40,12 +40,12 @@ class Company < ActiveRecord::Base
   TRIAL_PERIOD = 14
 
   PLANS = {
-    basic_monthly: { type: "Basic", name: "Basic Monthly", price: 29, interval: "month" },
-    basic_yearly: { type: "Basic", name: "Basic Yearly", price: 290, interval: "year" },
-    professional_monthly: { type: "Professional", name: "Professional Monthly", price: 99, interval: "month" },
-    professional_yearly: { type: "Professional", name: "Professional Yearly", price: 990, interval: "year" },
-    enterprise_monthly: { type: "Enterprise", name: "Enterprise Monthly", price: 499, interval: "month" },
-    enterprise_yearly: { type: "Enterprise", name: "Enterprise Yearly", price: 4990, interval: "year" },
+    basic_monthly: { index: 1, type: "Basic", name: "Basic Monthly", price: 29, interval: "month" },
+    basic_yearly: { index: 2, type: "Basic", name: "Basic Yearly", price: 290, interval: "year" },
+    professional_monthly: { index: 3, type: "Professional", name: "Professional Monthly", price: 99, interval: "month" },
+    professional_yearly: { index: 4, type: "Professional", name: "Professional Yearly", price: 990, interval: "year" },
+    enterprise_monthly: { index: 5, type: "Enterprise", name: "Enterprise Monthly", price: 499, interval: "month" },
+    enterprise_yearly: { index: 6, type: "Enterprise", name: "Enterprise Yearly", price: 4990, interval: "year" },
   }
 
   # -------------------------------------------------------------------------------------------------------------------

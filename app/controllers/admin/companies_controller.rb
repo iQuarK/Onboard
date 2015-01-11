@@ -64,7 +64,7 @@ module Admin
     # -------------------------------------------------------------------------------------------------------------------
     def update_plan
 
-      if @company.update_plan(company_params[:plan_id])
+      if @company.update_plan(params[:plan_id])
         redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: 'Updated plan successfully.'
       else
         render :subscription

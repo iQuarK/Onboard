@@ -33,10 +33,10 @@
               <% if plan[:interval] == "month" && @company.plan_id.to_sym != plan_id %>
 
                 <div class="subscription-choice">
-                  <p class="plan-relation"><%= plan[:price] < Company::PLANS[@company.plan_id.to_sym][:price] ? "Downgrade" : "Upgrade" %></p>
+                  <p class="plan-relation"><%= plan[:index] < Company::PLANS[@company.plan_id.to_sym][:index] ? "Downgrade" : "Upgrade" %></p>
                   <p class="plan-title"><%= plan[:type] %></p>
                   <p><strong>&dollar;<%= plan[:price] %></strong> per <%= plan[:interval] %></p>
-                  <%= button_to "Switch To #{plan[:type]}", admin_subscription_plan_url(subdomain: @company.subdomain), plan_id: plan_id, method: :patch, class: 'button-blue'  %>
+                  <%= button_to "Switch To #{plan[:type]}", admin_subscription_plan_url(subdomain: @company.subdomain), params: { plan_id: plan_id }, method: :patch, class: 'button-blue'  %>
                 </div>
 
               <% end %>
@@ -54,10 +54,10 @@
               <% if plan[:interval] == "year" && @company.plan_id.to_sym != plan_id %>
 
                 <div class="subscription-choice">
-                  <p class="plan-relation"><%= plan[:price] < Company::PLANS[@company.plan_id.to_sym][:price] ? "Downgrade" : "Upgrade" %></p>
+                  <p class="plan-relation"><%= plan[:index] < Company::PLANS[@company.plan_id.to_sym][:index] ? "Downgrade" : "Upgrade" %></p>
                   <p class="plan-title"><%= plan[:type] %></p>
                   <p><strong>&dollar;<%= plan[:price] %></strong> per <%= plan[:interval] %></p>
-                  <%= button_to "Switch To #{plan[:type]}", admin_subscription_plan_url(subdomain: @company.subdomain), plan_id: plan_id, method: :patch, class: 'button-blue'  %>
+                  <%= button_to "Switch To #{plan[:type]}", admin_subscription_plan_url(subdomain: @company.subdomain), params: { plan_id: plan_id }, method: :patch, class: 'button-blue'  %>
                 </div>
 
               <% end %>
