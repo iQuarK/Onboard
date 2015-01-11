@@ -22,38 +22,44 @@
           <p class="subscription-details">Your next payment date is the <strong>14th February 2015</strong>.</p>
         </section>
 
-        <section class="subscription-container">
+        <% if @company.active_subscription? %>
+
+          <section class="subscription-container">
+
             <p>You can switch to a different plan at any time.</p>
-            <div class="subscription-choice">
-              <p class="plan-relation">Downgrade</p>
-              <p class="plan-title">Basic</p>
-              <p><strong>&dollar;29</strong> per month</p>
-              <a class="button-blue">Switch to Basic</a>
-            </div>
-            <div class="subscription-choice">
-              <p class="plan-relation">Upgrade</p>
-              <p class="plan-title">Enterprise</p>
-              <p><strong>&dollar;499</strong> per month</p>
-              <a class="button-blue">Switch to Enterprise</a>
-            </div>
-        </section>
+
+            <%= form_for @company, url: admin_subscription_plan_url(subdomain: @company.subdomain) do |f| %>
+
+              <%= render 'shared/error_list', model: @company %>
+
+              <!-- <div class="subscription-choice">
+                <p class="plan-relation">Downgrade</p>
+                <p class="plan-title">Basic</p>
+                <p><strong>&dollar;29</strong> per month</p>
+                <a class="button-blue">Switch to Basic</a>
+              </div>
+              <div class="subscription-choice">
+                <p class="plan-relation">Upgrade</p>
+                <p class="plan-title">Enterprise</p>
+                <p><strong>&dollar;499</strong> per month</p>
+                <a class="button-blue">Switch to Enterprise</a>
+              </div> -->
+
+              <div class="field-row">
+                <%= f.collection_select :plan_id, Company::PLANS, :to_s, :titleize %>
+              </div>
+
+              <%= f.submit 'Update Plan', class: "button-green" %>
+
+            <% end %>
+
+          </section>
+
+        <% end %>
 
         <section class="payment-details">
           <h2 class="page-header">Your Payment Details</h2>
           <p class="subscription-details">Your current payment method is <strong>American Express</strong> ending in <strong>1007</strong>.</p>
-
-         <!--  <%= form_for @company, url: admin_subscription_plan_url(subdomain: @company.subdomain) do |f| %>
-
-            <%= render 'shared/error_list', model: @company %>
-
-            <div class="field-row">
-              <%= f.select :plan_id, options_for_select([['Basic Monthly','basic_monthly'],['Basic Yearly','basic_yearly']]) %>
-            </div>
-
-            <%= f.submit 'Update Plan', class: "button-green" %>
-
-          <% end %> -->
-
 
             <%= form_for @company, url: admin_subscription_billing_url(subdomain: @company.subdomain), html: { id: 'card-details-form' } do |f| %>
 
@@ -85,9 +91,13 @@
                   <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
                 </div>
 
-                <div class="field-row">
-                  <%= f.select :plan_id, options_for_select([['Basic Monthly','basic_monthly'],['Basic Yearly','basic_yearly']]) %>
-                </div>
+                <% if @company.on_trial? %>
+
+                  <div class="field-row">
+                    <%= f.collection_select :plan_id, Company::PLANS, :to_s, :titleize %>
+                  </div>
+
+                <% end %>
 
               <% end %>
 

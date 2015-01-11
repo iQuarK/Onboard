@@ -39,6 +39,8 @@ class Company < ActiveRecord::Base
   # 14 Day length of trial period
   TRIAL_PERIOD = 14
 
+  PLANS = %w[basic_monthly basic_yearly]
+
   # -------------------------------------------------------------------------------------------------------------------
   # Named Scopes
   # -------------------------------------------------------------------------------------------------------------------
@@ -54,8 +56,16 @@ class Company < ActiveRecord::Base
   # -------------------------------------------------------------------------------------------------------------------
   # Public Methods
   # -------------------------------------------------------------------------------------------------------------------
-  def has_jobs?
-    self.jobs.any?
+  def on_trial?
+    plan_id == "trial"
+  end
+
+  def expired_subscription?
+    expired == true
+  end
+
+  def active_subscription?
+    expired == false
   end
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -117,6 +127,28 @@ class Company < ActiveRecord::Base
     false
   end
 
+  # -------------------------------------------------------------------------------------------------------------------
+  # Update plan in stripe then if all good update it in the database
+  # -------------------------------------------------------------------------------------------------------------------
+  def cancel_plan(email)
+    if stripe_customer_id.nil?
+      errors.add :base, "Unable to cancel your plan as there is no existing subscription"
+      false
+    else
+      customer = Stripe::Customer.retrieve(stripe_customer_id)
+
+      customer.subscriptions.all do |subscription|
+        subscription.delete
+      end
+      self.expired = true
+      save!
+      true
+    end
+  rescue Stripe::StripeError => e
+    logger.error "Stripe Error: " + e.message
+    errors.add :base, "Unable to cancel your subscription. #{e.message}."
+    false
+  end
 
   # -------------------------------------------------------------------------------------------------------------------
   # Private Methods

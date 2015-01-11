@@ -52,7 +52,7 @@ module Admin
       @company.plan_id = company_params[:plan_id]
 
       if @company.save_with_payment(current_user.email)
-        redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: "Thank you for subscribing!"
+        redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: "Thank you for subscribing."
       else
         render :subscription
       end
@@ -65,7 +65,7 @@ module Admin
     def update_plan
 
       if @company.update_plan(company_params[:plan_id])
-        redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: 'Updated plan.'
+        redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: 'Updated plan successfully.'
       else
         render :subscription
       end
@@ -78,7 +78,7 @@ module Admin
     def cancel
 
       if @company.cancel_subscription(current_user.email)
-        redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: "Thank you for subscribing!"
+        redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: "You've cancelled your subscription"
       else
         render :subscription
       end

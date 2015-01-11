@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       delete '/', to: 'companies#delete'
 
       # Settings
-      namespace 'settings' do
+      scope 'settings' do
 
         # Subscriptions
         get 'subscription', to: 'companies#subscription'
