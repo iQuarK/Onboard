@@ -18,7 +18,7 @@
 
         <section>
           <h2 class="page-header">Your Subscription Status</h2>
-          <p class="subscription-details">You're currently on a <strong><%= @company.plan_id %> monthly</strong> plan, paying <strong>&dollar;99</strong> per month.</p>
+          <p class="subscription-details">You're currently on a <strong><%= Company::PLANS[@company.plan_id.to_sym][:name].downcase %></strong> plan, paying <strong>&dollar;<%= Company::PLANS[@company.plan_id.to_sym][:price] %></strong> per <%= Company::PLANS[@company.plan_id.to_sym][:interval] %>.</p>
           <p class="subscription-details">Your next payment date is the <strong>14th February 2015</strong>.</p>
         </section>
 
@@ -28,28 +28,39 @@
 
             <p>You can switch to a different plan at any time.</p>
 
-            <%= form_for @company, url: admin_subscription_plan_url(subdomain: @company.subdomain) do |f| %>
+            <% Company::PLANS.each do |plan_id, plan| %>
 
-              <%= render 'shared/error_list', model: @company %>
+              <% if plan[:interval] == "month" && @company.plan_id.to_sym != plan_id %>
 
-              <!-- <div class="subscription-choice">
-                <p class="plan-relation">Downgrade</p>
-                <p class="plan-title">Basic</p>
-                <p><strong>&dollar;29</strong> per month</p>
-                <a class="button-blue">Switch to Basic</a>
-              </div>
-              <div class="subscription-choice">
-                <p class="plan-relation">Upgrade</p>
-                <p class="plan-title">Enterprise</p>
-                <p><strong>&dollar;499</strong> per month</p>
-                <a class="button-blue">Switch to Enterprise</a>
-              </div> -->
+                <div class="subscription-choice">
+                  <p class="plan-relation"><%= plan[:price] < Company::PLANS[@company.plan_id.to_sym][:price] ? "Downgrade" : "Upgrade" %></p>
+                  <p class="plan-title"><%= plan[:type] %></p>
+                  <p><strong>&dollar;<%= plan[:price] %></strong> per <%= plan[:interval] %></p>
+                  <%= button_to "Switch To #{plan[:type]}", admin_subscription_plan_url(subdomain: @company.subdomain), plan_id: plan_id, method: :patch, class: 'button-blue'  %>
+                </div>
 
-              <div class="field-row">
-                <%= f.collection_select :plan_id, Company::PLANS, :to_s, :titleize %>
-              </div>
+              <% end %>
 
-              <%= f.submit 'Update Plan', class: "button-green" %>
+            <% end %>
+
+          </section>
+
+          <section class="subscription-container">
+
+            <p>Or choose yearly and save $$$</p>
+
+            <% Company::PLANS.each do |plan_id, plan| %>
+
+              <% if plan[:interval] == "year" && @company.plan_id.to_sym != plan_id %>
+
+                <div class="subscription-choice">
+                  <p class="plan-relation"><%= plan[:price] < Company::PLANS[@company.plan_id.to_sym][:price] ? "Downgrade" : "Upgrade" %></p>
+                  <p class="plan-title"><%= plan[:type] %></p>
+                  <p><strong>&dollar;<%= plan[:price] %></strong> per <%= plan[:interval] %></p>
+                  <%= button_to "Switch To #{plan[:type]}", admin_subscription_plan_url(subdomain: @company.subdomain), plan_id: plan_id, method: :patch, class: 'button-blue'  %>
+                </div>
+
+              <% end %>
 
             <% end %>
 

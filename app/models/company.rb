@@ -39,7 +39,14 @@ class Company < ActiveRecord::Base
   # 14 Day length of trial period
   TRIAL_PERIOD = 14
 
-  PLANS = %w[basic_monthly basic_yearly]
+  PLANS = {
+    basic_monthly: { type: "Basic", name: "Basic Monthly", price: 29, interval: "month" },
+    basic_yearly: { type: "Basic", name: "Basic Yearly", price: 290, interval: "year" },
+    professional_monthly: { type: "Professional", name: "Professional Monthly", price: 99, interval: "month" },
+    professional_yearly: { type: "Professional", name: "Professional Yearly", price: 990, interval: "year" },
+    enterprise_monthly: { type: "Enterprise", name: "Enterprise Monthly", price: 499, interval: "month" },
+    enterprise_yearly: { type: "Enterprise", name: "Enterprise Yearly", price: 4990, interval: "year" },
+  }
 
   # -------------------------------------------------------------------------------------------------------------------
   # Named Scopes
