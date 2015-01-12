@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150111165812) do
     t.string   "stripe_customer_id"
     t.string   "stripe_card_brand"
     t.string   "stripe_card_last_4"
-    t.boolean  "expired",            default: false
+    t.boolean  "active_subscription", default: false
   end
 
   add_index "companies", ["subdomain"], name: "index_companies_on_subdomain", unique: true, using: :btree

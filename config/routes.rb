@@ -44,7 +44,7 @@ Rails.application.routes.draw do
         get 'subscription', to: 'companies#subscription'
         patch 'subscription/billing', to: 'companies#manage_subscription'
         patch 'subscription/plan', to: 'companies#update_plan'
-        patch 'subscription/cancel', to: 'companies#cancel'
+        patch 'subscription/cancel', to: 'companies#cancel_subscription'
 
       end
 

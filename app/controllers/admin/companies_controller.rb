@@ -50,8 +50,7 @@ module Admin
 
       @company.stripe_card_token = company_params[:stripe_card_token]
 
-      # If the company is on trial then we need to save the plan they've selected
-      if @company.on_trial?
+      if !@company.active_subscription
         @company.plan_id = company_params[:plan_id]
       end
 
@@ -77,9 +76,9 @@ module Admin
     end
 
     # -------------------------------------------------------------------------------------------------------------------
-    # PATCH :subdomain.pinpoint.hr/admin/settings/subscription/cancel
+    # PATCH :subdomain.pinpoint.hr/admin/settings/subscription/cancel_subscription
     # -------------------------------------------------------------------------------------------------------------------
-    def cancel
+    def cancel_subscription
 
       if @company.cancel_subscription(current_user.email)
         redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: "You've cancelled your subscription"

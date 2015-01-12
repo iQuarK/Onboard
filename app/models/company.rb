@@ -67,14 +67,6 @@ class Company < ActiveRecord::Base
     plan_id == "trial"
   end
 
-  def expired_subscription?
-    expired == true
-  end
-
-  def active_subscription?
-    expired == false
-  end
-
   # -------------------------------------------------------------------------------------------------------------------
   # Create or Update Stripe subscription
   # -------------------------------------------------------------------------------------------------------------------
@@ -104,6 +96,7 @@ class Company < ActiveRecord::Base
       self.stripe_customer_id = customer.id
       self.stripe_card_brand = customer.cards.data.first["brand"]
       self.stripe_card_last_4 = customer.cards.data.first["last4"]
+      self.active_subscription = true
       save!
       self.stripe_card_token = nil
     end
@@ -147,24 +140,20 @@ class Company < ActiveRecord::Base
     end
   rescue Stripe::StripeError => e
     logger.error "Stripe Error: " + e.message
-    errors.add :base, "Unable to find next invoice. #{e.message}."
     false
   end
 
   # -------------------------------------------------------------------------------------------------------------------
   # Update plan in stripe then if all good update it in the database
   # -------------------------------------------------------------------------------------------------------------------
-  def cancel_plan(email)
+  def cancel_subscription(email)
     if stripe_customer_id.nil?
       errors.add :base, "Unable to cancel your plan as there is no existing subscription"
       false
     else
       customer = Stripe::Customer.retrieve(stripe_customer_id)
-
-      customer.subscriptions.all do |subscription|
-        subscription.delete
-      end
-      self.expired = true
+      customer.cancel_subscription
+      self.active_subscription = false
       save!
       true
     end

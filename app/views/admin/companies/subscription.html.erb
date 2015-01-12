@@ -18,15 +18,28 @@
 
         <section>
           <h2 class="page-header">Your Subscription Status</h2>
-          <p class="subscription-details">You're currently on a <strong><%= Company::PLANS[@company.plan_id.to_sym][:name].downcase %></strong> plan, paying <strong>&dollar;<%= Company::PLANS[@company.plan_id.to_sym][:price] %></strong> per <%= Company::PLANS[@company.plan_id.to_sym][:interval] %>.</p>
 
-          <% if @company.next_invoice? # Put this if here in case for some reason it can't retrieve it %>
-            <p class="subscription-details">Your next payment date is the <strong><%= format_date(Time.at(@company.next_invoice.date).to_datetime) %></strong>.</p>
+          <% if @company.active_subscription %>
+
+            <p class="subscription-details">You're currently on a <strong><%= Company::PLANS[@company.plan_id.to_sym][:name].downcase %></strong> plan, paying <strong>&dollar;<%= Company::PLANS[@company.plan_id.to_sym][:price] %></strong> per <%= Company::PLANS[@company.plan_id.to_sym][:interval] %>.</p>
+
+            <% if @company.next_invoice? # Put this if here in case for some reason it can't retrieve it %>
+              <p class="subscription-details">Your next payment date is the <strong><%= format_date(Time.at(@company.next_invoice.date).to_datetime) %></strong>.</p>
+            <% end %>
+
+          <% elsif @company.on_trial? %>
+
+            <p class="subscription-details">You're currently on a trial plan.  Your trial ends on <%= format_date(@company.created_at + 2.weeks) %>.</p>
+
+          <% else %>
+
+            <p class="subscription-details">You no longer have an active subscription.</p>
+
           <% end %>
 
         </section>
 
-        <% if @company.active_subscription? %>
+        <% if @company.active_subscription %>
 
           <section class="subscription-container">
 
@@ -76,63 +89,75 @@
 
           <h2 class="page-header">Your Payment Details</h2>
 
-          <% if !@company.expired? && !@company.on_trial? %>
+          <% if @company.active_subscription %>
 
             <p class="subscription-details">Your current payment method is <strong><%= @company.stripe_card_brand %></strong> ending in <strong><%= @company.stripe_card_last_4 %></strong>.</p>
 
           <% end %>
 
-            <%= form_for @company, url: admin_subscription_billing_url(subdomain: @company.subdomain), html: { id: 'card-details-form' } do |f| %>
+          <%= form_for @company, url: admin_subscription_billing_url(subdomain: @company.subdomain), html: { id: 'card-details-form' } do |f| %>
 
-              <%= render 'shared/error_list', model: @company %>
+            <%= render 'shared/error_list', model: @company %>
 
-              <% if @company.stripe_card_token %>
+            <% if @company.stripe_card_token %>
 
-                <p>Credit card acceptance is pending.</p>
+              <p>Credit card acceptance is pending.</p>
 
-              <% else %>
+            <% else %>
 
-                <div class="field">
-                  <%= label_tag :card_number, "Card Number" %>
-                  <div class="input-right">
-                    <%= text_field_tag :card_number, nil, name: nil, placeholder: "Debit / Credit Card Number" %>
-                  </div>
+              <div class="field">
+                <%= label_tag :card_number, "Card Number" %>
+                <div class="input-right">
+                  <%= text_field_tag :card_number, nil, name: nil, placeholder: "Debit / Credit Card Number" %>
                 </div>
+              </div>
 
-                <div class="field">
-                  <%= label_tag :card_code, "Security Code (CVV)" %>
-                  <div class="input-right small-input">
-                    <%= text_field_tag :card_code, nil, name: nil, placeholder: "CVV" %>
-                  </div>
+              <div class="field">
+                <%= label_tag :card_code, "Security Code (CVV)" %>
+                <div class="input-right small-input">
+                  <%= text_field_tag :card_code, nil, name: nil, placeholder: "CVV" %>
                 </div>
+              </div>
 
-                <div class="field">
-                  <%= label_tag :card_month, "Card Expiration" %>
-                  <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
-                  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+              <div class="field">
+                <%= label_tag :card_month, "Card Expiration" %>
+                <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
+                <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+              </div>
+
+              <% if !@company.active_subscription? %>
+
+                <div class="field-row">
+                  <%= f.select :plan_id, Company::PLANS.map{|k,v| [v[:name],k]} %>
                 </div>
-
-                <% if @company.on_trial? %>
-
-                  <div class="field-row">
-                    <%= f.collection_select :plan_id, Company::PLANS, :to_s, :titleize %>
-                  </div>
-
-                <% end %>
 
               <% end %>
 
-              <%= f.hidden_field :stripe_card_token %>
-
-              <div id="stripe-error" class="alert alert-error" style="display:none">
-                <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-              </div>
-
-              <%= f.submit 'Update Payment Information', class: "button-green" %>
-
             <% end %>
 
+            <%= f.hidden_field :stripe_card_token %>
+
+            <div id="stripe-error" class="alert alert-error" style="display:none">
+              <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+            </div>
+
+            <%= f.submit 'Update Payment Information', class: "button-green" %>
+
+          <% end %>
+
         </section>
+
+        <% if @company.active_subscription %>
+
+          <section>
+
+            <h2 class="page-header">Cancel Subscription</h2>
+
+            <%= button_to "Cancel Subscription", admin_subscription_cancel_url(subdomain: @company.subdomain), method: :patch, class: 'button-blue'  %>
+
+          </section>
+
+        <% end %>
 
         </div>
 
@@ -154,6 +179,8 @@
 
       </div>
 
-      </div>
     </div>
-    </div>
+
+  </div>
+
+</div>
