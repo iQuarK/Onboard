@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
   def welcome(user)
     @user = user
     @title = "Welcome to Pinpoint"
-    mail( subject: 'Welcome', to: @user.email, track_opens: 'true' )
+    mail( subject: 'Welcome to Pinpoint!', to: @user.email, track_opens: 'true' )
   end
 
   def marketing_3_day(user)
