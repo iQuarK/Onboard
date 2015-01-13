@@ -4,7 +4,7 @@ class Company < ActiveRecord::Base
   # Attributes
   # -------------------------------------------------------------------------------------------------------------------
   attr_accessor :stripe_card_token, :next_invoice
-
+  mount_uploader :logo, LogoUploader
 
   # -------------------------------------------------------------------------------------------------------------------
   # Validations
@@ -36,16 +36,77 @@ class Company < ActiveRecord::Base
   # Constants
   # -------------------------------------------------------------------------------------------------------------------
 
-  # 14 Day length of trial period
-  TRIAL_PERIOD = 14
-
   PLANS = {
-    basic_monthly: { index: 1, type: "Basic", name: "Basic Monthly", price: 29, interval: "month" },
-    basic_yearly: { index: 2, type: "Basic", name: "Basic Yearly", price: 290, interval: "year" },
-    professional_monthly: { index: 3, type: "Professional", name: "Professional Monthly", price: 99, interval: "month" },
-    professional_yearly: { index: 4, type: "Professional", name: "Professional Yearly", price: 990, interval: "year" },
-    enterprise_monthly: { index: 5, type: "Enterprise", name: "Enterprise Monthly", price: 499, interval: "month" },
-    enterprise_yearly: { index: 6, type: "Enterprise", name: "Enterprise Yearly", price: 4990, interval: "year" },
+    trial: {
+      index: 0,
+      type: "trial",
+      name: "trial",
+      price: 0,
+      interval: "n/a",
+      max_jobs: 10,
+      max_users: 5,
+      branding: { name: 'white labelled', own_logo: true, telephone_support: false }
+    },
+    basic_monthly: {
+      index: 1,
+      type: "basic",
+      name: "basic monthly",
+      price: 29,
+      interval: "month",
+      max_jobs: 2,
+      max_users: 1,
+      branding: { name: 'unbranded', own_logo: false, telephone_support: false }
+    },
+    basic_yearly: {
+      index: 2,
+      type: "basic",
+      name: "basic Yearly",
+      price: 290,
+      interval: "year",
+      max_jobs: 2,
+      max_users: 1,
+      branding: { name: 'unbranded', own_logo: false, telephone_support: false }
+    },
+    professional_monthly: {
+      index: 3,
+      type: "professional",
+      name: "professional monthly",
+      price: 99,
+      interval: "month",
+      max_jobs: 10,
+      max_users: 5,
+      branding: { name: 'white labelled', own_logo: true, telephone_support: false }
+    },
+    professional_yearly: {
+      index: 4,
+      type: "professional",
+      name: "professional yearly",
+      price: 990,
+      interval: "year",
+      max_jobs: 10,
+      max_users: 5,
+      branding: { name: 'white labelled', own_logo: true, telephone_support: false }
+    },
+    enterprise_monthly: {
+      index: 5,
+      type: "enterprise",
+      name: "enterprise monthly",
+      price: 499,
+      interval: "month",
+      max_jobs: 100,
+      max_users: 100,
+      branding: { name: 'fully brandable', own_logo: true, telephone_support: true }
+    },
+    enterprise_yearly: {
+      index: 6,
+      type: "enterprise",
+      name: "enterprise yearly",
+      price: 4990,
+      interval: "year",
+      max_jobs: 100,
+      max_users: 100,
+      branding: { name: 'fully brandable', own_logo: true, telephone_support: true }
+    },
   }
 
   # -------------------------------------------------------------------------------------------------------------------

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111165812) do
+ActiveRecord::Schema.define(version: 20150113225913) do
 
   create_table "applications", force: true do |t|
     t.integer  "user_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150111165812) do
     t.string   "stripe_card_brand"
     t.string   "stripe_card_last_4"
     t.boolean  "active_subscription", default: false
+    t.string   "logo"
   end
 
   add_index "companies", ["subdomain"], name: "index_companies_on_subdomain", unique: true, using: :btree

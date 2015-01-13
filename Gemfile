@@ -74,6 +74,7 @@ gem "stripe-rails"
 gem 'trumbowyg_rails'
 
 # Uploads
+gem 'rmagick'
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave'
 
 # Jquery file upload
