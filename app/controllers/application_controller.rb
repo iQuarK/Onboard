@@ -27,6 +27,14 @@ class ApplicationController < ActionController::Base
     @company = Company.find_by_subdomain!(request.subdomain)
   end
 
+  def internal_redirect_inactive_company
+    redirect_to admin_subscription_url(subdomain: @company.subdomain)
+  end
+
+  def external_redirect_inactive_company
+    redirect_to root_url(subdomain: @company.subdomain)
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:title, :first_name, :last_name, :email, :password, :password_confirmation)

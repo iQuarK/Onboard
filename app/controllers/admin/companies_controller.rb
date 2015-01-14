@@ -4,6 +4,7 @@ module Admin
 
     before_action :authenticate_user!
     before_action :load_company
+    before_action :internal_redirect_inactive_company, except: [:subscription]
 
     # -------------------------------------------------------------------------------------------------------------------
     # GET :subdomain.pinpoint.hr/admin

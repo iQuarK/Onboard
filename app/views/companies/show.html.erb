@@ -2,7 +2,11 @@
   <div class="content pad-vert-medium">
     <h2><%= @company.name %></h2>
     <h1>Work at <%= @company.name %></h1>
-    <a class="button-blue" href="#">View Open Positions</a>
+
+    <% if @company.active_subscription %>
+      <a class="button-blue" href="#">View Open Positions</a>
+    <% end %>
+
   </div>
 </section>
 
@@ -11,7 +15,11 @@
     <ul>
       <li><a href="#overview">Overview</a></li>
       <li><a href="#benefits">Benefits</a></li>
-      <li><a href="#open-positions">View Open Positions</a></li>
+
+      <% if @company.active_subscription %>
+        <li><a href="#open-positions">View Open Positions</a></li>
+      <% end %>
+
     </ul>
   </div>
 </section>
@@ -38,17 +46,21 @@
   </div>
 </section>
 
-<section class="positions" id="open-positions">
-  <div class="content pad-vert-medium">
-    <div class="intro">
-      <h4>Open Positions</h4>
+<% if @company.active_subscription %>
+
+  <section class="positions" id="open-positions">
+    <div class="content pad-vert-medium">
+      <div class="intro">
+        <h4>Open Positions</h4>
+      </div>
+
+      <ul>
+      <% @company.jobs.each do |job| %>
+          <li><%= link_to job.title, job, subdomain: @company.subdomain %><br /><span><%= job.location %></li>
+      <% end %>
+      </ul>
+
     </div>
+  </section>
 
-    <ul>
-    <% @company.jobs.each do |job| %>      
-        <li><%= link_to job.title, job, subdomain: @company.subdomain %><br /><span><%= job.location %></li>
-    <% end %>
-    </ul>
-
-  </div>
-</section>
+<% end %>

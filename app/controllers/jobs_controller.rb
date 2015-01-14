@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
 
   before_action :load_company
+  before_action :external_redirect_inactive_company
   before_action :set_job, only: [:show]
 
   layout 'external'

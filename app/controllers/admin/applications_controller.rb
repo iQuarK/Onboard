@@ -3,6 +3,7 @@ module Admin
   class ApplicationsController < ApplicationController
 
     before_action :load_company
+    before_action :internal_redirect_inactive_company
     before_action :set_job
     before_action :set_application
 
