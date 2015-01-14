@@ -68,9 +68,11 @@ module Admin
     # -------------------------------------------------------------------------------------------------------------------
     def update_plan
 
-      if @company.update_plan(params[:plan_id])
+      if @company.update_plan(params[:plan_id].to_sym)
         redirect_to admin_subscription_url(subdomain: @company.subdomain), notice: 'Updated plan successfully.'
       else
+        # Expecting one error to be set if this returns false
+        flash[:notice] = @company.errors.messages[:base][0]
         render :subscription
       end
 

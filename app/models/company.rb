@@ -169,9 +169,18 @@ class Company < ActiveRecord::Base
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # Update plan in stripe then if all good update it in the database
+  # Perform validation to make sure plan can be downgraded
+  # Update plan in stripe and if all is good then update company in the database
   # -------------------------------------------------------------------------------------------------------------------
   def update_plan(new_plan_id)
+    if Company::PLANS[new_plan_id][:max_jobs] < jobs.count
+      errors.add :base, "Unable to update your plan because you have #{jobs.count} jobs listed and the proposed plan maximum is #{Company::PLANS[new_plan_id][:max_jobs]}. Please remove some job listings and try again"
+      return false
+    end
+    if Company::PLANS[new_plan_id][:max_users] < administrators.count
+      errors.add :base, "Unable to update your plan because you have #{administrators.count} administrators listed and the proposed plan maximum is #{Company::PLANS[new_plan_id][:max_users]}. Please remove some administrators and try again"
+      return false
+    end
     if stripe_customer_id.nil?
       errors.add :base, "Unable to update your plan as there is no existing subscription"
       false

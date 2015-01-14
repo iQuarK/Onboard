@@ -28,11 +28,15 @@ class ApplicationController < ActionController::Base
   end
 
   def internal_redirect_inactive_company
-    redirect_to admin_subscription_url(subdomain: @company.subdomain)
+    if !@company.active_subscription
+      redirect_to admin_subscription_url(subdomain: @company.subdomain)
+    end
   end
 
   def external_redirect_inactive_company
-    redirect_to root_url(subdomain: @company.subdomain)
+    if !@company.active_subscription
+      redirect_to root_url(subdomain: @company.subdomain)
+    end
   end
 
   def configure_permitted_parameters
