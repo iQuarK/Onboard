@@ -60,7 +60,7 @@ class Company < ActiveRecord::Base
     basic_yearly: {
       index: 2,
       type: "basic",
-      name: "basic Yearly",
+      name: "basic yearly",
       price: 290,
       interval: "year",
       max_jobs: 2,
@@ -108,6 +108,8 @@ class Company < ActiveRecord::Base
       branding: { name: 'fully brandable', own_logo: true, telephone_support: true }
     },
   }
+
+
 
   # -------------------------------------------------------------------------------------------------------------------
   # Named Scopes

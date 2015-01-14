@@ -23,6 +23,7 @@
 //= require init
 //= require attachments
 //= require payments
+//= require pricing
 
 //= require turbolinks
 

@@ -1,8 +1,22 @@
 <%= provide(:title, 'Pricing') %>
 
-<div class="content-wrapper">
+<div class="content-wrapper l-pricing monthly">
 
   <h1 class="page-header">Simple Pricing</h1>
+
+  <h2 class="monthly">Get started today: Free 14-day trial</h2>
+  <p class="monthly">Sign up in 60 seconds.</p>
+
+  <h2 class="yearly">Get started today: 12 months for the price of 10</h2>
+  <p class="yearly">Sign up in 60 seconds.</h2>
+
+  <div class="switch-toggle switch-pinpoint">
+    <input id="monthly" name="interval" type="radio" value="monthly" checked>
+    <label for="monthly" onclick="">Monthly</label>
+    <input id="yearly" name="interval" type="radio" value="yearly">
+    <label for="yearly" onclick="">Yearly</label>
+    <a></a>
+  </div>
 
   <div class="pricing-plans">
 
@@ -10,10 +24,14 @@
 
       <h2 class="title">Basic</h2>
 
-      <div class="price">
+      <div class="price monthly">
         <span class="currency">&dollar;</span>
-        <span class="amount"><%= Stripe::Plans['basic_monthly'].amount / 100 %></span>
-        / month
+        <span class="amount"><%= Company::PLANS[:basic_monthly][:price] %></span>/ month
+      </div>
+
+      <div class="price yearly">
+        <span class="currency">&dollar;</span>
+        <span class="amount"><%= Company::PLANS[:basic_yearly][:price] %></span>/ year
       </div>
 
       <ul class="specification">
@@ -30,10 +48,14 @@
 
       <h2 class="title">Professional</h2>
 
-      <div class="price">
+      <div class="price monthly">
         <span class="currency">&dollar;</span>
-        <span class="amount"><%= Stripe::Plans['professional_monthly'].amount / 100 %></span>
-        / month
+        <span class="amount"><%= Company::PLANS[:professional_monthly][:price] %></span>/ month
+      </div>
+
+      <div class="price yearly">
+        <span class="currency">&dollar;</span>
+        <span class="amount"><%= Company::PLANS[:professional_yearly][:price] %></span>/ year
       </div>
 
       <p class="pop-plan">Most Popular Plan</p>
@@ -52,10 +74,14 @@
 
       <h2 class="title">Enterprise</h2>
 
-      <div class="price">
+      <div class="price monthly">
         <span class="currency">&dollar;</span>
-        <span class="amount"><%= Stripe::Plans['enterprise_monthly'].amount / 100 %></span>
-        / month
+        <span class="amount"><%= Company::PLANS[:enterprise_monthly][:price] %></span>/ month
+      </div>
+
+      <div class="price yearly">
+        <span class="currency">&dollar;</span>
+        <span class="amount"><%= Company::PLANS[:enterprise_yearly][:price] %></span>/ year
       </div>
 
       <ul class="specification">
