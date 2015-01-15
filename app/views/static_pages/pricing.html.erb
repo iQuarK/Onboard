@@ -1,14 +1,19 @@
 <%= provide(:title, 'Pricing') %>
 
+<div class="lead-in-header">
+  <div class="content-wrapper">
+    <h1 class="page-header">Better Hiring. Less Hassle.</h1>
+    <p>Free trial. No setup costs. Cancel whenever you want.</p>
+  </div>
+</div>
+
 <div class="content-wrapper l-pricing monthly">
 
-  <h1 class="page-header">Simple Pricing</h1>
-
-  <h2 class="monthly">Get started today: Free 14-day trial</h2>
+  <!-- <h2 class="monthly">Get started today: Free 14-day trial</h2>
   <p class="monthly">Sign up in 60 seconds.</p>
 
   <h2 class="yearly">Get started today: 12 months for the price of 10</h2>
-  <p class="yearly">Sign up in 60 seconds.</h2>
+  <p class="yearly">Sign up in 60 seconds.</h2> -->
 
   <div class="switch-toggle switch-pinpoint">
     <input id="monthly" name="interval" type="radio" value="monthly" checked>
@@ -22,76 +27,98 @@
 
     <div class="plan">
 
-      <h2 class="title">Basic</h2>
+      <header>
+        <h2 class="title">Basic</h2>
 
-      <div class="price monthly">
-        <span class="currency">&dollar;</span>
-        <span class="amount"><%= Company::PLANS[:basic_monthly][:price] %></span>/ month
+        <div class="price monthly">
+          <span class="currency">&dollar;</span>
+          <span class="amount"><%= Company::PLANS[:basic_monthly][:price] %></span> /month
+        </div>
+
+        <div class="price yearly">
+          <span class="currency">&dollar;</span>
+          <span class="amount"><%= Company::PLANS[:basic_yearly][:price] %></span> /year
+        </div>
+
+        <%= link_to 'Start Free Trial', register_path, class: 'button-blue' %>
+      </header>
+
+      <div class="overview">
+        <p>Designed for very small businesses looking to take the first steps towards improving the way they hire.</p>
+        <ul class="specification">
+          <li><span>2</span>Jobs</li>
+          <li><span>2</span>Users</li>
+          <li><span>&#10004;</span>Career Portal</li>
+          <li><span>&#10004;</span>Candidate Management</li>
+        </ul>
       </div>
-
-      <div class="price yearly">
-        <span class="currency">&dollar;</span>
-        <span class="amount"><%= Company::PLANS[:basic_yearly][:price] %></span>/ year
-      </div>
-
-      <ul class="specification">
-        <li>Unbranded</li>
-        <li>2<span>Job Postings</span></li>
-        <li>1<span>Admin</span></li>
-      </ul>
-
-      <%= link_to 'Sign Up', register_path, class: 'button-blue' %>
 
     </div>
 
     <div class="plan popular">
+      <header>
+        <h2 class="title">Professional</h2>
 
-      <h2 class="title">Professional</h2>
+        <div class="price monthly">
+          <span class="currency">&dollar;</span>
+          <span class="amount"><%= Company::PLANS[:professional_monthly][:price] %></span> /month
+        </div>
 
-      <div class="price monthly">
-        <span class="currency">&dollar;</span>
-        <span class="amount"><%= Company::PLANS[:professional_monthly][:price] %></span>/ month
-      </div>
+        <div class="price yearly">
+          <span class="currency">&dollar;</span>
+          <span class="amount"><%= Company::PLANS[:professional_yearly][:price] %></span> /year
+        </div>
 
-      <div class="price yearly">
-        <span class="currency">&dollar;</span>
-        <span class="amount"><%= Company::PLANS[:professional_yearly][:price] %></span>/ year
-      </div>
-
-      <p class="pop-plan">Most Popular Plan</p>
-
-      <ul class="specification">
-        <li>White Labelled</li>
-        <li>10<span>Job Postings</span></li>
-        <li>5<span>Admins</span></li>
-      </ul>
-
-      <%= link_to 'Sign Up', register_path, class: 'button-green' %>
+        <%= link_to 'Start Free Trial', register_path, class: 'button-green' %>
+      </header>
+     
+       <div class="overview">
+          <p>Designed for growing businesses looking to improve the way they find, interview and hire the right people.</p>
+          <ul class="specification">
+            <li><span>10</span>Jobs</li>
+            <li><span>5</span>Users</li>
+            <li><span>&#10004;</span>Career Portal</li>
+            <li><span>&#10004;</span>Candidate Management</li>
+            <li><span>&#10004;</span>Interview Scheduling</li>
+            <li><span>&#10004;</span>Recruitment Resources</li>
+          </ul>
+        </div>
 
     </div>
 
     <div class="plan">
 
-      <h2 class="title">Enterprise</h2>
+      <header>
+        <h2 class="title">Enterprise</h2>
 
-      <div class="price monthly">
-        <span class="currency">&dollar;</span>
-        <span class="amount"><%= Company::PLANS[:enterprise_monthly][:price] %></span>/ month
+        <div class="price monthly">
+          <span class="currency">&dollar;</span>
+          <span class="amount"><%= Company::PLANS[:enterprise_monthly][:price] %></span> /month
+        </div>
+
+        <div class="price yearly">
+          <span class="currency">&dollar;</span>
+          <span class="amount"><%= Company::PLANS[:enterprise_yearly][:price] %></span> /year
+        </div>
+
+        <%= link_to 'Start Free Trial', register_path, class: 'button-blue' %>
+
+      </header>
+
+      <div class="overview">
+        <p>Designed for larger organisations looking for custom recruitment workflows, platform branding and telephone support.</p>
+        <ul class="specification">
+          <li><span>&infin;</span>Jobs</li>
+          <li><span>&infin;</span>Users</li>
+          <li><span>&#10004;</span>Branded Career Portal</li>
+          <li><span>&#10004;</span>Candidate Management</li>
+          <li><span>&#10004;</span>Interview Scheduling</li>
+          <li><span>&#10004;</span>Recruitment Resources</li>
+          <li><span>&#10004;</span>Telephone Support</li>
+          <li><span>&#10004;</span>Full White Labelling</li>
+          <li><span>&#10004;</span>Custom Workflows</li>
+        </ul>
       </div>
-
-      <div class="price yearly">
-        <span class="currency">&dollar;</span>
-        <span class="amount"><%= Company::PLANS[:enterprise_yearly][:price] %></span>/ year
-      </div>
-
-      <ul class="specification">
-        <li>Fully Brandable</li>
-        <li>Unlimited<span>Job Postings</span></li>
-        <li>Unlimited<span>Admins</span></li>
-        <li>24hr<span>Telephone Support</span></li>
-      </ul>
-
-      <%= link_to 'Sign Up', register_path, class: 'button-blue' %>
 
     </div>
 

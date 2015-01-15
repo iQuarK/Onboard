@@ -64,4 +64,29 @@
     }
   }
 
+  .lead-in-header {
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #EAEAEA;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 60px;
+    min-height: 194px;
+
+    h1 {
+      @include font-size(48);
+      color: #555;
+      letter-spacing: -3.1px;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      margin-bottom: 0;
+    }
+
+    p {
+      @include font-size(16);
+      margin: 12px auto;
+      color: #999;
+    }
+  }
+
 }
