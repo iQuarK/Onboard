@@ -108,4 +108,19 @@
       }
     }
   }
+
+  .pricing-faq {
+    margin-bottom: 30px;
+
+    .faq-item {
+      margin-bottom: 40px;
+    }
+
+    .question {
+      @include font-size(18);
+      color: $blue;
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+  }
 }
