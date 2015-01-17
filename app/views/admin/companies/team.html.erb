@@ -1,0 +1,46 @@
+<div class="sub-header">
+
+  <div class="content-wrapper">
+    <%= link_to "#{@company.name}", admin_path %> &rarr; Account Management &rarr; <span>Manage Team</span>
+  </div>
+
+</div>
+
+<div class="content-wrapper">
+
+  <div class="row">
+
+    <div class="col-3-12">
+      <%= render 'shared/admin/settings_sidebar' %>
+    </div>
+
+    <div class="col-9-12">
+
+      <div class="app-container">
+
+        <%= render 'shared/flash_message' %>
+
+        <section>
+
+          <h2 class="page-header">Manage Team</h2>
+
+          <ul>
+            <% @company.administrators.each do |user| %>
+              <li id="<%= dom_id(user) %>">
+                <%= user.full_name %>
+                <% if user != current_user %>
+                  <%= button_to 'Delete', admin_company_administrator_url(user, subdomain: @company.subdomain), remote: true, method: :delete %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

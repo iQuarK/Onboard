@@ -12,7 +12,7 @@
 
     <div class="col-8-12">
 
-      <div id="app-container">
+      <div class="app-container">
 
         <h2 class="page-header">Open Positions</h2>
 
@@ -75,21 +75,21 @@
 
     <div class="col-4-12">
 
-      <div id="app-container">
+      <div class="app-container">
 
         <h2 class="page-header"><%= @company.name %></h2>
 
         <div class="dashboard-actions">
           <ul>
             <li><%= link_to 'View Company Page', root_url(subdomain: @company.subdomain),class: 'button-yellow' %></li>
-            <li><%= link_to 'Edit Company', admin_edit_url(subdomain: @company.subdomain),class: 'button-green' %></li>
+            <li><%= link_to 'Edit Company', admin_company_url(subdomain: @company.subdomain),class: 'button-green' %></li>
             <li><%= link_to 'Create new job', new_admin_job_url(subdomain: @company.subdomain),class: 'button-blue' %></li>
           </ul>
         </div>
 
       </div>
 
-      <div id="app-container">
+      <div class="app-container">
 
         <div class="dashboard-actions">
           <h2 class="page-header">Get Started</h2>
@@ -103,7 +103,7 @@
 
       </div>
 
-      <div id="app-container">
+      <div class="app-container">
 
         <div class="dashboard-actions">
           <h2 class="page-header"><%= @company.plan_id %> Plan</h2>
