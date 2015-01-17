@@ -51,6 +51,7 @@ module Admin
 
       @company.stripe_card_token = company_params[:stripe_card_token]
 
+      # If they're not active then we might be changing the plan they're on
       if !@company.active_subscription
         @company.plan_id = company_params[:plan_id]
       end
@@ -88,6 +89,13 @@ module Admin
       else
         render :subscription
       end
+
+    end
+
+    # -------------------------------------------------------------------------------------------------------------------
+    # GET :subdomain.pinpoint.hr/admin/settings/team
+    # -------------------------------------------------------------------------------------------------------------------
+    def team
 
     end
 

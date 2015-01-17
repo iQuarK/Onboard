@@ -1,0 +1,96 @@
+<div class="sub-header">
+
+  <div class="content-wrapper">
+    <%= link_to "#{@company.name}", admin_path %> &rarr; Account Management &rarr; <span>Profile</span>
+  </div>
+
+</div>
+
+<div class="content-wrapper">
+
+  <div class="row">
+
+    <div class="col-3-12">
+      <%= render 'shared/admin/settings_sidebar' %>
+    </div>
+
+    <div class="col-9-12">
+
+      <div class="app-container">
+
+        <%= render 'shared/flash_message' %>
+
+        <section>
+
+          <h2 class="page-header">Details</h2>
+
+          <%= form_for @user, url: admin_profile_url(subdomain: @company.subdomain) do |f| %>
+
+            <%= render 'shared/error_list', model: @user %>
+
+            <div class="field group">
+              <%= f.label :first_name %>
+              <div class="input-right">
+                <%= f.text_field :first_name %>
+              </div>
+            </div>
+
+            <div class="field group">
+              <%= f.label :last_name %>
+              <div class="input-right">
+                <%= f.text_field :last_name %>
+              </div>
+            </div>
+
+            <div class="field group">
+              <%= f.label :email %>
+              <div class="input-right">
+                <%= f.text_field :email %>
+              </div>
+            </div>
+
+            <div class="field group">
+              <%= f.submit 'Update Profile', class: "button-blue" %>
+            </div>
+
+          <% end %>
+
+        </section>
+
+        <section>
+
+          <h2 class="page-header">Change Password</h2>
+
+          <%= form_for @user, url: admin_profile_url(subdomain: @company.subdomain) do |f| %>
+
+            <%= render 'shared/error_list', model: @user %>
+
+            <div class="field group">
+              <%= f.label :password %>
+              <div class="input-right">
+                <%= f.password_field :password %>
+              </div>
+            </div>
+
+            <div class="field group">
+              <%= f.label :password_confirmation %>
+              <div class="input-right">
+                <%= f.password_field :password_confirmation %>
+              </div>
+            </div>
+
+            <div class="field group">
+              <%= f.submit 'Change Password', class: "button-blue" %>
+            </div>
+
+         <% end %>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

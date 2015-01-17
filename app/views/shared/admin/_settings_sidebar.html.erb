@@ -1,0 +1,18 @@
+<div class="app-container">
+
+  <nav class="sidebar-nav">
+
+    <h2 class="page-header">Your Account</h2>
+
+    <ul>
+      <%= nav_link('<i class="icon-briefcase"></i>Company', admin_company_url(subdomain: @company.subdomain)) %>
+      <%= nav_link('<i class="icon-user"></i>Profile', admin_profile_url(subdomain: @company.subdomain)) %>
+      <%= nav_link('<i class="icon-group"></i>Team Members', admin_team_url(subdomain: @company.subdomain)) %>
+      <%= nav_link('<i class="icon-notepad"></i>Subscription', admin_subscription_url(subdomain: @company.subdomain)) %>
+      <%= nav_link('<i class="icon-credit-card"></i>Billing History', admin_company_url(subdomain: @company.subdomain)) %>
+      <%= nav_link('<i class="icon-mail"></i>Email Notifications', admin_company_url(subdomain: @company.subdomain)) %>
+    </ul>
+
+  </nav>
+
+</div>

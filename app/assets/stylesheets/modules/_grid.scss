@@ -21,10 +21,16 @@
 	.col-3-5 {
 		@include col(3/5, $gutter: 0);
 	}
+	.col-3-12 {
+		@include col(3/12, $gutter: 2);
+	}
 	.col-4-12 {
-		@include col(4/12);
+		@include col(4/12, $gutter: 2);
 	}
 	.col-8-12 {
 		@include col(8/12, $gutter: 2);
+	}
+	.col-9-12 {
+		@include col(9/12, $gutter: 2);
 	}
 }

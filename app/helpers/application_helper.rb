@@ -57,4 +57,14 @@ module ApplicationHelper
     date.strftime("#{date.day.ordinalize} of %B %Y")
   end
 
+  def nav_link(link_text, link_path, classes=[])
+
+    if current_page?(link_path) then classes << "active" end
+    classes.join(' ')
+    content_tag(:li, class: classes) do
+      link_to link_text.html_safe, link_path
+    end
+
+  end
+
 end

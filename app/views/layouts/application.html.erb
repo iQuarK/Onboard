@@ -11,6 +11,7 @@
 			<nav class="main-nav">
 				<ul>
 					<li><%= link_to "Dashboard", admin_url(subdomain: @company.subdomain) %></li>
+					<li><%= link_to "Settings", admin_company_url(subdomain: @company.subdomain) %></li>
 					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 				</ul>
 			</nav>

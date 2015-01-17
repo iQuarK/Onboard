@@ -32,13 +32,22 @@ Rails.application.routes.draw do
 
       # The company itself
       get '/', to: 'companies#show'
-      get '/edit', to: 'companies#edit'
-      put '/', to: 'companies#update'
-      patch '/', to: 'companies#update'
       delete '/', to: 'companies#delete'
 
       # Settings
       scope 'settings' do
+
+        # Company
+        get '', to: redirect('/admin/settings/company')
+        get 'company', to: 'companies#edit'
+        patch 'company', to: 'companies#update'
+
+        # User
+        get 'profile', to: 'users#edit'
+        patch 'profile', to: 'users#update'
+
+        # Team
+        get 'team', to: 'companies#team'
 
         # Subscriptions
         get 'subscription', to: 'companies#subscription'
@@ -46,7 +55,13 @@ Rails.application.routes.draw do
         patch 'subscription/plan', to: 'companies#update_plan'
         patch 'subscription/cancel', to: 'companies#cancel_subscription'
 
+        # Email Notifications
+        get 'notifications', to: 'companies#notifications'
+        patch 'notifications', to: 'companies#update_notifications'
+
       end
+
+      resources :company_administrators, only: [:create, :destroy]
 
       # Jobs
       resources :jobs, except: [:index] do
