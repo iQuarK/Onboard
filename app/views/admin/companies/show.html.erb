@@ -15,58 +15,68 @@
       <div class="app-container">
 
         <h2 class="page-header">Open Positions</h2>
+        
+        <% if @company.jobs.count > 1 %>
 
-        <% @company.jobs.each do |job| %>
+          <% @company.jobs.each do |job| %>
 
-          <div class="job-widget">
-            <%= link_to admin_job_url(job, subdomain: @company.subdomain) do %>
-            <header>
-              <div class="left">
-                <h2><%= job.title %></h2>
+            <div class="job-widget">
+              <%= link_to admin_job_url(job, subdomain: @company.subdomain) do %>
+              <header>
+                <div class="left">
+                  <h2><%= job.title %></h2>
+                </div>
+                <div class="right">
+                  <p><%= job.job_type %></p><p><%= job.location %></p>
+                </div>
+              </header>
+              <% end %>
+              <div class="stage-counter row">
+                <div class="col-1-5">
+                  <p class="stage-count"><%= not_zero(job.applications.applied.count) %></p>
+                  <p class="stage-name">Applied</p>
+                </div>
+                <div class="col-1-5">
+                  <p class="stage-count"><%= not_zero(job.applications.rejected.count) %></p>
+                  <p class="stage-name">Rejected</p>
+                </div>
+                <div class="col-1-5">
+                  <p class="stage-count"><%= not_zero(job.applications.under_review.count) %></p>
+                  <p class="stage-name">Review</p>
+                </div>
+                <div class="col-1-5">
+                  <p class="stage-count"><%= not_zero(job.applications.interviewing.count) %></p>
+                  <p class="stage-name">Interviewing</p>
+                </div>
+                <div class="col-1-5">
+                  <p class="stage-count"><%= not_zero(job.applications.hired.count) %></p>
+                  <p class="stage-name">Hired</p>
+                </div>
               </div>
-              <div class="right">
-                <p><%= job.job_type %></p><p><%= job.location %></p>
-              </div>
-            </header>
-            <% end %>
-            <div class="stage-counter row">
-              <div class="col-1-5">
-                <p class="stage-count"><%= not_zero(job.applications.applied.count) %></p>
-                <p class="stage-name">Applied</p>
-              </div>
-              <div class="col-1-5">
-                <p class="stage-count"><%= not_zero(job.applications.rejected.count) %></p>
-                <p class="stage-name">Rejected</p>
-              </div>
-              <div class="col-1-5">
-                <p class="stage-count"><%= not_zero(job.applications.under_review.count) %></p>
-                <p class="stage-name">Review</p>
-              </div>
-              <div class="col-1-5">
-                <p class="stage-count"><%= not_zero(job.applications.interviewing.count) %></p>
-                <p class="stage-name">Interviewing</p>
-              </div>
-              <div class="col-1-5">
-                <p class="stage-count"><%= not_zero(job.applications.hired.count) %></p>
-                <p class="stage-name">Hired</p>
-              </div>
+              <footer>
+                <ul>
+                  <li><%= link_to 'Manage', admin_job_url(job, subdomain: @company.subdomain) %></li>
+                  <li><%= link_to 'Edit', edit_admin_job_url(job, subdomain: @company.subdomain) %></li>
+                  <li><%= link_to 'View', job_url(job, subdomain: @company.subdomain) %></li>
+                  <li class="right time-count">
+                    <% if job.applications.count > 0 %>
+                      Last application received: <%= time_ago_in_words(job.applications.last.created_at) %> ago
+                    <% else %>
+                      No applications yet
+                    <% end %>
+                  </li>
+                </ul>
+              </footer>
             </div>
-            <footer>
-              <ul>
-                <li><%= link_to 'Manage', admin_job_url(job, subdomain: @company.subdomain) %></li>
-                <li><%= link_to 'Edit', edit_admin_job_url(job, subdomain: @company.subdomain) %></li>
-                <li><%= link_to 'View', job_url(job, subdomain: @company.subdomain) %></li>
-                <li class="right time-count">
-                  <% if job.applications.count > 0 %>
-                    Last application received: <%= time_ago_in_words(job.applications.last.created_at) %> ago
-                  <% else %>
-                    No applications yet
-                  <% end %>
-                </li>
-              </ul>
-            </footer>
-          </div>
 
+          <% end %>
+
+        <% else %>
+          <div class="job-widget empty">
+            <p>You haven't created any positions yet.</p>
+            <%= link_to 'Create your first job', new_admin_job_url(subdomain: @company.subdomain),class: 'button-blue' %>
+          </div>
+  
         <% end %>
 
       </div>
