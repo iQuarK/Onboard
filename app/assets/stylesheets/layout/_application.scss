@@ -54,6 +54,44 @@
       margin-top: 0px;
       text-rendering: optimizeLegibility;
     }
+
+    .job-share {
+      margin-top: 15px;
+      @extend .group;
+
+      .socicon-facebook {
+        display: block;
+        text-align: center;
+        width: 32%;
+        color: #fff;
+        background-color: #47639E;
+        padding: 10px 0px;
+        float: left;
+        margin-right: 6px;
+      }
+
+      .socicon-twitter {
+        display: block;
+        text-align: center;
+        width: 32%;
+        color: #fff;
+        background-color: #55ACEE;
+        padding: 10px 0px;
+        float: left;
+      }
+
+      .socicon-linkedin {
+        display: block;
+        text-align: center;
+        width: 32%;
+        color: #fff;
+        background-color: #1A85BC;
+        padding: 10px 0px;
+        float: left;
+        margin-right: 6px;
+      }
+
+    }
   }
 
   .dashboard-actions {
