@@ -58,8 +58,18 @@
 
     <div class="col-4-12">
       <div class="app-container">
-        <h2 class="page-header">Sidebar</h2>
-        <p>Do some stuff here</p>
+        <h2 class="page-header">Job Stats</h2>
+        <p><%= @job.applications.count %> Applications</p>
+        <p>Posted <%= distance_of_time_in_words(@job.created_at, Time.now) %> ago</p> 
+      </div>
+      <div class="app-container">
+        <h2 class="page-header">Link to this Job</h2>
+        <input type="text" value="<%= root_url(subdomain: @company.subdomain) %>jobs/<%= @job.id %>">
+        <div class="job-share">
+          <a href="http://www.linkedin.com"><i class="socicon-linkedin"></i></a>
+          <a href="http://www.facebook.com"><i class="socicon-facebook"></i></a>
+          <a href="http://www.twitter.com"><i class="socicon-twitter"></i></a>
+        </div>
       </div>
     </div>
 

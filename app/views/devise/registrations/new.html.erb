@@ -1,26 +1,63 @@
-<h2>Sign up</h2>
+<div id="authentication" class="wide">
+    <h2>Why use Pinpoint?</h2>
+    
+    <div class="row">
+      
+      <div class="col-3-5 register-features">
+        
+        <p>Recruiting great people is fundamental to the success of your business. That's why we've built Pinpoint - to make finding and hiring the best people easier.</p>
+        <div class="row">
+          <div class="col-1-2">
+            <ul>
+              <li><span>&#10004;</span>Branded Career Portal</li>
+              <li><span>&#10004;</span>Candidate Management</li>
+              <li><span>&#10004;</span>Interview Scheduling</li>
+              <li><span>&#10004;</span>Candidate Social Profiles</li>
+            </ul>
+          </div>
+          <div class="col-1-2">
+            <ul>                         
+              <li><span>&#10004;</span>Recruitment Resources</li>
+              <li><span>&#10004;</span>No Downloads</li>
+              <li><span>&#10004;</span>No Setup Fees</li>
+              <li><span>&#10004;</span>Cancel Anytime</li>
+            </ul>
+          </div>
+        </div>
+        <p>Fill in the form on the right hand side to securely sign up for a 14 day free trial - no credit card details required.</p>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="testimonial group">
+          <%= image_tag('testimonials/al-mcclenahan.jpg') %>
+          <blockquote>Pinpoint is great - we've gone from sifting through spreadsheets and hundreds of emails to one interface for everything.</blockquote>
+          <cite>- Al Mcclenahan, Director, Bennett Alexander</cite>
+        </div>
 
-  <%= devise_error_messages! %>
-  <%#= render 'shared/error_list', model: resource %>
+      </div>
 
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name, autofocus: true %></div>
+      <div class="col-2-5 register-form">
 
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+          <%= devise_error_messages! %>
+          <%#= render 'shared/error_list', model: resource %>
 
-  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+          <%= f.text_field :first_name, autofocus: true, placeholder: "First Name" %>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+          <%= f.text_field :last_name, placeholder: "Last Name" %>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+          <%= f.email_field :email, placeholder: "Email Address" %>
 
-<%= render "devise/shared/links" %>
+          <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Re-enter your password" %>
+
+          <%= f.submit "Start my free trial", class: "button-green" %>
+          <p class="disclaimer-text">Your information is 100% secure with us, we'll never sell it or spam you.</p>
+
+        <% end %>
+
+      </div>
+
+    </div>
+
+</div>

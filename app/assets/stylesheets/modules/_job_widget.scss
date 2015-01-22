@@ -93,4 +93,15 @@
 		}
 	}
 
+	&.empty {
+		border: 2px dashed #dedede;
+		border-radius: 4px;
+		padding: 10px;
+		text-align: center;
+		
+		a {
+			margin-bottom: 15px;
+		}
+	}
+
 }

@@ -8,20 +8,123 @@
 #authentication {
   background-color: #fff;
   width: 550px;
-  margin: 200px auto;
+  margin: 125px auto;
   padding: 50px;
   border: 1px solid #dedede;
   border-radius: 3px;
+
+  &.wide {
+    width: 1000px;
+  }
+
+  .col-3-5 {
+    padding-right: 30px;
+  }
+
+  .register-features {
+
+    .row {
+      width: 100%;
+      padding: 0 20px;
+      margin: 0 auto;
+    }
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      @include font-size(14);
+      
+      span {
+        margin-right: 10px;
+        color: $green;
+      }
+    }
+  }
+
+  .testimonial {
+    margin-top: 40px;
+    img {
+      float: left;
+      margin-right: 40px;
+      @include border-radius(10px);
+    }
+    
+    blockquote { 
+      color: $green;
+      position: relative;
+      margin-bottom: 5px;
+      @include font-size(14);
+      &:before {
+        position: absolute;
+        left: 65px;
+        @include font-size(20);
+        content: '\201C';
+      }
+      &:after {
+        position: absolute;
+        @include font-size(20);
+        content: '\201D';
+      }
+    }
+
+    cite {
+      @include font-size(12);
+      color: #999;
+    }
+
+  }
+
+  .register-form {
+    border-left: 1px solid #dedede;
+    padding-left: 50px;
+
+    input[type="text"], input[type="email"], input[type="password"] {
+      margin-bottom: 20px;
+      padding: 12px;
+    }
+
+    input[type="submit"] {
+      text-align: center;
+      display: inline-block;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .disclaimer-text {
+      @include font-size(10);
+      text-align: center;
+      width: 220px;
+      margin: 10px auto;
+    }
+
+  }
 
   h1 {
       color: #4D9DE0;
       font-weight: normal;
       -webkit-font-smoothing: antialiased;
-      letter-spacing: -4px;
-      font-size: 46px;
-      line-height: 46px;
+      letter-spacing: -2.5px;
+      font-size: 54px;
+      line-height: 54px;
       font-weight: 300;
-      text-align: center; 
+      text-align: center;
+      font-variant: small-caps; 
+    }
+
+   h2 {
+      @include font-size(40);
+      font-weight: 300;
+      letter-spacing: -2.5px;
+      color: $blue;
+      margin-top: 0;
     }
 
   .login-actions {
