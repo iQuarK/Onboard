@@ -81,3 +81,6 @@ gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave'
 gem 'jquery-fileupload-rails'
 
 gem 'cocoon'
+
+# For notifying when stuff goes wrong
+gem 'exception_notification'
