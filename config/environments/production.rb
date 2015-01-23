@@ -84,11 +84,10 @@ Rails.application.configure do
   config.session_store :cookie_store, key: '_pinpoint_session', domain: '.pinpointhq.com'
 
   # Get ActionMailer to send emails using exception notifier
-  # Exception Notifier Config
-  Pinpoint::Application.config.middleware.use ExceptionNotification::Rack,
+  config.middleware.use ExceptionNotification::Rack,
   :email => {
-    :email_prefix => "[PinPoint] ",
-    :sender_address => %{"notifier" <notifier@pinpointhq.com>},
+    :email_prefix => "[PinPoint Error] ",
+    :sender_address => %{"Pinpoint Notifier" <notifier@pinpointhq.com>},
     :exception_recipients => %w{thomasgluce@gmail.com}
   }
   config.action_mailer.perform_deliveries = true
