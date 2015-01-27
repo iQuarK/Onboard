@@ -16,41 +16,52 @@
 
       <div class="app-container">
 
-        <% @stages.each do |stage| %>
+        <div class="tabs jmi-tabs">
 
-            <h2 class="page-header"><%= stage[:name] %></h2>
+          <ul class="tab-links">
+            <% @stages.each do |stage| %>
+              <li><a href="#stage-<%= stage[:stage] %>"><%= stage[:name] %> (<%= stage[:applications].count %>)</a></li>
+            <% end %>
+          </ul>
 
-            <% if stage[:applications].any? %>
+          <% @stages.each do |stage| %>
+
+            <div id="stage-<%= stage[:stage] %>" class="applicant-grid">
+
+              <% if stage[:applications].any? %>
 
                 <% stage[:applications].each do |application| %>
 
-                  <div class="job-widget">
-                    <%= link_to admin_job_application_url(@job, application, subdomain: @company.subdomain) do %>
+                  <div class="applicant-widget">
                     <header>
-                      <div class="left">
                         <h2><%= application[:name] %></h2>
-                      </div>
-                      <div class="right">
-                        <p><%= application[:phone] %></p><p><%= application[:email] %></p>
-                      </div>
+                        <p><%= application[:phone] %></p>
+                        <p><%= application[:email] %></p>
                     </header>
-                    <% end %>
+                    <%= link_to "View", admin_job_application_url(@job, application, subdomain: @company.subdomain) %>
                     <footer>
                       <ul>
-                        <li class="right"><%= link_to 'Download CV', application.resume.url %></li>
+                        <li>FB</li>
+                        <li>FB</li>
+                        <li>FB</li>
+                        <li>FB</li>
                       </ul>
                     </footer>
                   </div>
 
                 <% end %>
 
-            <% else %>
+              <% else %>
 
-              <p>There are no applications</p>
+                <p>There are no applications</p>
 
-            <% end %>
+              <% end %>
 
-        <% end %>
+            </div>
+
+          <% end %>
+
+        </div>
 
       </div>
 
@@ -60,7 +71,7 @@
       <div class="app-container">
         <h2 class="page-header">Job Stats</h2>
         <p><%= @job.applications.count %> Applications</p>
-        <p>Posted <%= distance_of_time_in_words(@job.created_at, Time.now) %> ago</p> 
+        <p>Posted <%= distance_of_time_in_words(@job.created_at, Time.now) %> ago</p>
       </div>
       <div class="app-container">
         <h2 class="page-header">Link to this Job</h2>
