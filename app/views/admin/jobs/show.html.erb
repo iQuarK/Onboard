@@ -33,18 +33,18 @@
                 <% stage[:applications].each do |application| %>
 
                   <div class="applicant-widget">
-                    <header>
-                        <h2><%= application[:name] %></h2>
-                        <p><%= application[:phone] %></p>
-                        <p><%= application[:email] %></p>
-                    </header>
-                    <%= link_to "View", admin_job_application_url(@job, application, subdomain: @company.subdomain) %>
+                    <div class="applicant-info">
+                      <h2><%= application[:name] %></h2>
+                      <p><%= application[:phone] %></p>
+                      <p><%= application[:email] %></p>
+                      <%= link_to "View", admin_job_application_url(@job, application, subdomain: @company.subdomain) %>
+                    </div>
                     <footer>
-                      <ul>
-                        <li>FB</li>
-                        <li>FB</li>
-                        <li>FB</li>
-                        <li>FB</li>
+                      <ul class="applicant-data-sources">
+                        <li><i class="icon-notepad"></i></li>
+                        <li><i class="socicon-linkedin"></i></li>
+                        <li><i class="socicon-facebook"></i></li>
+                        <li><i class="socicon-twitter"></i></li>
                       </ul>
                     </footer>
                   </div>
