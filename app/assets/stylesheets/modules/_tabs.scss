@@ -50,3 +50,53 @@
     }
   }
 }
+
+/* --------------------------------------------------
+  Admin Job Show Tabs
+-------------------------------------------------- */
+.jmi-tabs {
+
+  .tab-links li {
+
+    @include span(1/5);
+    height: 60px;
+    background: $smoke;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+    line-height: 60px;
+
+    a {
+      display: block;
+      text-align: center;
+    }
+
+    &:hover, &.ui-tabs-active {
+      color: #FFF;
+      background: $blue;
+    }
+  }
+
+  .applicant-grid {
+    @extend .group;
+  }
+
+  .applicant-widget {
+    @include col(1/2, $cycle: 2);
+    margin-bottom: 3%;
+    border: 1px solid $smoke;
+  }
+  .applicant-info {
+    padding: 20px;
+  }
+  .applicant-data-sources li {
+    @include span(1/4);
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid $smoke;
+    border-right: 1px solid $smoke;
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+}

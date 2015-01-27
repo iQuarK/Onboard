@@ -28,6 +28,7 @@ module Pinpoint
     # Need the secrets to set config stuff
     YAML.load_file("#{::Rails.root}/config/secrets.yml")[::Rails.env].each {|k,v| ENV[k] = v }
 
+    # Postmark ActionMailer config
     config.action_mailer.delivery_method = :postmark
     config.action_mailer.postmark_settings = { :api_key => ENV['postmark_api_key'] }
     config.action_mailer.default_options = {

@@ -83,12 +83,14 @@ Rails.application.configure do
   # Using lvh.me to point to localhost for dev
   config.session_store :cookie_store, key: '_pinpoint_session', domain: '.pinpointhq.com'
 
-  # Need the secrets to set config stuff
-  YAML.load_file("#{::Rails.root}/config/secrets.yml")[::Rails.env].each {|k,v| ENV[k] = v }
-
-  # Stripe config (will overwrite that in application.rb)
-  config.stripe.secret_key = ENV['stripe_api_key']
-  config.stripe.publishable_key = ENV['stripe_public_key']
-
+  # Get ActionMailer to send emails using exception notifier
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[PinPoint Error] ",
+    :sender_address => %{"Pinpoint Notifier" <notifier@pinpointhq.com>},
+    :exception_recipients => %w{thomasgluce@gmail.com}
+  }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
 end
