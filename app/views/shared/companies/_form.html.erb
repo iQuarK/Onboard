@@ -51,7 +51,7 @@
   <%= f.label :logo %>
   <div class="input-right">
     <% if @company.logo %>
-      <%= image_tag @company.logo_url(:thumb) %>
+      <%= image_tag @company.logo_url(:thumb), class: "company-logo" %>
     <% end %>
     <%= f.file_field :logo %>
   </div>

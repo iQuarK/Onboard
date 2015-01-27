@@ -10,16 +10,25 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+// From Gems
+// --------------------------
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui/tabs
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
-//= require wow
-//= require trumbowyg/trumbowyg
 //= require cocoon
+//= require trumbowyg/trumbowyg
 
+// Vendor Libraries
+// --------------------------
+//= require wow
+//= require color-thief
+
+// Custom JS Files
+// --------------------------
 //= require init
 //= require attachments
 //= require payments
