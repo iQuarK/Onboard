@@ -16,7 +16,7 @@
 
         <h2 class="page-header">Open Positions</h2>
         
-        <% if @company.jobs.count > 1 %>
+        <% if @company.jobs.any? %>
 
           <% @company.jobs.each do |job| %>
 

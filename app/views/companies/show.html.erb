@@ -1,66 +1,35 @@
 <section class="hero">
-  <div class="content pad-vert-medium">
-    <h2><%= @company.name %></h2>
-    <h1>Work at <%= @company.name %></h1>
-
-    <% if @company.active_subscription %>
-      <a class="button-blue" href="#">View Open Positions</a>
-    <% end %>
-
-  </div>
-</section>
-
-<section class="sub-nav">
-  <div class="content">
-    <ul>
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#benefits">Benefits</a></li>
-
-      <% if @company.active_subscription %>
-        <li><a href="#open-positions">View Open Positions</a></li>
-      <% end %>
-
-    </ul>
-  </div>
+  <h1>Work at <%= @company.name %></h1>
+ <!--  <% if @company.active_subscription %>
+    <a class="button-blue" href="#">View Open Positions</a>
+  <% end %> -->
 </section>
 
 <section class="overview" id="overview">
-  <div class="content pad-vert-medium">
-    <div class="intro">
-      <h4>About <%= @company.name %></h4>
-      <p><%= @company.description.html_safe %></p>
-    </div>
+  <div class="intro">
+    <h4>About <%= @company.name %></h4>
+    <p><%= @company.description.html_safe %></p>
   </div>
 </section>
 
 <section class="benefits" id="benefits">
-  <div class="content pad-vert-medium">
-    <div class="intro">
-      <h4>Employment Benefits</h4>
-    </div>
-
-    <div class="benefit-content">
-      <%= @company.benefits.html_safe %>
-    </div>
-
+  <div class="intro">
+    <h4>Employment Benefits</h4>
+  </div>
+  <div class="benefit-content">
+    <%= @company.benefits.html_safe %>
   </div>
 </section>
 
 <% if @company.active_subscription %>
-
   <section class="positions" id="open-positions">
-    <div class="content pad-vert-medium">
-      <div class="intro">
-        <h4>Open Positions</h4>
-      </div>
-
-      <ul>
-      <% @company.jobs.each do |job| %>
-          <li><%= link_to job.title, job, subdomain: @company.subdomain %><br /><span><%= job.location %></li>
-      <% end %>
-      </ul>
-
+    <div class="intro">
+      <h4>Open Positions</h4>
     </div>
+    <ul>
+    <% @company.jobs.each do |job| %>
+        <li><%= link_to job.title, job, subdomain: @company.subdomain %><br /><span><%= job.location %></li>
+    <% end %>
+    </ul>
   </section>
-
 <% end %>
