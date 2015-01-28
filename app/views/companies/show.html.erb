@@ -1,3 +1,38 @@
+
+
+<section class="hero">
+  <%= image_tag @company.logo_url, class: "company-logo" %>
+</section>
+
+<section class="overview" id="overview">
+  <div class="intro">
+    <h4>About <%= @company.name %></h4>
+    <%= @company.description.html_safe %>
+  </div>
+</section>
+
+<!-- <section class="benefits" id="benefits">
+  <div class="intro">
+    <h4>Employment Benefits</h4>
+  </div>
+  <div class="benefit-content">
+    <%= @company.benefits.html_safe %>
+  </div>
+</section> -->
+
+<% if @company.active_subscription %>
+  <section class="positions" id="open-positions">
+    <div class="intro">
+      <h4>Open Positions</h4>
+    </div>
+    <ul>
+    <% @company.jobs.each do |job| %>
+        <li><%= link_to job.title, job, subdomain: @company.subdomain %><br /><span><%= job.location %></li>
+    <% end %>
+    </ul>
+  </section>
+<% end %>
+
 <script type="text/javascript">
   $(document).ready(function(){
 
@@ -32,43 +67,8 @@
 
     var colours = colorsForImage($('.company-logo'));
     $('body').css('background-color', colours['hex']['color']);
+    $('h4').css('color', colours['hex']['color']);
+    $('a').css('color', colours['hex']['color']);
 
   });
 </script>
-
-<section class="hero">
-  <h1>Work at <%= @company.name %></h1>
- <!--  <% if @company.active_subscription %>
-    <a class="button-blue" href="#">View Open Positions</a>
-  <% end %> -->
-  <%= image_tag @company.logo_url, class: "company-logo" %>
-</section>
-
-<section class="overview" id="overview">
-  <div class="intro">
-    <h4>About <%= @company.name %></h4>
-    <p><%= @company.description.html_safe %></p>
-  </div>
-</section>
-
-<section class="benefits" id="benefits">
-  <div class="intro">
-    <h4>Employment Benefits</h4>
-  </div>
-  <div class="benefit-content">
-    <%= @company.benefits.html_safe %>
-  </div>
-</section>
-
-<% if @company.active_subscription %>
-  <section class="positions" id="open-positions">
-    <div class="intro">
-      <h4>Open Positions</h4>
-    </div>
-    <ul>
-    <% @company.jobs.each do |job| %>
-        <li><%= link_to job.title, job, subdomain: @company.subdomain %><br /><span><%= job.location %></li>
-    <% end %>
-    </ul>
-  </section>
-<% end %>

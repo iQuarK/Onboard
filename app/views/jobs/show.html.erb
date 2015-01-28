@@ -1,24 +1,8 @@
 <section class="hero">
-  <div class="content pad-vert-medium">
-    <h2><%= @company.name %></h2>
-    <h1>Work at <%= @company.name %></h1>
-    <a class="button button-white" href="#">View All Open Positions</a>
-  </div>
-</section>
-
-<section class="sub-nav">
-  <div class="content">
-    <ul>
-      <li><%= link_to 'Job Description', job_path %></li>
-      <li><%= link_to 'Requirements', job_path, :anchor => "requirements" %></li>
-      <li><%= link_to 'Benefits', job_path, :anchor => "benefits" %></li>
-      <li><%= link_to 'Apply for this job', apply_job_url(@job, subdomain: @company.subdomain) %></li>
-    </ul>
-  </div>
+  <%= link_to root_path(subdomain: @company.subdomain) do %><%= image_tag @company.logo_url, class: "company-logo" %><% end %>
 </section>
 
 <section class="overview" id="overview">
-  <div class="content pad-vert-medium">
     <div class="intro">
       <h4><%= @job.title %></h4>
     </div>
@@ -38,17 +22,10 @@
       <h4>Benefits</h4>
       <p><%= @job.benefits.html_safe %></p>
     </div>
-
-  </div>
 </section>
 
 <section class="overview" id="open-positions">
-  <div class="content pad-vert-medium">
-    <div class="intro">
-      <h4>Apply Job</h4>
-    </div>
 
-    <%= link_to 'Apply', apply_job_url(@job, subdomain: @company.subdomain), class: 'button' %>
+    <%= link_to 'Apply for this job', apply_job_url(@job, subdomain: @company.subdomain), class: 'button-blue' %>
 
-  </div>
 </section>
