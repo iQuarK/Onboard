@@ -22,6 +22,7 @@ class CompaniesController < ApplicationController
   # -------------------------------------------------------------------------------------------------------------------
   def create
     @company = Company.new(company_params)
+    @company.active_subscription = true
 
     if @company.save
       @company.company_administrators.create(user_id: current_user.id)
