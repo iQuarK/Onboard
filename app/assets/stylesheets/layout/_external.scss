@@ -11,8 +11,7 @@
 
   .careers-container {
   	background-color: #fff;
-  	padding: 40px;
-  	margin-top: 100px;
+  	margin-top: 80px;
   	border-radius: 5px;
   	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
   }	
@@ -50,7 +49,7 @@
 	section.hero {
 		color: $blue;
 		border-bottom: 1px solid #e0e0e0;
-		padding: 40px 0px;
+		padding: 40px;
 
 		h1 {
 			font-size: 42px;
@@ -71,7 +70,7 @@
 		}
 
 		img {
-			max-height: 150px;
+			max-height: 50px;
 			width: auto;
 		}
 	}
@@ -81,14 +80,18 @@
 	-------------------------------------------------- */
 	section.overview {
 		border-bottom: 1px solid #e0e0e0;
-		padding: 40px 0px;
+		padding: 40px;
+		
+		b {
+			font-weight: 500;
+		}
 	}
 
 	/* --------------------------------------------------
 	  Benefits Content
 	-------------------------------------------------- */
 	section.benefits {
-		padding: 40px 0px;
+		padding: 40px;
 
 		.benefit-content {
 			-webkit-column-count: 2;
@@ -121,26 +124,31 @@
 	  Open Positions
 	-------------------------------------------------- */
 	section.positions {
-		padding: 40px 0px;
+		padding: 40px;
 
 		ul {
 			list-style-type: none;
 			padding: 0;
+			margin-top: 40px;
+			-webkit-column-count: 2;
+			-webkit-column-gap: 40px;
 		}
 
 		li {
-			font-size: 22px;
+			font-size: 20px;
 			margin-bottom: 30px;
+			line-height: 1.2;
+			
 
 			a {
-				color: #2996cc;
+				color: #222;
 				&:visited {
-					color: #2996cc;
+					color: #222;
 				}
 			}
 
 			span {
-				font-size: 16px;
+				font-size: 14px;
 			}
 		}
 	}
@@ -154,14 +162,14 @@
 
 	p {
 		text-align: right;
-		color: grey;
+		color: white;
 		font-variant: small-caps;
 		font-weight: 400;
 		@include font-size(14);
 		margin-top: 5px;
 
 		a {
-			color: $blue;
+			color: white;
 		}
 	}
 }
