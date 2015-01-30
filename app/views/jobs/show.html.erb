@@ -1,54 +1,77 @@
-<section class="hero">
-  <div class="content pad-vert-medium">
-    <h2><%= @company.name %></h2>
-    <h1>Work at <%= @company.name %></h1>
-    <a class="button button-white" href="#">View All Open Positions</a>
-  </div>
-</section>
+<div class="careers-container">
 
-<section class="sub-nav">
-  <div class="content">
-    <ul>
-      <li><%= link_to 'Job Description', job_path %></li>
-      <li><%= link_to 'Requirements', job_path, :anchor => "requirements" %></li>
-      <li><%= link_to 'Benefits', job_path, :anchor => "benefits" %></li>
-      <li><%= link_to 'Apply for this job', apply_job_url(@job, subdomain: @company.subdomain) %></li>
-    </ul>
-  </div>
-</section>
+  <section class="hero">
+    <%= link_to root_path(subdomain: @company.subdomain) do %><%= image_tag @company.logo_url, class: "company-logo" %><% end %>
+  </section>
 
-<section class="overview" id="overview">
-  <div class="content pad-vert-medium">
-    <div class="intro">
-      <h4><%= @job.title %></h4>
-    </div>
+  <section class="overview" id="overview">
+      <div class="intro">
+        <h4><%= @job.title %></h4>
+      </div>
 
-    <p><%= @job.description.html_safe %></p>
+      <p><%= @job.description.html_safe %></p>
 
-    <p><strong>Location: </strong><%= @job.location %></p>
-    <p><strong>Remote: </strong><%= @job.remote %></p>
-    <p><strong>Type: </strong><%= @job.job_type %></p>
+      <p><strong>Location: </strong><%= @job.location %></p>
+      <p><strong>Remote: </strong><%= @job.remote %></p>
+      <p><strong>Type: </strong><%= @job.job_type %></p>
 
-    <div id="requirements">
-      <h4>Requirements</h4>
-      <p><%= @job.requirements.html_safe %></p>
-    </div>
+      <div id="requirements">
+        <h4>Requirements</h4>
+        <p><%= @job.requirements.html_safe %></p>
+      </div>
 
-    <div id="benefits">
-      <h4>Benefits</h4>
-      <p><%= @job.benefits.html_safe %></p>
-    </div>
+      <div id="benefits">
+        <h4>Benefits</h4>
+        <p><%= @job.benefits.html_safe %></p>
+      </div>
+  </section>
 
-  </div>
-</section>
+  <section class="overview" id="open-positions">
 
-<section class="overview" id="open-positions">
-  <div class="content pad-vert-medium">
-    <div class="intro">
-      <h4>Apply Job</h4>
-    </div>
+      <%= link_to 'Apply for this job', apply_job_url(@job, subdomain: @company.subdomain), class: 'button-blue' %>
 
-    <%= link_to 'Apply', apply_job_url(@job, subdomain: @company.subdomain), class: 'button' %>
+  </section>
 
-  </div>
-</section>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    // -------------------------------------------------------------------------
+    // Use Colour Thief to set background colour using the logo
+    // -------------------------------------------------------------------------
+
+    var colorsForImage = function($image) {
+      var colorThief = new ColorThief();
+      var image = $image[0];
+      var color = colorThief.getColor(image);
+      var palette = colorThief.getPalette(image);
+      var colorThiefOutput = {
+        rgb: {
+          color: color,
+          palette: palette
+        },
+        hex: {
+          color: rgbToHex(color[0], color[1], color[2]),
+          palette: palette.map(function(item){ return rgbToHex(item[0], item[1], item[2]); })
+        }
+      };
+      return colorThiefOutput;
+    };
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+    function rgbToHex(r, g, b) {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+
+    var colours = colorsForImage($('.company-logo'));
+    $('body').css('background-color', colours['hex']['color']);
+    $('h4').css('color', colours['hex']['color']);
+    $('.button-blue').css('background-color', colours['hex']['color']);
+    // $('section').css('border-color', colours['hex']['color']);
+
+  });
+</script>

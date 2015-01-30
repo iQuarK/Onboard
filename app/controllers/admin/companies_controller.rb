@@ -23,7 +23,7 @@ module Admin
     # -------------------------------------------------------------------------------------------------------------------
     def update
       if @company.update(company_params)
-        redirect_to admin_url(subdomain: @company.subdomain), notice: 'Company was successfully updated.'
+        redirect_to admin_company_url(subdomain: @company.subdomain), notice: 'Company was successfully updated.'
       else
         render :edit
       end
