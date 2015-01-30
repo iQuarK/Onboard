@@ -109,8 +109,11 @@ Rails.application.routes.draw do
   # get 'dashboard' => 'static_pages#dashboard', as: :dashboard
   get 'pricing' => 'static_pages#pricing', as: :pricing
 
-
-
+  # -------------------------------------------------------------------------------------------------------------------
+  # Temp Files
+  # -------------------------------------------------------------------------------------------------------------------
+  resources :temp_logos, only: [:create]
+  resources :temp_files, only: [:create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -47,12 +47,4 @@
   </div>
 </div>
 
-<div class="field">
-  <%= f.label :logo %>
-  <div class="input-right">
-    <% if @company.logo %>
-      <%= image_tag @company.logo_url(:thumb), class: "company-logo" %>
-    <% end %>
-    <%= f.file_field :logo %>
-  </div>
-</div>
+<%= f.hidden_field :completed, value: 1 %>

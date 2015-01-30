@@ -33,6 +33,8 @@
 //= require attachments
 //= require payments
 //= require pricing
+//= require temp_files
+//= require temp_logos
 
 //= require turbolinks
 

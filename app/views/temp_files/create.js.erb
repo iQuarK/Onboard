@@ -1,0 +1,5 @@
+<% if @temp_file.new_record? %>
+  alert("Failed to upload file: <%= j @temp_file.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+  alert('success');
+<% end %>

@@ -1,0 +1,64 @@
+<% if @temp_logo.new_record? %>
+
+  alert("Failed to upload file: <%= j @temp_logo.errors.full_messages.join(', ').html_safe %>");
+
+<% else %>
+
+  $('.company-logo-wrap').html('<%= j image_tag @temp_logo.logo_url(:thumb), class: "company-logo" %>').slideDown(300);
+
+  // -------------------------------------------------------------------------
+  // Use Colour Thief to set background colour using the logo
+  // -------------------------------------------------------------------------
+
+  var colorsForImage = function($image) {
+    var colorThief = new ColorThief();
+    var image = $image[0];
+    var color = colorThief.getColor(image);
+    var palette = colorThief.getPalette(image);
+    var colorThiefOutput = {
+      rgb: {
+        color: color,
+        palette: palette
+      },
+      hex: {
+        color: rgbToHex(color[0], color[1], color[2]),
+        palette: palette.map(function(item){ return rgbToHex(item[0], item[1], item[2]); })
+      }
+    };
+    return colorThiefOutput;
+  };
+
+  function componentToHex(c) {
+      var hex = c.toString(16);
+      return hex.length == 1 ? "0" + hex : hex;
+  }
+
+  function rgbToHex(r, g, b) {
+      return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+  }
+
+  // Wait for the company logo to load before doing stuff
+  $('.company-logo').on('load', function() {
+
+    var colours = colorsForImage($('.company-logo'));
+    $('body').css('background-color', colours['hex']['color']);
+
+    $('.primary-colour').css('background-color', colours['hex']['color']);
+
+    $.each(colours['hex']['palette'], function(index,colour){
+      $('.swatches').append('<div class="swatch" style="background-color: ' + colour + '"></div>');
+    });
+
+    $('.company-colours').slideDown(300);
+
+    $(document).on('click', '.swatch', function(){
+      console.log('test');
+      var background = $(this).css('background-color');
+      $('body').css('background-color', background);
+    })
+
+  });
+
+
+
+<% end %>

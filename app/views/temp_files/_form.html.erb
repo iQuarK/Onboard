@@ -1,0 +1,21 @@
+<%= form_for TempFile.new, html: { id: id } do |f| %>
+
+  <div class="field">
+    <%= f.label :file, file_name %>
+    <div class="input-right">
+      <%= f.file_field :file %>
+    </div>
+  </div>
+
+<% end %>
+
+<% if progress %>
+
+  <script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%=o.name%}
+    <div class="progress"><div class="bar" style="width: 0%"></div></div>
+  </div>
+  </script>
+
+<% end %>
