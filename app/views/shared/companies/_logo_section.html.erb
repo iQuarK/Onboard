@@ -1,0 +1,17 @@
+<%= form_for TempLogo.new, html: { id: 'company_logo_form' } do |f| %>
+
+  <div class="field">
+    <%= f.label :logo %>
+    <div class="input-right">
+      <%= f.file_field :logo %>
+    </div>
+  </div>
+
+<% end %>
+
+<div class="company-logo-wrap hidden"></div>
+
+<div class="company-colours hidden">
+  <h3>Colour Swatches</h3>
+  <div class="swatches"></div>
+</div>

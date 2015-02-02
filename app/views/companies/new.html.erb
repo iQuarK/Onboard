@@ -4,25 +4,7 @@
 
 		<h2 class="page-header">New Company</h2>
 
-		<%= form_for TempLogo.new, html: { id: 'company_logo_form' } do |f| %>
-
-		  <div class="field">
-		    <%= f.label :logo %>
-		    <div class="input-right">
-		      <%= f.file_field :logo %>
-		    </div>
-		  </div>
-
-		<% end %>
-
-		<div class="company-logo-wrap hidden"></div>
-
-		<div class="company-colours hidden">
-			<h3>Primary Colour</h3>
-			<div class="primary-colour"></div>
-			<h3>Swatches</h3>
-			<div class="swatches"></div>
-		</div>
+		<%= render 'shared/companies/logo_section' %>
 
 		<%= form_for @company do |f| %>
 

@@ -1,18 +1,18 @@
 
 .primary-colour {
-  width: 50px;
+  @include col(1/9, $gutter: 1);
   height: 50px;
 }
 .swatches {
   @extend .group;
 }
 .swatch {
-  @include col(1/9, $gutter: 1);
+  @include col(1/10, $gutter: 1);
   display: inline-block;
   vertical-align: middle;
   height: 50px;
   cursor: pointer;
-  &:hover {
+  &:hover, &.active {
     -webkit-transform: scale(1.0,1.2);
     -moz-transform:scale(1.0,1.2);
     transform:scale(1.0,1.2);

@@ -18,9 +18,11 @@
 
 		  <div class="app-container">
 
-		  		<%= render 'shared/flash_message' %>
+		  	<%= render 'shared/flash_message' %>
 
 				<h2 class="page-header">Edit Company</h2>
+
+        <%= render 'shared/companies/logo_section' %>
 
 				<%= form_for @company, url: admin_company_url(subdomain: @company.subdomain) do |f| %>
 

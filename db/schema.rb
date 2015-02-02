@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129215316) do
+ActiveRecord::Schema.define(version: 20150201155608) do
 
   create_table "applications", force: true do |t|
     t.integer  "user_id"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20150129215316) do
     t.boolean  "active_subscription", default: false
     t.string   "logo"
     t.boolean  "completed",           default: false
+    t.string   "background_colour"
+    t.string   "header_colour"
   end
 
   add_index "companies", ["subdomain"], name: "index_companies_on_subdomain", unique: true, using: :btree

@@ -4,7 +4,11 @@
 
 <% else %>
 
+  // Add the logo thumb to the page
   $('.company-logo-wrap').html('<%= j image_tag @temp_logo.logo_url(:thumb), class: "company-logo" %>').slideDown(300);
+
+  // Add a reference to the logo so we can assign it on form submit
+  $('#company_temp_logo_id').attr('value', <%= @temp_logo.id %>);
 
   // -------------------------------------------------------------------------
   // Use Colour Thief to set background colour using the logo
@@ -40,22 +44,38 @@
   // Wait for the company logo to load before doing stuff
   $('.company-logo').on('load', function() {
 
+    // Generate the colours from the logo image
     var colours = colorsForImage($('.company-logo'));
+
+    // Set the background colour of the page
     $('body').css('background-color', colours['hex']['color']);
 
-    $('.primary-colour').css('background-color', colours['hex']['color']);
+    // Update the swatch pallette
+    $('.swatches').empty();
 
+    // Add the primary colour first and set the background colour input
+    $('.swatches').append('<div class="swatch active" data-colour="' + colours['hex']['color'] + '" style="background-color: ' + colours['hex']['color'] + '"></div>');
+    $('#company_background_colour').attr('value', colours['hex']['color']);
+
+    // Add the rest of the colours to the swatch pallette
     $.each(colours['hex']['palette'], function(index,colour){
-      $('.swatches').append('<div class="swatch" style="background-color: ' + colour + '"></div>');
+      $('.swatches').append('<div class="swatch" data-colour="' + colour + '" style="background-color: ' + colour + '"></div>');
     });
 
-    $('.company-colours').slideDown(300);
-
+    // Add the event handler that will change the colour
     $(document).on('click', '.swatch', function(){
-      console.log('test');
-      var background = $(this).css('background-color');
+
+      var background = $(this).data('colour');
       $('body').css('background-color', background);
-    })
+
+      $('.swatch').removeClass('active');
+      $(this).addClass('active');
+
+      $('#company_background_colour').attr('value', background);
+    });
+
+    // Show the colour swatch pallette section
+    $('.company-colours').slideDown(300);
 
   });
 
