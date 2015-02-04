@@ -26,20 +26,25 @@
 		margin-right: auto;
 		font-weight: 300;
 		line-height: 1.6;
+	}
 
-		h3 {
-			font-size: 32px;
-			line-height: 42px;
-			font-weight: 300;
-			text-transform: uppercase;
-		}
+	h3 {
+		font-size: 32px;
+		line-height: 42px;
+		font-weight: 300;
+		text-transform: uppercase;
+	}
 
-		h4 {
-			font-size: 28px;
-			font-weight: 300;
-			line-height: 32px;
-			text-rendering: optimizeLegibility;
-			letter-spacing: -1px;
+	h4 {
+		font-size: 28px;
+		font-weight: 300;
+		line-height: 32px;
+		text-rendering: optimizeLegibility;
+		letter-spacing: -1px;
+		margin-top: 50px;
+		
+		&:first-child {
+			margin-top: 0px;
 		}
 	}
 
@@ -118,6 +123,31 @@
 			line-height: 1.6;
 			font-weight: 300;
 		}
+	}
+
+	/* --------------------------------------------------
+	  Application Page
+	-------------------------------------------------- */
+	.linkedin-notice {
+		@extend .group;
+
+		p {
+			@include font-size(14);
+			width: 65%;
+			float: left;
+			margin: 0;
+			padding: 0;
+		}
+
+		span {
+			font-weight: 500;
+		}
+
+		a {
+			float: right;
+		}
+
+
 	}
 
 	/* --------------------------------------------------

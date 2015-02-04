@@ -4,48 +4,47 @@
     <%= link_to root_path(subdomain: @company.subdomain) do %><%= image_tag @company.logo_url, class: "company-logo" %><% end %>
   </section>
 
-  <section class="sub-nav">
-    <div class="content">
-      <ul>
-        <li><%= link_to 'Job Description', job_path %></li>
-        <li><%= link_to 'Requirements', job_path, :anchor => "requirements" %></li>
-        <li><%= link_to 'Benefits', job_path, :anchor => 'benefits' %></li>
-        <li><%= link_to 'Apply for this job', apply_job_url(@job, subdomain: @company.subdomain) %></li>
-      </ul>
-    </div>
-  </section>
-
   <section class="overview" id="overview">
-    <div class="content pad-vert-medium">
-      <div class="intro">
-        <h4>Apply for <%= @job.title %></h4>
+      
+      <div class="flash flash-notice linkedin-notice">
+        <p><span>Do you use LinkedIn?</span> Connect your account and have these fields automatically populated for you.</p>
+        <%= link_to 'Authorise Linkedin', linkedin_auth_url(subdomain: @company.subdomain), class: 'button-blue' %>
       </div>
+
+      <h4>Apply for <%= @job.title %></h4>
+
       <%= form_for @application, url: apply_job_url(@job), html: { multipart: true } do |f| %>
 
         <%= render 'shared/error_list', model: @application %>
+        
+        <div class="row">
 
-        <div class="field-row">
-          <%= f.label :name %>
-          <%= f.text_field :name %>
+          <div class="col-1-2">
+            <div class="field-row">
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+            </div>
+            <div class="field-row">
+              <%= f.label :phone %>
+              <%= f.text_field :phone %>
+            </div>
+          </div>
+
+          <div class="col-1-2">
+            <div class="field-row">
+              <%= f.label :email %>
+              <%= f.email_field :email %>
+            </div>
+            <div class="field-row">
+              <%= f.label :address %>
+              <%= f.text_field :address %>
+            </div>
+          </div>
+
         </div>
 
         <div class="field-row">
-          <%= f.label :email %>
-          <%= f.email_field :email %>
-        </div>
-
-        <div class="field-row">
-          <%= f.label :phone %>
-          <%= f.text_field :phone %>
-        </div>
-
-        <div class="field-row">
-          <%= f.label :address %>
-          <%= f.text_field :address %>
-        </div>
-
-        <div class="field-row">
-          <%= f.label :summary %>
+          <%= f.label :summary, "Summary (Cover Letter)" %>
           <%= f.text_area :summary, rows: 5 %>
         </div>
 
@@ -66,9 +65,6 @@
 
       <% end %>
 
-      <%= link_to 'Authorise Linkedin', linkedin_auth_url(subdomain: @company.subdomain), class: 'button' %>
-
-    </div>
   </section>
 
 </div>
@@ -108,8 +104,6 @@
 
     var colours = colorsForImage($('.company-logo'));
     $('body').css('background-color', colours['hex']['color']);
-    $('h4').css('color', colours['hex']['color']);
-    $('.button-blue').css('background-color', colours['hex']['color']);
     // $('section').css('border-color', colours['hex']['color']);
 
   });
